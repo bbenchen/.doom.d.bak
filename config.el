@@ -25,7 +25,7 @@
 (when (and IS-MAC (display-graphic-p))
   (setq doom-font (font-spec :family "Hack Nerd Font" :size 12))
   (setq doom-big-font (font-spec :family "Hack Nerd Font" :size 16))
-  (+set-monospaced-font "Hack Nred Font" "Hiragino Sans GB" 12 14))
+  (+set-monospaced-font "Hack Nerd Font" "Hiragino Sans GB" 12 14))
 
 ;; window
 (if (display-graphic-p)
