@@ -77,7 +77,7 @@
             (lambda ()
               (liberime-select-schema "wubi_pinyin")))
   :config
-  (setq liberime-user-data-dir (expand-file-name "rime" doom-etc-dir))
+  (setq liberime-user-data-dir (expand-file-name "rime" doom-private-dir))
   (liberime-load)
   (setq pyim-default-scheme 'rime))
 
