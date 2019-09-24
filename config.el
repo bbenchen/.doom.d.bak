@@ -135,7 +135,8 @@
 ;; lsp
 (after! lsp-mode
   (setq lsp-file-watch-threshold 1000)
-  (setq lsp-metals-sbt-script "sbt"))
+  (setq lsp-metals-sbt-script "sbt"
+        lsp-metals-java-home (getenv "JAVA_HOME")))
 
 (after! lsp-java
   (setq lsp-java-jdt-download-url "http://mirrors.ustc.edu.cn/eclipse/jdtls/snapshots/jdt-language-server-latest.tar.gz")
