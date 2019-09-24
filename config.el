@@ -49,6 +49,9 @@
         doom-modeline-persp-name t
         doom-modeline-persp-name-icon t))
 
+;; workspaces
+(setq +workspaces-on-switch-project-behavior t)
+
 ;; iedit
 (setq iedit-toggle-key-default nil)
 
