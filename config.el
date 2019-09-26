@@ -56,6 +56,7 @@
 (setq iedit-toggle-key-default nil)
 
 ;; check-large-file
+(setq +large-file-size 1)               ; 1M
 (add-hook 'find-file-hook '+check-large-file)
 
 ;; pyim
@@ -198,3 +199,20 @@
   :config
   (setq-default hungry-delete-chars-to-skip " \t\f\v")
   (global-hungry-delete-mode))
+
+;; keybindings
+(map! (:when IS-LINUX
+        "s-w" #'+delete-window
+        "s-W" #'delete-frame
+        "s-n" #'+default/new-buffer
+        "s-k" #'doom/kill-this-buffer-in-all-windows
+        "s-s" #'save-buffer
+        "s-a" #'mark-whole-buffer
+        "s-f" #'swiper
+        "s-z" #'undo
+        "s-/" #'comment-line)
+
+      :leader
+      (:prefix "f"
+        "t" #'find-in-dotfiles
+        "T" #'browse-dotfiles))
