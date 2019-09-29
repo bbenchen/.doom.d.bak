@@ -14,3 +14,4 @@
 (package! exec-path-from-shell)
 (package! hungry-delete)
 (package! go-rename)
+(package! go-impl)

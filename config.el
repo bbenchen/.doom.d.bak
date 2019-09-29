@@ -136,6 +136,13 @@
         :localleader
         "rn" #'go-rename))
 
+(use-package! go-impl
+  :defer t
+  :init
+  (map! :map go-mode-map
+        :localleader
+        "rI" #'go-impl))
+
 ;; lsp
 (after! lsp-mode
   (setq lsp-file-watch-threshold 1000)
