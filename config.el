@@ -172,6 +172,21 @@
                               (concat doom-etc-dir "eclipse.jdt.ls/server/")
                               "test-runner/junit-platform-console-standalone.jar")))
 
+;; sql
+(after! sql
+  (setq sql-product 'mysql))
+
+(use-package! sqlup-mode
+  :defer t
+  :init
+  (add-hook! '(sql-mode-hook sql-interactive-mode-hook) :append #'sqlup-mode)
+  :config
+  (setq sqlup-blacklist (append sqlup-blacklist '("name" "user"))))
+
+(after! flycheck
+  (add-hook 'sql-mode-hook (lambda ()
+                             (flycheck-mode -1))))
+
 ;; company-english-helper
 (use-package! company-english-helper)
 
