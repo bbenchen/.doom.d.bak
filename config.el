@@ -57,7 +57,7 @@
 
 ;; check-large-file
 (setq +large-file-size 1)               ; 1M
-(add-hook 'find-file-hook '+check-large-file)
+(add-hook 'find-file-hook #'+check-large-file)
 
 ;; pyim
 (after! pyim
@@ -77,9 +77,8 @@
 (use-package! liberime-config
   :defer 1
   :init
-  (add-hook 'after-liberime-load-hook
-            (lambda ()
-              (liberime-select-schema "wubi_pinyin")))
+  (add-hook 'after-liberime-load-hook #'(lambda ()
+                                        (liberime-select-schema "wubi_pinyin")))
   :config
   (setq liberime-user-data-dir (expand-file-name "rime" doom-private-dir))
   ;; Use has been compiled liberime.so library in macos
@@ -130,7 +129,7 @@
     (if command
         (setq gofmt-command command)))
 
-  (add-hook 'before-save-hook 'gofmt-before-save))
+  (add-hook 'before-save-hook #'gofmt-before-save))
 
 (use-package! go-rename
   :defer t
@@ -187,7 +186,7 @@
   (setq sqlup-blacklist (append sqlup-blacklist '("name" "user"))))
 
 (after! flycheck
-  (add-hook 'sql-mode-hook (lambda ()
+  (add-hook 'sql-mode-hook #'(lambda ()
                              (flycheck-mode -1))))
 
 ;; company-english-helper
