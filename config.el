@@ -82,6 +82,9 @@
               (liberime-select-schema "wubi_pinyin")))
   :config
   (setq liberime-user-data-dir (expand-file-name "rime" doom-private-dir))
+  ;; Use has been compiled liberime.so library in macos
+  (if IS-MAC
+      (setq liberime--module-file (expand-file-name "liberime.so" doom-private-dir)))
   (liberime-load)
   (setq pyim-default-scheme 'rime))
 
