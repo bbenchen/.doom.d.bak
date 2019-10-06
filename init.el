@@ -132,9 +132,10 @@
        ;;nix                            ; I hereby declare "nix geht mehr!"
        ;;ocaml                          ; an objective camel
        (org                             ; organize your plain life in plain text
-        +dragndrop                      ; file drag & drop support
-        +ipython                        ; ipython support for babel
-        +pandoc                         ; pandoc integration into org's exporter
+        +dragndrop                      ; drag & drop files/images into org buffers
+        +hugo                           ; use Emacs for hugo blogging
+        +ipython                        ; ipython/jupyter support for babel
+        +pandoc                         ; export-with-pandoc support
         +present                        ; using Emacs for presentations
         +journal)
        ;;perl                           ; write code no one else can comprehend
