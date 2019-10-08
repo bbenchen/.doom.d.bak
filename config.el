@@ -132,14 +132,16 @@
   :init
   (map! :map go-mode-map
         :localleader
-        "rn" #'go-rename))
+        (:prefix ("r" . "reflect")
+          "n" #'go-rename)))
 
 (use-package! go-impl
   :defer t
   :init
   (map! :map go-mode-map
         :localleader
-        "rI" #'go-impl))
+        (:prefix ("r" . "reflect")
+          "I" #'go-impl)))
 
 ;; lsp
 (after! lsp-mode
@@ -185,7 +187,16 @@
   (when (featurep! :lang javascript +lsp)
     (with-eval-after-load 'js2-mode
       (require 'dap-node)
-      (require 'dap-chrome))))
+      (require 'dap-chrome)))
+
+  (map! :map (java-mode-map go-mode-map js2-mode-map)
+        :localleader
+        (:prefix ("d" . "debug")
+          "." #'dap-hydra
+          "'" #'dap-ui-repl
+          "d" #'dap-debug
+          "l" #'dap-debug-last
+          "r" #'dap-debug-recent)))
 
 ;; sql
 (after! sql
