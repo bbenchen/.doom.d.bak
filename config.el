@@ -55,10 +55,6 @@
 ;; iedit
 (setq iedit-toggle-key-default nil)
 
-;; check-large-file
-(setq +large-file-size 1)               ; 1M
-(add-hook 'find-file-hook #'+check-large-file)
-
 ;; pyim
 (after! pyim
   (setq pyim-dcache-directory (expand-file-name "pyim/" doom-cache-dir))

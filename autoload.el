@@ -46,23 +46,6 @@
   (doom-project-browse (expand-file-name "~/.dotfiles")))
 
 ;;;###autoload
-(setq +large-file-size 1)
-
-;;;###autoload
-(defun +check-large-file ()
-  "Check when opening large files - literal file open"
-  (let* ((filename (buffer-file-name))
-         (size (nth 7 (file-attributes filename))))
-    (when (and
-           size (> size (* 1024 1024 +large-file-size))
-           (y-or-n-p (format (concat "%s is a large file, open literally to "
-                                     "avoid performance issues?")
-                             filename)))
-      (setq buffer-read-only t)
-      (buffer-disable-undo)
-      (fundamental-mode))))
-
-;;;###autoload
 (defun +delete-window (&optional arg)
   "Delete the current window.
 If the universal prefix argument is used then kill the buffer too."
