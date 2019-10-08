@@ -16,3 +16,4 @@
 (package! go-rename)
 (package! go-impl)
 (package! sqlup-mode)
+(package! dap-mode)
