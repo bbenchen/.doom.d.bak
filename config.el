@@ -114,7 +114,9 @@
   (when (executable-find "gopkgs")
     (defun go-packages-gopkgs ()
       "Return a list of all Go packages, using `gopkgs'."
-      (sort (process-lines "gopkgs") #'string<))
+      (if-let (project-root (doom-project-root))
+          (sort (process-lines "gopkgs" "-workDir" project-root) #'string<)
+        (sort (process-lines "gopkgs") #'string<)))
     (setq go-packages-function 'go-packages-gopkgs))
 
   (if (executable-find "gogetdoc")
