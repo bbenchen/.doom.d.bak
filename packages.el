@@ -14,6 +14,6 @@
 (package! exec-path-from-shell)
 (package! hungry-delete)
 (package! go-rename)
-(package! go-impl)
+(package! go-impl :recipe (:host github :repo "cxb811201/emacs-go-impl"))
 (package! sqlup-mode)
 (package! dap-mode)
