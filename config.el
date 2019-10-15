@@ -11,7 +11,7 @@
 
 (setq user-full-name "Chen Xianbin")
 (setq user-mail-address "517926804@qq.com")
-
+(setq default-directory "~")
 ;; (setq display-line-numbers-type 'visual)
 
 ;; theme
