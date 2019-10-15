@@ -137,7 +137,8 @@
         +ipython                        ; ipython/jupyter support for babel
         +pandoc                         ; export-with-pandoc support
         +present                        ; using Emacs for presentations
-        +journal)
+        +pomodoro                       ; be fruitful with the tomato technique
+        +journal)                       ; using org-mode for presentations
        ;;perl                           ; write code no one else can comprehend
        ;;php                            ; perl's insecure younger brother
        plantuml                         ; diagrams for confusing people more
