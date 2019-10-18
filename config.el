@@ -104,8 +104,7 @@
 ;; projectile
 (after! projectile
   (setq projectile-project-search-path '("~"))
-  (add-to-list 'projectile-globally-ignored-files "*.elc")
-  (add-to-list 'projectile-globally-ignored-files "*.bak")
+  (add-to-list 'projectile-globally-ignored-file-suffixes ".bak")
   (add-to-list 'projectile-globally-ignored-directories ".bloop")
   (add-to-list 'projectile-globally-ignored-directories ".metals"))
 
