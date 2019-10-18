@@ -122,20 +122,26 @@
   (if (executable-find "gogetdoc")
       (setq godoc-at-point-function 'godoc-gogetdoc))
 
-  (let ((command (or (executable-find "goimports")
-                     (executable-find "gofumports"))))
+  (let ((command (or (executable-find "gofumports")
+                     (executable-find "goimports"))))
     (if command
         (setq gofmt-command command)))
 
-  (add-hook 'before-save-hook #'gofmt-before-save))
+  (add-hook 'before-save-hook #'gofmt-before-save)
 
-(use-package! go-rename
-  :defer t
-  :init
-  (map! :map go-mode-map
-        :localleader
-        (:prefix ("r" . "reflect")
-          "n" #'go-rename)))
+  (map! (:when (featurep! :lang go +lsp)
+          (:map go-mode-map
+            :localleader
+            (:prefix ("r" . "reflect")
+              :desc "rename" "r" #'lsp-rename)))))
+
+;; (use-package! go-rename
+;;   :defer t
+;;   :init
+;;   (map! :map go-mode-map
+;;         :localleader
+;;         (:prefix ("r" . "reflect")
+;;           "r" #'go-rename)))
 
 (use-package! go-impl
   :defer t
@@ -145,11 +151,37 @@
         (:prefix ("r" . "reflect")
           "I" #'go-impl)))
 
+(use-package! go-fill-struct
+  :defer t
+  :init
+  (map! :map go-mode-map
+        :localleader
+        (:prefix ("r" . "reflect")
+          "s" #'go-fill-struct)))
+
+;; flycheck
+(use-package! flycheck-golangci-lint
+  :after flycheck
+  :init (add-hook 'go-mode-hook #'(lambda ()
+                                    (setq flycheck-disabled-checkers '(go-gofmt
+                                                                       go-golint
+                                                                       go-vet
+                                                                       go-build
+                                                                       go-test
+                                                                       go-errcheck))
+                                    (flycheck-golangci-lint-setup))))
+
 ;; lsp
 (after! lsp-mode
   (setq lsp-file-watch-threshold 1000)
   (setq lsp-metals-sbt-script "sbt"
         lsp-metals-java-home (getenv "JAVA_HOME")))
+
+(after! lsp-ui
+  (add-hook 'lsp-ui-mode-hook #'(lambda ()
+                                  (message "[go] Setting lsp-prefer-flymake :none to enable golangci-lint support.")
+                                  (setq-local lsp-prefer-flymake :none)
+                                  (setq-local flycheck-checker 'golangci-lint))))
 
 (after! lsp-java
   (setq lsp-java-jdt-download-url "http://mirrors.ustc.edu.cn/eclipse/jdtls/snapshots/jdt-language-server-latest.tar.gz")
