@@ -66,6 +66,7 @@
        :emacs
        (dired +ranger +icons)           ; making dired pretty [functional]
        electric                         ; smarter, keyword-based electric-indent
+       (ibuffer +icons)                 ; interactive buffer management
        vc                               ; version-control and Emacs, sitting in a tree
 
        :term
