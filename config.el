@@ -306,6 +306,6 @@
         "s-/" #'comment-line)
 
       :leader
-      (:prefix "f"
-        "t" #'find-in-dotfiles
-        "T" #'browse-dotfiles))
+      (:prefix-map ("f" . "file")
+        :desc "Find file in dotfiles" "t" #'find-in-dotfiles
+        :desc "Browse dotfiles" "T" #'browse-dotfiles))
