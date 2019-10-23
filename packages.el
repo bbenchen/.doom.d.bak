@@ -18,4 +18,6 @@
 (package! go-fill-struct)
 (package! flycheck-golangci-lint)
 (package! sqlup-mode)
+(when (featurep! :completion ivy)
+  (package! lsp-ivy :recipe (:host github :repo "emacs-lsp/lsp-ivy")))
 (package! dap-mode)
