@@ -106,7 +106,8 @@
   (setq projectile-project-search-path '("~"))
   (add-to-list 'projectile-globally-ignored-file-suffixes ".bak")
   (add-to-list 'projectile-globally-ignored-directories ".bloop")
-  (add-to-list 'projectile-globally-ignored-directories ".metals"))
+  (add-to-list 'projectile-globally-ignored-directories ".metals")
+  (add-to-list 'projectile-project-root-files-bottom-up ".projectile"))
 
 ;; go
 (after! go-mode
