@@ -306,8 +306,9 @@
         "s-s" #'save-buffer
         "s-a" #'mark-whole-buffer
         "s-f" #'swiper
+        "s-u" #'revert-buffer
         "s-z" #'undo
-        "s-/" #'comment-line)
+        "s-/" #'(λ! (save-excursion (comment-line 1))))
 
       :leader
       (:prefix-map ("f" . "file")
