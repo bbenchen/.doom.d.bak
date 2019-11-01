@@ -103,7 +103,8 @@
 
 ;; projectile
 (after! projectile
-  (setq projectile-project-search-path '("~/"))
+  (setq projectile-project-search-path '("~/")
+        projectile-files-cache-expire 3600)
   (add-to-list 'projectile-globally-ignored-file-suffixes ".bak")
   (add-to-list 'projectile-globally-ignored-directories ".bloop")
   (add-to-list 'projectile-globally-ignored-directories ".metals")
