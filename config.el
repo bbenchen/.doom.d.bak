@@ -288,7 +288,21 @@
   (when (or IS-LINUX IS-MAC)
     (setq exec-path-from-shell-check-startup-files nil)
     (setq exec-path-from-shell-arguments '("-l"))
-    (setq exec-path-from-shell-variables '("TERM" "PATH" "MANPATH" "PYTHONPATH" "GO111MODULE" "GOPROXY" "GOBIN" "GOPATH" "JAVA_HOME" "JAVA_OPTS" "SBT_OPTS" "METALS_ENABLED" "NVM_DIR" "YOUDAO_APP_KEY" "YOUDAO_SECRET_KEY"))
+    (setq exec-path-from-shell-variables '("TERM"
+                                           "PATH"
+                                           "MANPATH"
+                                           "PYTHONPATH"
+                                           "GO111MODULE"
+                                           "GOPROXY"
+                                           "GOBIN"
+                                           "GOPATH"
+                                           "JAVA_HOME"
+                                           "JAVA_OPTS"
+                                           "SBT_OPTS"
+                                           "METALS_ENABLED"
+                                           "NVM_DIR"
+                                           "YOUDAO_APP_KEY"
+                                           "YOUDAO_SECRET_KEY"))
     (exec-path-from-shell-initialize)))
 
 ;; hungry-delete
