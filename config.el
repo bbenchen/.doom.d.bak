@@ -202,7 +202,9 @@
   (setq lsp-java-format-settings-url (concat "file://" (expand-file-name "eclipse-java-google-style.xml" doom-private-dir)))
   (setq lsp-java-format-settings-profile "GoogleStyle")
   (setq lsp-java-trace-server "messages")
-  (setq lsp-java-maven-download-sources t))
+  (setq lsp-java-maven-download-sources t)
+  ;; Support java decompiler
+  (setq lsp-java-content-provider-preferred "fernflower"))
 
 (use-package! lsp-ivy
   :when (featurep! :completion ivy)
