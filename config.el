@@ -190,15 +190,14 @@
   (setq lsp-java-jdt-download-url "http://mirrors.ustc.edu.cn/eclipse/jdtls/snapshots/jdt-language-server-latest.tar.gz")
   (setq lsp-java-workspace-dir (concat doom-etc-dir "eclipse.jdt.ls/workspace/"))
   (setq lsp-jt-root (concat doom-etc-dir "eclipse.jdt.ls/server/java-test/server"))
-  (setq lombok-jar-path (expand-file-name "lombok.jar" doom-private-dir))
-  (setq lsp-java-vmargs (list "-Dfile.encoding=utf8"
-                              "-noverify"
-                              "-Xmx4G"
-                              "-XX:+UseG1GC"
-                              "-XX:+UseStringDeduplication"
-                              (concat "-javaagent:" lombok-jar-path)
-                              (concat "-Xbootclasspath/a:" lombok-jar-path)
-                              ))
+  (let ((lombok-jar-path (expand-file-name "lombok.jar" doom-private-dir)))
+    (setq lsp-java-vmargs (list "-Dfile.encoding=utf8"
+                                "-noverify"
+                                "-Xmx4G"
+                                "-XX:+UseG1GC"
+                                "-XX:+UseStringDeduplication"
+                                (concat "-javaagent:" lombok-jar-path)
+                                (concat "-Xbootclasspath/a:" lombok-jar-path))))
   (setq lsp-java-format-settings-url (concat "file://" (expand-file-name "eclipse-java-google-style.xml" doom-private-dir)))
   (setq lsp-java-format-settings-profile "GoogleStyle")
   (setq lsp-java-trace-server "messages")
