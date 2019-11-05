@@ -323,7 +323,7 @@
         "s-f" #'swiper
         "s-u" #'revert-buffer
         "s-z" #'undo
-        "s-/" #'(λ! (save-excursion (comment-line 1))))
+        "s-/" (λ! (save-excursion (comment-line 1))))
 
       :leader
       (:prefix-map ("f" . "file")
