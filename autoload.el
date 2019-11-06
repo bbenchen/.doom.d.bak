@@ -74,3 +74,12 @@ If the universal prefix argument is used then kill the buffer too."
   (delete-region (point-min) (point-max))
   (clipboard-yank)
   (deactivate-mark))
+
+;;;###autoload
+(defun toggle-frame-transparency (&optional frame)
+  "Toggle between transparent and opaque state for FRAME.
+If FRAME is nil, it defaults to the selected frame."
+  (interactive)
+  (if (equal (frame-parameter frame 'alpha) 85)
+      (set-frame-parameter frame 'alpha 100)
+    (set-frame-parameter frame 'alpha 85)))
