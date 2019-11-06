@@ -23,15 +23,15 @@
     (set-fontset-font (frame-parameter nil 'font) charset
                       (font-spec :family chinese :size chinese-size))))
 
-;;;###autoload
-(defadvice find-file (before make-directory-maybe
-                             (filename &optional wildcards) activate)
-  "Create parent directory if not exists while visiting file."
-  (unless (file-exists-p filename)
-    (let ((dir (file-name-directory filename)))
-      (when dir
-        (unless (file-exists-p dir)
-          (make-directory dir t))))))
+;; ;;;###autoload
+;; (defadvice find-file (before make-directory-maybe
+;;                              (filename &optional wildcards) activate)
+;;   "Create parent directory if not exists while visiting file."
+;;   (unless (file-exists-p filename)
+;;     (let ((dir (file-name-directory filename)))
+;;       (when dir
+;;         (unless (file-exists-p dir)
+;;           (make-directory dir t))))))
 
 ;;;###autoload
 (defun find-in-dotfiles ()
