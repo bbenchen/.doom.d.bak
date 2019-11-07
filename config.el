@@ -111,6 +111,10 @@
   (add-to-list 'projectile-globally-ignored-directories ".metals")
   (add-to-list 'projectile-project-root-files-bottom-up ".projectile"))
 
+;; company
+(after! company
+  (setq company-idle-delay 0.2))
+
 ;; go
 (after! go-mode
   (when (executable-find "gopkgs")
