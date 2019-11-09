@@ -2,5 +2,5 @@
 ;;; tools/youdao-dictionary/packages.el
 
 (package! youdao-dictionary)
-(when (and EMACS26+ (featurep! +childframe))
+(when (featurep! +childframe)
   (package! posframe))
