@@ -94,6 +94,10 @@
 (after! org
   (setq org-directory "~/Documents/org"))
 
+;; plantuml
+(setq plantuml-jar-path (concat doom-private-dir "plantuml.jar")
+      org-plantuml-jar-path plantuml-jar-path)
+
 ;; ranger
 (after! ranger
   (setq ranger-excluded-extensions '("mkv" "iso" "mp4" "bin" "exe" "msi" "jar")))
