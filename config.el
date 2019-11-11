@@ -245,7 +245,7 @@
       (require 'dap-chrome)))
 
   (map! :map (java-mode-map go-mode-map js2-mode-map)
-        :localleader
+        :leader
         (:prefix ("d" . "debug")
           "." #'dap-hydra
           "'" #'dap-ui-repl
