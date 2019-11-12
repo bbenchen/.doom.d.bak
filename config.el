@@ -191,9 +191,10 @@
 
 (after! lsp-ui
   (add-hook 'lsp-ui-mode-hook #'(lambda ()
-                                  (message "[go] Setting lsp-prefer-flymake :none to enable golangci-lint support.")
-                                  (setq-local lsp-prefer-flymake :none)
-                                  (setq-local flycheck-checker 'golangci-lint))))
+                                  (when (memq major-mode '(go-mode))
+                                    (message "[go] Setting lsp-prefer-flymake :none to enable golangci-lint support.")
+                                    (setq-local lsp-prefer-flymake :none)
+                                    (setq-local flycheck-checker 'golangci-lint)))))
 
 (after! lsp-java
   (setq lsp-java-jdt-download-url "http://mirrors.ustc.edu.cn/eclipse/jdtls/snapshots/jdt-language-server-latest.tar.gz")
