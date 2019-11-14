@@ -218,6 +218,7 @@
         :localleader
         (:prefix ("r" . "reflect")
           :desc "organize-imports" "o" #'lsp-java-organize-imports
+          :desc "rename" "n" #'lsp-rename
           (:prefix ("a" . "add")
             :desc "add-import" "i" #'lsp-java-add-import
             :desc "add-unimplemented-methods" "m" #'lsp-java-add-unimplemented-methods
