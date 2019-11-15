@@ -197,9 +197,10 @@
                                     (setq-local flycheck-checker 'golangci-lint)))))
 
 (after! lsp-java
-  (setq lsp-java-jdt-download-url "http://mirrors.ustc.edu.cn/eclipse/jdtls/snapshots/jdt-language-server-latest.tar.gz")
-  (setq lsp-java-workspace-dir (concat doom-etc-dir "eclipse.jdt.ls/workspace/"))
-  (setq lsp-jt-root (concat doom-etc-dir "eclipse.jdt.ls/server/java-test/server"))
+  (setq lsp-java-jdt-download-url "http://mirrors.ustc.edu.cn/eclipse/jdtls/snapshots/jdt-language-server-latest.tar.gz"
+        lsp-java-workspace-dir (concat doom-etc-dir "eclipse.jdt.ls/workspace/")
+        lsp-java-workspace-cache-dir (concat lsp-java-workspace-dir ".cache")
+        lsp-jt-root (concat doom-etc-dir "eclipse.jdt.ls/server/java-test/server"))
   (let ((lombok-jar-path (expand-file-name "lombok.jar" doom-private-dir)))
     (setq lsp-java-vmargs (list "-Dfile.encoding=utf8"
                                 "-noverify"
