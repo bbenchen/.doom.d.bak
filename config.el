@@ -282,7 +282,7 @@
       (require 'dap-node)
       (require 'dap-chrome)))
 
-  (map! :map (java-mode-map go-mode-map js2-mode-map)
+  (map! :map (go-mode-map js2-mode-map)
         :leader
         (:prefix ("d" . "debug")
           "." #'dap-hydra
