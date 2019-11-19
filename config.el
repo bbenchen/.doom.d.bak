@@ -306,6 +306,14 @@
   (add-hook 'sql-mode-hook #'(lambda ()
                              (flycheck-mode -1))))
 
+;; markdown
+(after! markdown-mode
+  (add-hook 'markdown-mode-hook #'(lambda ()
+                                   (if (featurep! :tools flycheck)
+                                       (let ((md-lint (file-truename "~/.markdownlint.json")))
+                                         (if (file-exists-p md-lint)
+                                             (setq-local flycheck-markdown-markdownlint-cli-config md-lint)))))))
+
 ;; company-english-helper
 (use-package! company-english-helper)
 
