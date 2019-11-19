@@ -209,8 +209,8 @@
                                 "-XX:+UseStringDeduplication"
                                 (concat "-javaagent:" lombok-jar-path)
                                 (concat "-Xbootclasspath/a:" lombok-jar-path))))
-  (setq lsp-java-format-settings-url (concat "file://" (expand-file-name "eclipse-java-google-style.xml" doom-private-dir)))
-  (setq lsp-java-format-settings-profile "GoogleStyle")
+  ;; (setq lsp-java-format-settings-url (concat "file://" (expand-file-name "eclipse-java-google-style.xml" doom-private-dir)))
+  ;; (setq lsp-java-format-settings-profile "GoogleStyle")
   (setq lsp-java-trace-server "messages")
   (setq lsp-java-maven-download-sources t)
   ;; Support java decompiler
