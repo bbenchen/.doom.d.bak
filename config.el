@@ -209,6 +209,9 @@
                                 "-XX:+UseStringDeduplication"
                                 (concat "-javaagent:" lombok-jar-path)
                                 (concat "-Xbootclasspath/a:" lombok-jar-path))))
+  (setq lsp-java-format-enabled nil
+        lsp-java-format-comments-enabled nil
+        lsp-java-format-on-type-enabled nil)
   ;; (setq lsp-java-format-settings-url (concat "file://" (expand-file-name "eclipse-java-google-style.xml" doom-private-dir)))
   ;; (setq lsp-java-format-settings-profile "GoogleStyle")
   (setq lsp-java-trace-server "messages")
@@ -308,11 +311,16 @@
 
 ;; markdown
 (after! markdown-mode
-  (add-hook 'markdown-mode-hook #'(lambda ()
-                                   (if (featurep! :tools flycheck)
-                                       (let ((md-lint (file-truename "~/.markdownlint.json")))
-                                         (if (file-exists-p md-lint)
-                                             (setq-local flycheck-markdown-markdownlint-cli-config md-lint)))))))
+  (add-hook! 'markdown-mode-hook
+    (defun flycheck-enable-markdownlint ()
+      "Set the `mardkownlint' config file for the current buffer."
+      (let* ((md-lint ".markdownlint.json")
+             (md-file buffer-file-name)
+             (md-lint-dir (and md-file
+                               (locate-dominating-file md-file md-lint))))
+        (setq-local flycheck-markdown-markdownlint-cli-config
+                    (expand-file-name (concat md-lint-dir md-lint))))))
+  )
 
 ;; company-english-helper
 (use-package! company-english-helper)
