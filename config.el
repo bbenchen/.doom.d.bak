@@ -171,6 +171,11 @@
         (:prefix ("r" . "reflect")
           "s" #'go-fill-struct)))
 
+;; scala
+(after! sbt-mode
+  ;; sbt-supershell kills sbt-mode:  https://github.com/hvesalai/emacs-sbt-mode/issues/152
+  (setq sbt:program-options '("-Dsbt.supershell=false")))
+
 ;; flycheck
 (use-package! flycheck-golangci-lint
   :after flycheck
