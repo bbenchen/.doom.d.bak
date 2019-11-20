@@ -174,14 +174,15 @@
 ;; flycheck
 (use-package! flycheck-golangci-lint
   :after flycheck
-  :init (add-hook 'go-mode-hook #'(lambda ()
-                                    (setq flycheck-disabled-checkers '(go-gofmt
-                                                                       go-golint
-                                                                       go-vet
-                                                                       go-build
-                                                                       go-test
-                                                                       go-errcheck))
-                                    (flycheck-golangci-lint-setup))))
+  :init (add-hook! 'go-mode-hook
+          (defun +flycheck-golangci-lint-setup ()
+            (setq flycheck-disabled-checkers '(go-gofmt
+                                               go-golint
+                                               go-vet
+                                               go-build
+                                               go-test
+                                               go-errcheck))
+            (flycheck-golangci-lint-setup))))
 
 ;; lsp
 (after! lsp-mode
@@ -190,11 +191,12 @@
         lsp-metals-java-home (getenv "JAVA_HOME")))
 
 (after! lsp-ui
-  (add-hook 'lsp-ui-mode-hook #'(lambda ()
-                                  (when (memq major-mode '(go-mode))
-                                    (message "[go] Setting lsp-prefer-flymake :none to enable golangci-lint support.")
-                                    (setq-local lsp-prefer-flymake :none)
-                                    (setq-local flycheck-checker 'golangci-lint)))))
+  (add-hook! 'lsp-ui-mode-hook
+    (defun go-enable-golangci-lint ()
+      (when (memq major-mode '(go-mode))
+        (message "[go] Setting lsp-prefer-flymake :none to enable golangci-lint support.")
+        (setq-local lsp-prefer-flymake :none)
+        (setq-local flycheck-checker 'golangci-lint)))))
 
 (after! lsp-java
   (setq lsp-java-jdt-download-url "http://mirrors.ustc.edu.cn/eclipse/jdtls/snapshots/jdt-language-server-latest.tar.gz"
@@ -306,8 +308,10 @@
   (setq sqlup-blacklist (append sqlup-blacklist '("name" "user"))))
 
 (after! flycheck
-  (add-hook 'sql-mode-hook #'(lambda ()
-                             (flycheck-mode -1))))
+  (add-hook! 'sql-mode-hook
+    (defun sql-disable-flycheck ()
+      "Disable `flycheck' for the current buffer."
+      (flycheck-mode -1))))
 
 ;; markdown
 (after! markdown-mode
