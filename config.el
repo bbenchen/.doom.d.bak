@@ -21,7 +21,7 @@
 (when (and IS-LINUX (display-graphic-p))
   (setq doom-font (font-spec :family "Hack Nerd Font" :size 10))
   (setq doom-big-font (font-spec :family "Hack Nerd Font" :size 14))
-  (+set-monospaced-font "Hack Nerd Font" "WenQuanYi ZenHei Mono" 10 12))
+  (+set-monospaced-font "Hack Nerd Font" "Noto Sans Mono CJK SC" 10 12))
 (when (and IS-MAC (display-graphic-p))
   (setq doom-font (font-spec :family "Hack Nerd Font" :size 12))
   (setq doom-big-font (font-spec :family "Hack Nerd Font" :size 16))
