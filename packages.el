@@ -16,7 +16,6 @@
 ;; (package! go-rename)
 (package! go-impl :recipe (:host github :repo "cxb811201/emacs-go-impl"))
 (package! go-fill-struct)
-(package! flycheck-golangci-lint)
 (package! sqlup-mode)
 (when (featurep! :completion ivy)
   (package! lsp-ivy :recipe (:host github :repo "emacs-lsp/lsp-ivy")))

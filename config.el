@@ -139,6 +139,17 @@
 
   (add-hook 'before-save-hook #'gofmt-before-save)
 
+  (if (featurep! :tools flycheck)
+      (add-hook! 'go-mode-hook
+        (setq-local flycheck-disabled-checkers '(go-gofmt
+                                                 go-golint
+                                                 go-vet
+                                                 go-build
+                                                 go-test
+                                                 go-errcheck
+                                                 go-unconvert
+                                                 go-staticcheck))))
+
   (map! (:when (featurep! :lang go +lsp)
           (:map go-mode-map
             :localleader
@@ -176,19 +187,6 @@
   ;; sbt-supershell kills sbt-mode:  https://github.com/hvesalai/emacs-sbt-mode/issues/152
   (setq sbt:program-options '("-Dsbt.supershell=false")))
 
-;; flycheck
-(use-package! flycheck-golangci-lint
-  :after flycheck
-  :init (add-hook! 'go-mode-hook
-          (defun +flycheck-golangci-lint-setup ()
-            (setq flycheck-disabled-checkers '(go-gofmt
-                                               go-golint
-                                               go-vet
-                                               go-build
-                                               go-test
-                                               go-errcheck))
-            (flycheck-golangci-lint-setup))))
-
 ;; lsp
 (after! lsp-mode
   (setq lsp-file-watch-threshold 1000)
@@ -196,12 +194,13 @@
         lsp-metals-java-home (getenv "JAVA_HOME")))
 
 (after! lsp-ui
-  (add-hook! 'lsp-ui-mode-hook
-    (defun go-enable-golangci-lint ()
-      (when (memq major-mode '(go-mode))
-        (message "[go] Setting lsp-prefer-flymake :none to enable golangci-lint support.")
-        (setq-local lsp-prefer-flymake :none)
-        (setq-local flycheck-checker 'golangci-lint)))))
+  (if (featurep! :tools flycheck)
+      (add-hook! 'lsp-ui-mode-hook
+        (defun go-enable-golangci-lint ()
+          (when (memq major-mode '(go-mode))
+            (message "[go] Setting lsp-prefer-(forward-line  )ymake :none to enable golangci-lint support.")
+            (setq-local lsp-prefer-flymake :none)
+            (setq-local flycheck-checker 'golangci-lint))))))
 
 (after! lsp-java
   (setq lsp-java-jdt-download-url "http://mirrors.ustc.edu.cn/eclipse/jdtls/snapshots/jdt-language-server-latest.tar.gz"
