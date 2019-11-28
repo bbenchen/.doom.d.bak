@@ -188,14 +188,16 @@
 (after! lsp-mode
   (setq lsp-file-watch-threshold 1000)
   (setq lsp-metals-sbt-script "sbt"
-        lsp-metals-java-home (getenv "JAVA_HOME")))
+        lsp-metals-java-home (getenv "JAVA_HOME"))
+  (setq lsp-gopls-staticcheck t
+        lsp-gopls-complete-unimported t))
 
 (after! lsp-ui
   (if (featurep! :tools flycheck)
       (add-hook! 'lsp-ui-mode-hook
         (defun go-enable-golangci-lint ()
           (when (memq major-mode '(go-mode))
-            (message "[go] Setting lsp-prefer-(forward-line  )ymake :none to enable golangci-lint support.")
+            (message "[go] Setting lsp-prefer-ymake :none to enable golangci-lint support.")
             (setq-local lsp-prefer-flymake :none)
             (setq-local flycheck-checker 'golangci-lint))))))
 
