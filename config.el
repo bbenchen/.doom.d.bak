@@ -12,6 +12,7 @@
 (setq user-full-name "Chen Xianbin")
 (setq user-mail-address "517926804@qq.com")
 (setq default-directory "~/")
+(setq org-directory "~/Documents/org")
 (setq display-line-numbers-type 'relative)
 
 ;; theme
@@ -89,10 +90,6 @@
   (add-to-list 'mc/cmds-to-run-once 'counsel-M-x)
   (add-to-list 'mc/cmds-to-run-for-all 'hungry-delete-forward)
   (add-to-list 'mc/cmds-to-run-for-all 'hungry-delete-backward))
-
-;; org
-(after! org
-  (setq org-directory "~/Documents/org"))
 
 ;; plantuml
 (setq plantuml-jar-path (concat doom-private-dir "plantuml.jar")
