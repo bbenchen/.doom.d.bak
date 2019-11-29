@@ -187,10 +187,15 @@
 ;; lsp
 (after! lsp-mode
   (setq lsp-file-watch-threshold 1000)
+  ;; metals
   (setq lsp-metals-sbt-script "sbt"
         lsp-metals-java-home (getenv "JAVA_HOME"))
+  ;; gopls
   (setq lsp-gopls-staticcheck t
-        lsp-gopls-complete-unimported t))
+        lsp-gopls-complete-unimported t)
+  ;; kotlin
+  (setq lsp-kotlin-language-server-path (concat doom-etc-dir "kotlin/server/bin/kotlin-language-server")
+        lsp-kotlin-debug-adapter-path (concat doom-etc-dir "kotlin/adapter/bin/kotlin-debug-adapter")))
 
 (after! lsp-ui
   (if (featurep! :tools flycheck)
