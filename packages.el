@@ -6,7 +6,7 @@
 (package! tide :disable t)
 (package! liberime-config
   :recipe (:host github
-                 :repo "xhcoding/liberime"
+                 :repo "merrickluo/liberime"
                  :files ("liberime-config.el" "src" "CMakeLists.txt" "Makefile")))
 (when (featurep! :completion company)
   (package! company-english-helper :recipe (:host github :repo "cxb811201/company-english-helper")))
