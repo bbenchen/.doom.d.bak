@@ -61,7 +61,7 @@
   (setq pyim-dcache-directory (expand-file-name "pyim/" doom-cache-dir)
         pyim-dcache-backend 'pyim-dregcache)
   (setq default-input-method "pyim")
-  (if (and (featurep 'posframe)
+  (if (and (fboundp 'posframe-workable-p)
            (posframe-workable-p))
       (setq pyim-page-tooltip 'posframe)
     (setq pyim-page-tooltip 'popup))
