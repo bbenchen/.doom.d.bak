@@ -4,9 +4,6 @@
 
 ;; (setq warning-minimum-level :error)
 
-;; 384mb
-(setq doom-gc-cons-threshold 402653184)
-
 (setq fill-column 120)
 
 (setq user-full-name "Chen Xianbin")
