@@ -192,7 +192,23 @@
         lsp-gopls-complete-unimported t)
   ;; kotlin
   (setq lsp-kotlin-language-server-path (concat doom-etc-dir "kotlin/server/bin/kotlin-language-server")
-        lsp-kotlin-debug-adapter-path (concat doom-etc-dir "kotlin/adapter/bin/kotlin-debug-adapter")))
+        lsp-kotlin-debug-adapter-path (concat doom-etc-dir "kotlin/adapter/bin/kotlin-debug-adapter"))
+
+  (when (or (featurep! :completion ivy)
+            (featurep! :completion helm))
+
+    (when (featurep! :completion ivy)
+      (defalias '+lookup/workspace-symbol #'lsp-ivy-workspace-symbol)
+      (defalias '+lookup/global-workspace-symbol #'lsp-ivy-global-workspace-symbol))
+
+    (when (featurep! :completion helm)
+      (defalias '+lookup/workspace-symbol #'helm-lsp-workspace-symbol)
+      (defalias '+lookup/global-workspace-symbol #'helm-lsp-global-workspace-symbol))
+
+    (map! :leader
+          (:prefix-map ("g" . "lookup")
+            "s" #'+lookup/workspace-symbol
+            "S" #'+lookup/global-workspace-symbol))))
 
 (after! lsp-ui
   (if (featurep! :tools flycheck)
@@ -257,14 +273,6 @@
         (:prefix ("t" . "test")
           :desc "test-method" "t" #'dap-java-run-test-method
           :desc "test-class" "c" #'dap-java-run-test-class)))
-
-(after! lsp-ivy
-  (defalias '+lookup/workspace-symbol #'lsp-ivy-workspace-symbol)
-  (defalias '+lookup/global-workspace-symbol #'lsp-ivy-global-workspace-symbol)
-  (map! :leader
-        (:prefix-map ("g" . "lookup")
-          "s" #'+lookup/workspace-symbol
-          "S" #'+lookup/global-workspace-symbol)))
 
 ;; dap-mode
 (use-package! dap-mode
