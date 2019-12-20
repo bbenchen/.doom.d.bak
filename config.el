@@ -258,10 +258,7 @@
           :desc "test-method" "t" #'dap-java-run-test-method
           :desc "test-class" "c" #'dap-java-run-test-class)))
 
-(use-package! lsp-ivy
-  :when (featurep! :completion ivy)
-  :after lsp-mode
-  :config
+(after! lsp-ivy
   (defalias '+lookup/workspace-symbol #'lsp-ivy-workspace-symbol)
   (defalias '+lookup/global-workspace-symbol #'lsp-ivy-global-workspace-symbol)
   (map! :leader
