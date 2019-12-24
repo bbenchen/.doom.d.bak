@@ -1,9 +1,9 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; ~/.doom.d/packages.el
 
-(package! fcitx :disable t)
-(package! pangu-spacing :disable t)
-(package! tide :disable t)
+(package! fcitx :ignore t)
+(package! pangu-spacing :ignore t)
+(package! tide :ignore t)
 (package! liberime-config
   :recipe (:host github
                  :repo "merrickluo/liberime"
