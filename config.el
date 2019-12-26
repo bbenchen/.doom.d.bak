@@ -25,15 +25,14 @@
   (setq doom-big-font (font-spec :family "Hack Nerd Font" :size 16))
   (+set-monospaced-font "Hack Nerd Font" "Hiragino Sans GB" 12 14))
 
-;; window
-(if (display-graphic-p)
-    (progn
-      ;; 不显示边框
-      (set-frame-parameter nil 'undecorated t)
-      (add-to-list 'default-frame-alist '(undecorated . t))
-      ;; 窗口最大化
-      (toggle-frame-maximized)
-      (add-to-list 'default-frame-alist '(fullscreen . maximized))))
+(when (display-graphic-p)
+    ;; no broder
+  (set-frame-parameter nil 'undecorated t)
+  (add-to-list 'default-frame-alist '(undecorated . t))
+  (add-to-list 'default-frame-alist '(fullscreen . maximized))
+  (add-hook! 'emacs-startup-hook
+             ;; maximized frame
+             (toggle-frame-maximized)))
 
 ;; frame
 (add-hook 'after-make-frame-functions #'(lambda (frame)
