@@ -9,6 +9,7 @@
                  :repo "merrickluo/liberime"
                  :files ("liberime-config.el" "src" "CMakeLists.txt" "Makefile")))
 (when (featurep! :completion company)
+  (package! company-box :recipe (:host github :repo "andersjohansson/company-box" :branch "customize-scrollbar"))
   (package! company-english-helper :recipe (:host github :repo "cxb811201/company-english-helper")))
 (package! insert-translated-name :recipe (:host github :repo "manateelazycat/insert-translated-name"))
 (package! cal-china-x)
