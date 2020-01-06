@@ -26,7 +26,7 @@
   (+set-monospaced-font "Hack Nerd Font" "Hiragino Sans GB" 12 14))
 
 (when (display-graphic-p)
-    ;; no broder
+  ;; no broder
   (set-frame-parameter nil 'undecorated t)
   (add-to-list 'default-frame-alist '(undecorated . t))
   (add-to-list 'default-frame-alist '(fullscreen . maximized))
