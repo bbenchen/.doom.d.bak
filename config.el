@@ -263,7 +263,6 @@
 
 ;; lsp
 (after! lsp-mode
-  (setq lsp-file-watch-threshold 1000)
   ;; metals
   (setq lsp-metals-sbt-script "sbt"
         lsp-metals-java-home (getenv "JAVA_HOME"))
