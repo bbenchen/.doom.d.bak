@@ -3,6 +3,7 @@
 
 (package! fcitx :disable t)
 (package! pangu-spacing :disable t)
+(package! centered-window :disable t)
 (package! tide :disable t)
 (package! liberime-config
   :recipe (:host github

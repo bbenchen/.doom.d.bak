@@ -48,6 +48,7 @@
        ;;vi-tilde-fringe                ; fringe tildes to mark beyond EOB
        (window-select +numbers)         ; visually switch windows
        workspaces                       ; tab emulation, persistence & separate workspaces
+       zen                              ; distraction-free coding or writing
        centered-cursor                  ; centered point
 
        :editor
