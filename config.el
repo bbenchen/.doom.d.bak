@@ -214,7 +214,7 @@
 
   (add-hook 'before-save-hook #'gofmt-before-save)
 
-  (if (featurep! :tools flycheck)
+  (if (featurep! :checkers syntax)
       (add-hook! 'go-mode-hook
         (setq-local flycheck-disabled-checkers '(go-gofmt
                                                  go-golint
@@ -290,14 +290,14 @@
             "s" #'+lookup/workspace-symbol
             "S" #'+lookup/global-workspace-symbol))))
 
-(after! lsp-ui
-  (if (featurep! :tools flycheck)
-      (add-hook! 'lsp-ui-mode-hook
-        (defun go-enable-golangci-lint ()
-          (when (memq major-mode '(go-mode))
-            (message "[go] Setting lsp-prefer-ymake :none to enable golangci-lint support.")
-            (setq-local lsp-prefer-flymake :none)
-            (setq-local flycheck-checker 'golangci-lint))))))
+;; (after! lsp-ui
+;;   (if (featurep! :checkers syntax)
+;;       (add-hook! 'lsp-ui-mode-hook
+;;         (defun go-enable-golangci-lint ()
+;;           (when (memq major-mode '(go-mode))
+;;             (message "[go] Setting lsp-prefer-ymake :none to enable golangci-lint support.")
+;;             (setq-local lsp-prefer-flymake :none)
+;;             (setq-local flycheck-checker 'golangci-lint))))))
 
 (after! lsp-java
   (setq lsp-java-jdt-download-url "http://mirrors.ustc.edu.cn/eclipse/jdtls/snapshots/jdt-language-server-latest.tar.gz"
@@ -401,10 +401,8 @@
   (add-hook! 'sql-mode-hook
     (defun sql-disable-flycheck ()
       "Disable `flycheck' for the current buffer."
-      (flycheck-mode -1))))
+      (flycheck-mode -1)))
 
-;; markdown
-(after! markdown-mode
   (add-hook! 'markdown-mode-hook
     (defun flycheck-enable-markdownlint ()
       "Set the `mardkownlint' config file for the current buffer."
@@ -413,8 +411,7 @@
              (md-lint-dir (and md-file
                                (locate-dominating-file md-file md-lint))))
         (setq-local flycheck-markdown-markdownlint-cli-config
-                    (expand-file-name (concat md-lint-dir md-lint))))))
-  )
+                    (expand-file-name (concat md-lint-dir md-lint)))))))
 
 ;; company-english-helper
 (use-package! company-english-helper)
