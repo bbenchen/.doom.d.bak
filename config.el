@@ -75,7 +75,7 @@
     (if IS-MAC
         (setq liberime--module-file (expand-file-name "liberime.so" doom-private-dir)))
 
-    (add-hook 'after-liberime-load-hook #'(lambda ()
+    (add-hook 'liberime-after-start-hook #'(lambda ()
                                             (liberime-select-schema "wubi86_jidian_pinyin")))
     :config
     (setq pyim-default-scheme 'rime)))
