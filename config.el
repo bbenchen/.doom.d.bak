@@ -179,6 +179,13 @@
           "s" #'go-fill-struct)))
 
 ;; scala
+(after! scala-mode
+  (map! :map scala-mode-map
+        :localleader
+        (:prefix ("b" . "sbt")
+          "." #'sbt-hydra
+          "b" #'sbt-command)))
+
 (after! sbt-mode
   ;; sbt-supershell kills sbt-mode:  https://github.com/hvesalai/emacs-sbt-mode/issues/152
   (setq sbt:program-options '("-Dsbt.supershell=false")))
