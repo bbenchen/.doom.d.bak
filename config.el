@@ -66,19 +66,23 @@
                 '(pyim-probe-program-mode
                   pyim-probe-isearch-mode
                   ;; pyim-probe-auto-english
-                  pyim-probe-org-structure-template))
-  ;; liberime
-  (use-package! liberime-config
-    :init
-    (setq liberime-user-data-dir (expand-file-name "rime/" doom-private-dir))
-    ;; Use has been compiled liberime.so library in macos
-    (if IS-MAC
-        (setq liberime--module-file (expand-file-name "liberime.so" doom-private-dir)))
+                  pyim-probe-org-structure-template)))
 
-    (add-hook 'liberime-after-start-hook #'(lambda ()
-                                            (liberime-select-schema "wubi86_jidian_pinyin")))
-    :config
-    (setq pyim-default-scheme 'rime)))
+(use-package! liberime-config
+  :defer 1
+  :init
+  (add-hook 'liberime-after-start-hook #'(lambda ()
+                                           (liberime-select-schema "wubi86_jidian_pinyin")))
+  :config
+  ;; liberime
+  (setq liberime-user-data-dir (expand-file-name "rime/" doom-private-dir))
+  ;; Use has been compiled liberime.so library in macos
+  (if IS-MAC
+      (setq liberime--module-file (expand-file-name "liberime.so" doom-private-dir)))
+
+  (liberime-load)
+
+  (setq pyim-default-scheme 'rime))
 
 ;; multiple-cursors
 (after! multiple-cursors-core
