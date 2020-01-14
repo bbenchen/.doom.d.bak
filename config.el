@@ -367,7 +367,7 @@
                                            "JAVA_HOME"
                                            "JAVA_OPTS"
                                            "SBT_OPTS"
-                                           "METALS_ENABLED"
+                                           "COURSIER_REPOSITORIES"
                                            "NVM_DIR"
                                            "YOUDAO_APP_KEY"
                                            "YOUDAO_SECRET_KEY"))
