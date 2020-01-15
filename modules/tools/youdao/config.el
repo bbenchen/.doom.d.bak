@@ -39,6 +39,10 @@
 
     (advice-add #'youdao-dictionary--posframe-tip :override #'+youdao-dictionary--posframe-tip)))
 
-(map! "C-x C-y" (if (featurep! +childframe)
-                    #'youdao-dictionary-search-at-point-posframe
-                  #'youdao-dictionary-search-at-point-tooltip))
+(map! :leader
+      (:prefix-map ("y" . "youdao")
+        :desc "Search at point"     "s" (if (featurep! +childframe)
+                                            #'youdao-dictionary-search-at-point-posframe
+                                          #'youdao-dictionary-search-at-point-tooltip)
+        :desc "Search from input"   "i" #'youdao-dictionary-search-from-input
+        :desc "Play voice at point" "p" #'youdao-dictionary-play-voice-at-point))
