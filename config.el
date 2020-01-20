@@ -408,6 +408,9 @@
         :desc "Find file in dotfiles" "t" #'find-in-dotfiles
         :desc "Browse dotfiles" "T" #'browse-dotfiles)
 
+      (:prefix-map ("t" . "toggle")
+        :desc "Frame transparency" "T" #'toggle-frame-transparency)
+
       (:prefix-map ("w" . "workspaces/windows")
         "<up>" #'shrink-window
         "<down>" #'enlarge-window
