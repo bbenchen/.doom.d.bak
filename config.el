@@ -94,6 +94,15 @@
 (setq plantuml-jar-path (concat doom-private-dir "plantuml.jar")
       org-plantuml-jar-path plantuml-jar-path)
 
+;; protobuf
+(after! protobuf-mode
+  (add-hook! 'protobuf-mode-hook
+    (defun setup-protobuf-imenu ()
+      "Setup imenu regex for protocol buffers."
+      (setq
+       imenu-generic-expression
+       '((nil "^[[:space:]]*\\(message\\|service\\|enum\\)[[:space:]]+\\([[:alnum:]]+\\)" 2))))))
+
 ;; ranger
 (after! ranger
   (setq ranger-excluded-extensions '("mkv" "iso" "mp4" "bin" "exe" "msi" "jar")))
