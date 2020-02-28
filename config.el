@@ -103,6 +103,11 @@
        imenu-generic-expression
        '((nil "^[[:space:]]*\\(message\\|service\\|enum\\)[[:space:]]+\\([[:alnum:]]+\\)" 2))))))
 
+;; dired
+(after! dired
+  (setq dired-recursive-copies 'always
+        dired-recursive-deletes 'always))
+
 ;; ranger
 (after! ranger
   (setq ranger-excluded-extensions '("mkv" "iso" "mp4" "bin" "exe" "msi" "jar")))
