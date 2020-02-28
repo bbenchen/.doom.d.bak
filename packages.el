@@ -5,6 +5,7 @@
 (package! pangu-spacing :disable t)
 (package! centered-window :disable t)
 (package! tide :disable t)
+(package! pyim :pin "e49bcdee41")
 (package! liberime-config
   :recipe (:host github
                  :repo "cxb811201/liberime"
