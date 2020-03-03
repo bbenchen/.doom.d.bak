@@ -424,6 +424,11 @@
         "s-z" #'undo
         "s-/" (λ! (save-excursion (comment-line 1))))
 
+      (:when (featurep! :tools make)
+        (:map makefile-mode-map
+          :localleader
+          :desc "Run" "r" #'+make/run))
+
       :leader
       (:prefix-map ("f" . "file")
         :desc "Find file in dotfiles" "t" #'find-in-dotfiles
