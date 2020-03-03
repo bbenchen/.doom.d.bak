@@ -296,6 +296,13 @@
           :desc "test-method" "t" #'dap-java-run-test-method
           :desc "test-class" "c" #'dap-java-run-test-class)))
 
+;; lsp-treemacs
+(use-package! lsp-treemacs
+  :when (featurep! :tools lsp)
+  :config
+  (lsp-metals-treeview-enable t)
+  (setq lsp-metals-treeview-show-when-views-received nil))
+
 ;; dap-mode
 (use-package! dap-mode
   :when (featurep! :tools lsp)
