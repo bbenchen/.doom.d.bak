@@ -204,8 +204,9 @@
   (setq lsp-metals-sbt-script "sbt"
         lsp-metals-java-home (getenv "JAVA_HOME"))
   ;; gopls
-  (setq lsp-gopls-staticcheck t
-        lsp-gopls-complete-unimported t)
+  (lsp-register-custom-settings
+   '(("gopls.completeUnimported" t t)
+     ("gopls.staticcheck" t t)))
   ;; kotlin
   (setq lsp-kotlin-language-server-path (concat doom-etc-dir "kotlin/server/bin/kotlin-language-server")
         lsp-kotlin-debug-adapter-path (concat doom-etc-dir "kotlin/adapter/bin/kotlin-debug-adapter"))
