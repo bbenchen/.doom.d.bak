@@ -1,15 +1,8 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; ~/.doom.d/packages.el
 
-(package! fcitx :disable t)
-(package! pangu-spacing :disable t)
 (package! centered-window :disable t)
 (package! tide :disable t)
-(package! pyim :pin "e49bcdee41")
-(package! liberime
-  :recipe (:host github
-                 :repo "merrickluo/liberime"
-                 :files ("liberime.el" "src" "CMakeLists.txt" "Makefile")))
 (when (featurep! :completion company)
   (package! company-english-helper :recipe (:host github :repo "cxb811201/company-english-helper")))
 (package! insert-translated-name :recipe (:host github :repo "manateelazycat/insert-translated-name"))

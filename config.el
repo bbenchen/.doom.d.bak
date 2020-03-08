@@ -52,32 +52,6 @@
 ;; iedit
 (setq iedit-toggle-key-default nil)
 
-;; pyim
-(after! pyim
-  (setq pyim-dcache-directory (expand-file-name "pyim/" doom-cache-dir)
-        pyim-dcache-backend 'pyim-dregcache)
-  (setq default-input-method "pyim")
-  (if (and (fboundp 'posframe-workable-p)
-           (posframe-workable-p))
-      (setq pyim-page-tooltip 'posframe)
-    (setq pyim-page-tooltip 'popup))
-  (setq pyim-page-length 9)
-  (setq-default pyim-english-input-switch-functions
-                '(pyim-probe-program-mode
-                  pyim-probe-isearch-mode
-                  ;; pyim-probe-auto-english
-                  pyim-probe-org-structure-template)))
-
-;; liberime
-(setq liberime-user-data-dir (expand-file-name "rime/" doom-private-dir))
-(use-package! liberime
-  :defer 1
-  :init
-  (add-hook 'liberime-after-start-hook #'(lambda ()
-                                           (liberime-select-schema "wubi86_jidian_pinyin")))
-  :config
-  (setq pyim-default-scheme 'rime))
-
 ;; multiple-cursors
 (after! multiple-cursors-core
   (add-to-list 'mc/cmds-to-run-once 'counsel-M-x)

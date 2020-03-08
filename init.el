@@ -13,7 +13,7 @@
                          ("org"   . "https://mirrors.cloud.tencent.com/elpa/org/")))
 
 (doom! :input
-       chinese
+       chinese+
 
        :completion
        (company +childframe)            ; the ultimate code completion backend
