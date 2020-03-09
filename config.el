@@ -12,6 +12,9 @@
 (setq org-directory "~/Documents/org")
 (setq display-line-numbers-type 'relative)
 
+(if IS-MAC
+    (setq module-file-suffix ".so"))
+
 ;; theme
 (setq doom-theme 'doom-one)
 
