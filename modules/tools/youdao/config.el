@@ -2,7 +2,16 @@
 
 (use-package! youdao-dictionary
   :defer t
+  :init
+  (map! :leader
+        (:prefix-map ("y" . "youdao")
+          :desc "Search at point"     "s" (if (featurep! +childframe)
+                                              #'youdao-dictionary-search-at-point-posframe
+                                            #'youdao-dictionary-search-at-point-tooltip)
+          :desc "Search from input"   "i" #'youdao-dictionary-search-from-input
+          :desc "Play voice at point" "p" #'youdao-dictionary-play-voice-at-point))
   :config
+  (set-popup-rule! "^\\*Youdao Dictionary\\*" :side 'right :size 0.4 :select t)
   (setq url-automatic-caching t
         ;; Set file path for saving search history
         youdao-dictionary-search-history-file (concat doom-cache-dir "youdao")
@@ -38,11 +47,3 @@
           (message "Nothing to look up"))))
 
     (advice-add #'youdao-dictionary--posframe-tip :override #'+youdao-dictionary--posframe-tip)))
-
-(map! :leader
-      (:prefix-map ("y" . "youdao")
-        :desc "Search at point"     "s" (if (featurep! +childframe)
-                                            #'youdao-dictionary-search-at-point-posframe
-                                          #'youdao-dictionary-search-at-point-tooltip)
-        :desc "Search from input"   "i" #'youdao-dictionary-search-from-input
-        :desc "Play voice at point" "p" #'youdao-dictionary-play-voice-at-point))
