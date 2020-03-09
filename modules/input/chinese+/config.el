@@ -28,6 +28,15 @@
   "Join consecutive Chinese lines into a single long line without unwanted space
 when exporting org-mode to html."
   :filter-args #'org-html-paragraph
+  (++chinese--org-paragraph args))
+
+(defadvice! +chinese--org-hugo-paragraph-a (args)
+  "Join consecutive Chinese lines into a single long line without unwanted space
+when exporting org-mode to html."
+  :filter-args #'org-hugo-paragraph
+  (++chinese--org-paragraph args))
+
+(defun ++chinese--org-paragraph (args)
   (cl-destructuring-bind (paragraph contents info) args
     (let* ((fix-regexp "[[:multibyte:]]")
            (origin-contents
