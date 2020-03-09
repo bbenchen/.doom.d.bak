@@ -20,11 +20,10 @@
 
   (when (and (featurep! +childframe)
              (featurep! :completion ivy +childframe))
-    (defun +youdao-dictionary--posframe-tip (string)
-      "Show STRING using posframe-show."
-      (unless (and (require 'posframe nil t) (posframe-workable-p))
-        (error "Posframe not workable"))
 
+    (defadvice! +youdao-dictionary--posframe-tip (string)
+      "Show STRING using posframe-show."
+      :override #'youdao-dictionary--posframe-tip
       (let ((word (youdao-dictionary--region-or-word)))
         (if word
             (progn
@@ -44,6 +43,4 @@
               (unwind-protect
                   (push (read-event) unread-command-events)
                 (posframe-delete youdao-dictionary-buffer-name)))
-          (message "Nothing to look up"))))
-
-    (advice-add #'youdao-dictionary--posframe-tip :override #'+youdao-dictionary--posframe-tip)))
+          (message "Nothing to look up"))))))
