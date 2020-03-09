@@ -16,13 +16,21 @@
                   pyim-probe-org-structure-template)))
 
 ;; liberime
-(setq liberime-user-data-dir (expand-file-name "rime/" doom-private-dir))
+(cond (IS-MAC
+       (setq liberime-shared-data-dir (file-truename "~/Library/Rime")))
+      (IS-LINUX
+       (cond ((file-exists-p! "~/.config/ibus/rime")
+              (setq liberime-shared-data-dir (file-truename "~/.config/ibus/rmie")))
+             ((file-exists-p! "~/.config/fcitx/rime")
+              (setq liberime-shared-data-dir (file-truename "~/.config/fcitx/rmie"))))))
+(setq liberime-user-data-dir (expand-file-name "rime/" doom-etc-dir))
 (use-package! liberime
   :defer 1
   :init
-  (add-hook 'liberime-after-start-hook #'(lambda ()
-                                           (liberime-select-schema "wubi86_jidian_pinyin"))))
-
+  (add-hook! 'liberime-after-start-hook
+    (run-with-timer
+     2 nil
+     'liberime-select-schema "wubi86_jidian_pinyin")))
 ;;; Hacks
 (defadvice! +chinese--org-html-paragraph-a (args)
   "Join consecutive Chinese lines into a single long line without unwanted space
