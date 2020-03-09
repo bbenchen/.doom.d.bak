@@ -393,6 +393,10 @@
         "s-z" #'undo
         "s-/" (λ! (save-excursion (comment-line 1))))
 
+      (:after flyspell-correct
+        :map flyspell-mode-map
+        "s-;" #'flyspell-correct-wrapper)
+
       (:when (featurep! :tools make)
         (:map makefile-mode-map
           :localleader
