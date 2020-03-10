@@ -186,16 +186,6 @@
   ;; don't scan 3rd party javascript libraries
   (push "[/\\\\][^/\\\\]*\\.\\(json\\|html\\|jade\\)$" lsp-file-watch-ignored) ;; json
 
-  ;; don't ping LSP lanaguage server too frequently
-  (defvar lsp-on-touch-time 0)
-  (defadvice! +lsp-on-change (orig-fn &rest args)
-    ;; don't run `lsp-on-change' too frequently
-    :around #'lsp-on-change
-    (when (> (- (float-time (current-time))
-                lsp-on-touch-time) 30) ;; 30 seconds
-      (setq lsp-on-touch-time (float-time (current-time)))
-      (apply orig-fn args)))
-
   ;; metals
   (setq lsp-metals-sbt-script "sbt"
         lsp-metals-java-home (getenv "JAVA_HOME"))
