@@ -3,6 +3,8 @@
 (use-package! pyim
   :after liberime                       ;
   :after-call after-find-file pre-command-hook
+  :bind
+  ("M-j" . pyim-convert-string-at-point)
   :config
   (setq pyim-dcache-directory (expand-file-name "pyim/" doom-cache-dir)
         pyim-dcache-backend 'pyim-dregcache
@@ -11,9 +13,11 @@
         pyim-page-length 9
         pyim-page-tooltip 'posframe)
   (setq-default pyim-english-input-switch-functions
-                '(pyim-probe-program-mode
-                  pyim-probe-org-speed-commands
-                  pyim-probe-org-structure-template)))
+                '(pyim-probe-org-speed-commands
+                  pyim-probe-org-structure-template))
+  (setq-default pyim-punctuation-half-width-functions
+                '(pyim-probe-punctuation-line-beginning
+                  pyim-probe-punctuation-after-punctuation)))
 
 ;; liberime
 (cond (IS-MAC
