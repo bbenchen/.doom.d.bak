@@ -1,4 +1,4 @@
-;;; tools/youdao-dictionary/config.el -*- lexical-binding: t; -*-
+;;; my/translate/config.el -*- lexical-binding: t; -*-
 
 (use-package! youdao-dictionary
   :defer t
@@ -44,3 +44,10 @@
                   (push (read-event) unread-command-events)
                 (posframe-delete youdao-dictionary-buffer-name)))
           (message "Nothing to look up"))))))
+
+;; company-english-helper
+(use-package! company-english-helper
+  :commands toggle-company-english-helper)
+
+;; insert-translated-name
+(use-package! insert-translated-name)

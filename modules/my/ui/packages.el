@@ -1,4 +1,4 @@
 ;; -*- no-byte-compile: t; -*-
-;;; ui/centered-cursor/packages.el
+;;; my/tools/packages.el
 
 (package! centered-cursor-mode)
