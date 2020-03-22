@@ -50,4 +50,6 @@
   :commands toggle-company-english-helper)
 
 ;; insert-translated-name
-(use-package! insert-translated-name)
+(use-package! insert-translated-name
+  :config
+  (setq insert-translated-name-default-style "origin"))
