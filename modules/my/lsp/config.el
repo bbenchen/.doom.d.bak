@@ -1,6 +1,7 @@
 ;;; my/lsp/config.el -*- lexical-binding: t; -*-
 
 ;; lsp
+(setq +lsp-company-backend 'company-capf)
 (after! lsp-mode
   (setq lsp-enable-snippet nil
         lsp-enable-folding nil
