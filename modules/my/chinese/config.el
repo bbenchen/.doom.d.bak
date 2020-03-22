@@ -1,34 +1,35 @@
 ;;; my/chinese/config.el -*- lexical-binding: t; -*-
 
-;; liberime
-(use-package! liberime
-  :defer 1
+;; rime
+(use-package! rime
+  :defer t
   :custom
-  (liberime-user-data-dir (expand-file-name "rime/" doom-etc-dir))
-  :init
-  (add-hook! 'liberime-after-start-hook
-    (run-with-timer
-     2 nil
-     'liberime-select-schema "wubi_pinyin")))
-
-;; pyim
-(use-package! pyim
-  :after liberime                       ;
-  :after-call after-find-file pre-command-hook
+  (default-input-method "rime")
+  (rime-librime-root (if IS-MAC (expand-file-name "librime/dist/" doom-etc-dir)))
+  (rime-user-data-dir (expand-file-name "rime/" doom-etc-dir))
+  (rime-show-candidate (if (featurep! +childframe) 'posframe))
+  (rime-inline-ascii-trigger 'control-l)
+  (rime-disable-predicates '(rime-predicate-after-alphabet-char-p
+                             rime-predicate-prog-in-code-p
+                             rime-predicate-auto-english-p))
   :config
-  (setq pyim-dcache-directory (expand-file-name "pyim/" doom-cache-dir)
-        pyim-dcache-backend 'pyim-dregcache
-        default-input-method "pyim"
-        pyim-default-scheme 'rime
-        pyim-page-length 9)
-  (when (featurep! +childframe)
-    (setq pyim-page-tooltip 'posframe))
-  (setq-default pyim-english-input-switch-functions
-                '(pyim-probe-org-speed-commands
-                  pyim-probe-org-structure-template))
-  (setq-default pyim-punctuation-half-width-functions
-                '(pyim-probe-punctuation-line-beginning
-                  pyim-probe-punctuation-after-punctuation)))
+  (setq rime-posframe-properties
+        (list :background-color (face-attribute 'ivy-posframe :background nil t)
+              :foreground-color (face-attribute 'ivy-posframe :foreground nil t)
+              :internal-border-width 10))
+
+  (unless (fboundp 'rime--posframe-display-content)
+    (error "Function `rime--posframe-display-content' is not available."))
+
+  (defadvice! +rime--posframe-display-content-a (args)
+    "给 `rime--posframe-display-content' 传入的字符串加一个全角空
+格，以解决 `posframe' 偶尔吃字的问题。"
+    :filter-args #'rime--posframe-display-content
+    (cl-destructuring-bind (content) args
+      (let ((newresult (if (string-blank-p content)
+                           content
+                         (concat content "　"))))
+        (list newresult)))))
 
 ;;; Hacks
 (defadvice! +chinese--org-html-paragraph-a (args)
