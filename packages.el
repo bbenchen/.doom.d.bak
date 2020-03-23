@@ -3,3 +3,4 @@
 
 (package! centered-window :disable t)
 (package! tide :disable t)
+(unpin! t)
