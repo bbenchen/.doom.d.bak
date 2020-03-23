@@ -9,13 +9,11 @@
   (rime-user-data-dir (expand-file-name "rime/" doom-etc-dir))
   (rime-show-candidate (if (featurep! +childframe) 'posframe))
   (rime-inline-ascii-trigger 'control-l)
-  (rime-disable-predicates '(rime-predicate-after-alphabet-char-p
-                             rime-predicate-prog-in-code-p
-                             rime-predicate-auto-english-p))
+  (rime-disable-predicates '(rime-predicate-prog-in-code-p))
   :config
   (setq rime-posframe-properties
-        (list :background-color (face-attribute 'ivy-posframe :background nil t)
-              :foreground-color (face-attribute 'ivy-posframe :foreground nil t)
+        (list :background-color (face-attribute 'default :background nil t)
+              :foreground-color (face-attribute 'default :foreground nil t)
               :internal-border-width 10))
 
   (unless (fboundp 'rime--posframe-display-content)
