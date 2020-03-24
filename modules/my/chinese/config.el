@@ -10,6 +10,13 @@
   (rime-show-candidate (if (featurep! +childframe) 'posframe))
   (rime-inline-ascii-trigger 'control-l)
   (rime-disable-predicates '(rime-predicate-prog-in-code-p))
+  :hook
+  ('after-init . (lambda ()
+                   (when (fboundp 'rime-lib-sync-user-data)
+                     (ignore-errors (rime-sync)))))
+  ('kill-emacs . (lambda ()
+                   (when (fboundp 'rime-lib-sync-user-data)
+                     (ignore-errors (rime-sync)))))
   :config
   (setq rime-posframe-properties
         (list :background-color (face-attribute 'default :background nil t)
