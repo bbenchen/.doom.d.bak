@@ -6,4 +6,7 @@
       "Setup imenu regex for protocol buffers."
       (setq
        imenu-generic-expression
-       '((nil "^[[:space:]]*\\(message\\|service\\|enum\\)[[:space:]]+\\([[:alnum:]]+\\)" 2))))))
+       '((nil "^[[:space:]]*\\(message\\|service\\|enum\\)[[:space:]]+\\([[:alnum:]]+\\)" 2)))))
+
+  (add-hook! 'protobuf-mode-hook
+             (display-line-numbers-mode t)))
