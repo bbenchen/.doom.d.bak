@@ -13,12 +13,6 @@
 (setq default-directory "~/"
       org-directory "~/Documents/org")
 
-(when IS-MAC
-  (setq module-file-suffix ".so"
-        delete-by-moving-to-trash t)
-  (if (boundp 'mac-system-move-file-to-trash-use-finder)
-      (setq mac-system-move-file-to-trash-use-finder t)))
-
 ;; display line number
 (setq display-line-numbers-type 'relative)
 
