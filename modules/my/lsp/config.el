@@ -35,14 +35,46 @@
             "s" #'+lookup/workspace-symbol
             "S" #'+lookup/global-workspace-symbol))))
 
-;; (after! lsp-ui
-;;   (if (featurep! :checkers syntax)
-;;       (add-hook! 'lsp-ui-mode-hook
-;;         (defun go-enable-golangci-lint ()
-;;           (when (memq major-mode '(go-mode))
-;;             (message "[go] Setting lsp-prefer-ymake :none to enable golangci-lint support.")
-;;             (setq-local lsp-prefer-flymake :none)
-;;             (setq-local flycheck-checker 'golangci-lint))))))
+(after! lsp-ui
+  ;; (if (featurep! :checkers syntax)
+  ;;     (add-hook! 'lsp-ui-mode-hook
+  ;;       (defun go-enable-golangci-lint ()
+  ;;         (when (memq major-mode '(go-mode))
+  ;;           (message "[go] Setting lsp-prefer-ymake :none to enable golangci-lint support.")
+  ;;           (setq-local lsp-prefer-flymake :none)
+  ;;           (setq-local flycheck-checker 'golangci-lint)))))
+
+  (setq lsp-ui-doc-enable t
+        lsp-ui-doc-max-width 150
+        lsp-ui-doc-max-height 30
+        lsp-ui-doc-use-webkit nil
+        lsp-ui-doc-delay 0.2
+        lsp-ui-doc-include-signature t
+        lsp-ui-doc-position 'at-point
+        lsp-ui-doc-border (face-foreground 'default)
+        lsp-eldoc-enable-hover nil      ; Disable eldoc displays in minibuffer
+
+        lsp-ui-sideline-enable t
+        lsp-ui-sideline-show-hover nil
+        lsp-ui-sideline-show-diagnostics nil
+        lsp-ui-sideline-ignore-duplicate t
+
+        lsp-ui-imenu-enable t
+        lsp-ui-imenu-colors `(,(face-foreground 'font-lock-keyword-face)
+                              ,(face-foreground 'font-lock-string-face)
+                              ,(face-foreground 'font-lock-constant-face)
+                              ,(face-foreground 'font-lock-variable-name-face)))
+
+  (add-to-list 'lsp-ui-doc-frame-parameters '(right-fringe . 8))
+
+  ;; `C-g'to close doc
+  (advice-add #'keyboard-quit :before #'lsp-ui-doc-hide)
+
+  ;; Reset `lsp-ui-doc-background' after loading theme
+  (add-hook! 'after-load-theme-hook
+    (setq lsp-ui-doc-border (face-foreground 'default))
+    (set-face-background 'lsp-ui-doc-background
+                         (face-background 'tooltip))))
 
 ;; lsp-treemacs
 (use-package! lsp-treemacs
