@@ -36,10 +36,10 @@
                   (set (make-local-variable 'current-buffer-word) word)))
               (posframe-show youdao-dictionary-buffer-name
                              :font ivy-posframe-font
-                             :background-color (face-attribute 'ivy-posframe :background nil t)
-                             :foreground-color (face-attribute 'ivy-posframe :foreground nil t)
+                             :background-color (face-background 'default)
+                             :foreground-color (face-foreground 'default)
                              :internal-border-width ivy-posframe-border-width
-                             :internal-border-color (face-attribute 'ivy-posframe-border :background nil t))
+                             :internal-border-color (face-foreground 'default))
               (unwind-protect
                   (push (read-event) unread-command-events)
                 (posframe-delete youdao-dictionary-buffer-name)))

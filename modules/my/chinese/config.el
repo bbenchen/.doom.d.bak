@@ -19,8 +19,8 @@
                      (ignore-errors (rime-sync)))))
   :config
   (setq rime-posframe-properties
-        (list :background-color (face-attribute 'default :background nil t)
-              :foreground-color (face-attribute 'default :foreground nil t)
+        (list :background-color (face-background 'default)
+              :foreground-color (face-foreground 'default)
               :internal-border-width 10))
 
   (unless (fboundp 'rime--posframe-display-content)
