@@ -65,7 +65,7 @@
                               ,(face-foreground 'font-lock-constant-face)
                               ,(face-foreground 'font-lock-variable-name-face)))
 
-  (add-to-list 'lsp-ui-doc-frame-parameters '(right-fringe . 8))
+  ;; (add-to-list 'lsp-ui-doc-frame-parameters '(right-fringe . 8))
 
   ;; `C-g'to close doc
   (advice-add #'keyboard-quit :before #'lsp-ui-doc-hide)
