@@ -18,9 +18,7 @@
         ;; Enable Chinese word segmentation support
         youdao-dictionary-use-chinese-word-segmentation t)
 
-  (when (and (featurep! +childframe)
-             (featurep! :completion ivy +childframe))
-
+  (when (featurep! +childframe)
     (defadvice! +youdao-dictionary--posframe-tip (string)
       "Show STRING using posframe-show."
       :override #'youdao-dictionary--posframe-tip
@@ -38,7 +36,7 @@
                              :font ivy-posframe-font
                              :background-color (face-background 'default)
                              :foreground-color (face-foreground 'default)
-                             :internal-border-width ivy-posframe-border-width
+                             :internal-border-width 10
                              :internal-border-color (face-foreground 'default))
               (unwind-protect
                   (push (read-event) unread-command-events)
