@@ -7,7 +7,8 @@
         lsp-enable-folding nil
         lsp-enable-links nil
         lsp-enable-symbol-highlighting nil
-        lsp-file-watch-threshold 5000)
+        lsp-file-watch-threshold 5000
+        lsp-eldoc-enable-hover nil)
 
   ;; don't scan 3rd party javascript libraries
   (push "[/\\\\][^/\\\\]*\\.\\(json\\|html\\|jade\\)$" lsp-file-watch-ignored) ;; json
