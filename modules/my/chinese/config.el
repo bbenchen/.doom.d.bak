@@ -18,11 +18,6 @@
                    (when (fboundp 'rime-lib-sync-user-data)
                      (ignore-errors (rime-sync)))))
   :config
-  (setq rime-posframe-properties
-        (list :background-color (face-background 'default)
-              :foreground-color (face-foreground 'default)
-              :internal-border-width 10))
-
   (after! doom-modeline
     (set-face-attribute 'rime-indicator-face nil
                         :foreground 'unspecified
