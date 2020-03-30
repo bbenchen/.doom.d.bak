@@ -17,6 +17,10 @@
   ('kill-emacs . (lambda ()
                    (when (fboundp 'rime-lib-sync-user-data)
                      (ignore-errors (rime-sync)))))
+  ('scala-mode . (lambda ()
+                   (add-hook! 'post-command-hook :local
+                     (if (fboundp 'rime--redisplay)
+                         (rime--redisplay)))))
   :config
   (after! doom-modeline
     (set-face-attribute 'rime-indicator-face nil
