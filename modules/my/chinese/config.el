@@ -3,13 +3,18 @@
 ;; rime
 (use-package! rime
   :defer t
+  :bind
+  (:map rime-mode-map
+    ("C-`" . #'rime-send-keybinding))
   :custom
   (default-input-method "rime")
   (rime-librime-root (if IS-MAC (expand-file-name "librime/dist/" doom-etc-dir)))
   (rime-user-data-dir (expand-file-name "rime/" doom-etc-dir))
   (rime-show-candidate (if (featurep! +childframe) 'posframe))
-  (rime-inline-ascii-trigger 'control-l)
-  (rime-disable-predicates '(rime-predicate-prog-in-code-p))
+  (rime-inline-ascii-trigger 'shift-l)
+  (rime-disable-predicates '(rime-predicate-after-alphabet-char-p
+                             rime-predicate-prog-in-code-p))
+  (rime-inline-predicates '(rime-predicate-current-uppercase-letter-p))
   :hook
   ('after-init . (lambda ()
                    (when (fboundp 'rime-lib-sync-user-data)
