@@ -21,13 +21,9 @@
 
 ;; fonts
 (when (and IS-LINUX (display-graphic-p))
-  (setq doom-font (font-spec :family "Hack Nerd Font" :size 10))
-  (setq doom-big-font (font-spec :family "Hack Nerd Font" :size 14))
-  (+set-monospaced-font "Hack Nerd Font" "Noto Sans Mono CJK SC" 10 12))
+  (setq doom-font (font-spec :family "Hack Nerd Font" :size 10)))
 (when (and IS-MAC (display-graphic-p))
-  (setq doom-font (font-spec :family "Hack Nerd Font" :size 12))
-  (setq doom-big-font (font-spec :family "Hack Nerd Font" :size 16))
-  (+set-monospaced-font "Hack Nerd Font" "Hiragino Sans GB" 12 14))
+  (setq doom-font (font-spec :family "Hack Nerd Font" :size 12)))
 
 (when (display-graphic-p)
   ;; no broder
@@ -60,3 +56,18 @@
 ;; company
 (after! company
   (setq company-idle-delay 1))
+
+;; org
+(after! org
+  ;; https://manateelazycat.github.io/emacs/2020/04/02/org-font.html
+  (defun org-buffer-face-mode-variable ()
+    (interactive)
+    (when (or IS-LINUX IS-MAC)
+      (make-face 'width-font-face)
+      (if IS-LINUX
+          (set-face-attribute 'width-font-face nil :font "Sarasa Mono SC 10")
+        (set-face-attribute 'width-font-face nil :font "Sarasa Mono SC 12"))
+      (setq buffer-face-mode-face 'width-font-face)
+      (buffer-face-mode)))
+
+  (add-hook! 'org-mode-hook #'org-buffer-face-mode-variable))
