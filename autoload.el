@@ -31,6 +31,20 @@
   (doom-project-browse (expand-file-name "~/.dotfiles")))
 
 ;;;###autoload
+(defun update-dotfiles ()
+  "Update the dotfiles to the latest version."
+  (interactive)
+  (let ((dir (or (getenv "DOTFILES")
+                 (expand-file-name "~/.dotfiles/"))))
+    (if (file-exists-p dir)
+        (progn
+          (message "Updating dotfiles...")
+          (cd dir)
+          (shell-command "git pull")
+          (message "Updating dotfiles...done"))
+      (message "\"%s\" doesn't exist" dir))))
+
+;;;###autoload
 (defun +switch-to-minibuffer-window ()
   "switch to minibuffer window (if active)"
   (interactive)
