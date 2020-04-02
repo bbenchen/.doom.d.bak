@@ -13,4 +13,6 @@
 ;; modeline
 (after! doom-modeline
   (setq doom-modeline-major-mode-icon t
-        doom-modeline-persp-name t))
+        doom-modeline-persp-name t
+        doom-modeline-enable-word-count t
+        doom-modeline-indent-info t))
