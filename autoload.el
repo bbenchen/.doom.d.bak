@@ -59,3 +59,37 @@ If FRAME is nil, it defaults to the selected frame."
   (if (equal (frame-parameter frame 'alpha) 85)
       (set-frame-parameter frame 'alpha 100)
     (set-frame-parameter frame 'alpha 85)))
+
+;; Network Proxy
+;;;###autoload
+(defun proxy-http-show ()
+  "Show HTTP/HTTPS proxy."
+  (interactive)
+  (if url-proxy-services
+      (message "Current HTTP proxy is `%s'" centaur-proxy)
+    (message "No HTTP proxy")))
+
+;;;###autoload
+(defun proxy-http-enable ()
+  "Enable HTTP/HTTPS proxy."
+  (interactive)
+  (setq url-proxy-services
+        `(("http" . "127.0.0.1:7890")
+          ("https" . "127.0.0.1:7890")
+          ("no_proxy" . "^\\(localhost\\|127.0.0.1\\|192.168.*\\|172.16.*\\|10.0.*\\)")))
+  (proxy-http-show))
+
+;;;###autoload
+(defun proxy-http-disable ()
+  "Disable HTTP/HTTPS proxy."
+  (interactive)
+  (setq url-proxy-services nil)
+  (proxy-http-show))
+
+;;;###autoload
+(defun proxy-http-toggle ()
+  "Toggle HTTP/HTTPS proxy."
+  (interactive)
+  (if url-proxy-services
+      (proxy-http-disable)
+    (proxy-http-enable)))
