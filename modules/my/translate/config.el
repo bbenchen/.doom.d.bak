@@ -4,11 +4,11 @@
   :defer t
   :init
   (map! :leader
-        (:prefix-map ("y" . "youdao")
+        (:prefix-map ("y" . "Translate")
           :desc "Search at point"     "s" (if (featurep! +childframe)
                                               #'youdao-dictionary-search-at-point-posframe
                                             #'youdao-dictionary-search-at-point-tooltip)
-          :desc "Search from input"   "i" #'youdao-dictionary-search-from-input
+          :desc "Search from input"   "S" #'youdao-dictionary-search-from-input
           :desc "Play voice at point" "p" #'youdao-dictionary-play-voice-at-point))
   :config
   (set-popup-rule! "^\\*Youdao Dictionary\\*" :side 'right :size 0.4 :select t)
@@ -45,9 +45,17 @@
 
 ;; company-english-helper
 (use-package! company-english-helper
-  :commands toggle-company-english-helper)
+  :commands toggle-company-english-helper
+  :init
+  (map! :leader
+        (:prefix-map ("y" . "Translate")
+          :desc "Toggle company english" "t" #'toggle-company-english-helper)))
 
 ;; insert-translated-name
 (use-package! insert-translated-name
-  :config
-  (setq insert-translated-name-default-style "origin"))
+  :custom
+  (insert-translated-name-default-style 'origin)
+  :init
+  (map! :leader
+        (:prefix-map ("y" . "Translate")
+          :desc "Insert translated name" "i" #'insert-translated-name-insert)))
