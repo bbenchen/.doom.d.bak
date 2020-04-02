@@ -13,5 +13,4 @@
 ;; modeline
 (after! doom-modeline
   (setq doom-modeline-major-mode-icon t
-        doom-modeline-persp-name t
-        doom-modeline-persp-name-icon t))
+        doom-modeline-persp-name t))
