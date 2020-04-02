@@ -31,34 +31,11 @@
   (doom-project-browse (expand-file-name "~/.dotfiles")))
 
 ;;;###autoload
-(defun +delete-window (&optional arg)
-  "Delete the current window.
-If the universal prefix argument is used then kill the buffer too."
-  (interactive "P")
-  (if (equal '(4) arg)
-      (kill-buffer-and-window)
-    (delete-window)))
-
-;;;###autoload
 (defun +switch-to-minibuffer-window ()
   "switch to minibuffer window (if active)"
   (interactive)
   (when (active-minibuffer-window)
     (select-window (active-minibuffer-window))))
-
-;;;###autoload
-(defun +copy-whole-buffer-to-clipboard ()
-  "Copy entire buffer to clipboard"
-  (interactive)
-  (clipboard-kill-ring-save (point-min) (point-max)))
-
-;;;###autoload
-(defun +copy-clipboard-to-whole-buffer ()
-  "Copy clipboard and replace buffer"
-  (interactive)
-  (delete-region (point-min) (point-max))
-  (clipboard-yank)
-  (deactivate-mark))
 
 ;;;###autoload
 (defun toggle-frame-transparency (&optional frame)
