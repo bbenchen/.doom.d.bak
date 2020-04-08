@@ -28,7 +28,6 @@
           (holiday-float 6 0 3 "父亲节")
           (holiday-float 11 4 4 "感恩节")
           ;; 农历节日
-          (holiday-solar-term "清明" "清明节")
           (holiday-solar-term "小寒" "小寒")
           (holiday-solar-term "大寒" "大寒")
           (holiday-solar-term "立春" "立春")
