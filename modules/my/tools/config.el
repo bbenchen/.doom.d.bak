@@ -18,7 +18,5 @@
                                            "JAVA_OPTS"
                                            "SBT_OPTS"
                                            "COURSIER_REPOSITORIES"
-                                           "NVM_DIR"
-                                           "YOUDAO_APP_KEY"
-                                           "YOUDAO_SECRET_KEY"))
+                                           "NVM_DIR"))
     (exec-path-from-shell-initialize)))
