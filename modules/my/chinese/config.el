@@ -59,20 +59,7 @@
 mouse-2: Disable input method\n\
 mouse-3: Describe current input method")
                   'mouse-face 'mode-line-highlight
-                  'local-map mode-line-input-method-map)))
-
-  (unless (fboundp 'rime--posframe-display-content)
-    (error "Function `rime--posframe-display-content' is not available."))
-
-  (defadvice! +rime--posframe-display-content-a (args)
-    "给 `rime--posframe-display-content' 传入的字符串加一个全角空
-格，以解决 `posframe' 偶尔吃字的问题。"
-    :filter-args #'rime--posframe-display-content
-    (cl-destructuring-bind (content) args
-      (let ((newresult (if (string-blank-p content)
-                           content
-                         (concat content "　"))))
-        (list newresult)))))
+                  'local-map mode-line-input-method-map))))
 
 ;;; Hacks
 (defadvice! +chinese--org-html-paragraph-a (args)
