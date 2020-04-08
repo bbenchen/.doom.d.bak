@@ -4,7 +4,7 @@
   :defer t
   :init
   (map! :leader
-        (:prefix-map ("y" . "Translate")
+        (:prefix-map ("y" . "translate")
           :desc "Search at point"     "s" (if (featurep! +childframe)
                                               #'youdao-dictionary-search-at-point-posframe
                                             #'youdao-dictionary-search-at-point-tooltip)
@@ -12,6 +12,9 @@
           :desc "Play voice at point" "p" #'youdao-dictionary-play-voice-at-point))
   :config
   (set-popup-rule! "^\\*Youdao Dictionary\\*" :side 'right :size 0.4 :select t)
+  (let ((credentials (auth-source-user-and-password "openapi.youdao.com")))
+    (setq youdao-dictionary-app-key (car credentials)
+          youdao-dictionary-secret-key (cadr credentials)))
   (setq url-automatic-caching t
         ;; Set file path for saving search history
         youdao-dictionary-search-history-file (concat doom-cache-dir "youdao")
@@ -48,7 +51,7 @@
   :commands toggle-company-english-helper
   :init
   (map! :leader
-        (:prefix-map ("y" . "Translate")
+        (:prefix-map ("y" . "translate")
           :desc "Toggle company english" "t" #'toggle-company-english-helper)))
 
 ;; insert-translated-name
@@ -57,5 +60,5 @@
   (insert-translated-name-default-style 'origin)
   :init
   (map! :leader
-        (:prefix-map ("y" . "Translate")
+        (:prefix-map ("y" . "translate")
           :desc "Insert translated name" "i" #'insert-translated-name-insert)))
