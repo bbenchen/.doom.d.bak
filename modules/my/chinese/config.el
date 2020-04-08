@@ -35,8 +35,8 @@ when exporting org-mode to html."
   (++chinese--org-paragraph args))
 
 (defadvice! +chinese--org-hugo-paragraph-a (args)
-  "Join consecutive Chinese lines into a single long line without unwanted space
-when exporting org-mode to html."
+  "Join consecutive Chinese lines into a single long line without
+unwanted space when exporting org-mode to hugo markdown."
   :filter-args #'org-hugo-paragraph
   (++chinese--org-paragraph args))
 
