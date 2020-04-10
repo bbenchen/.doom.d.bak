@@ -6,17 +6,5 @@
   (when (or IS-LINUX IS-MAC)
     (setq exec-path-from-shell-check-startup-files nil)
     (setq exec-path-from-shell-arguments '("-l"))
-    (setq exec-path-from-shell-variables '("TERM"
-                                           "PATH"
-                                           "MANPATH"
-                                           "PYTHONPATH"
-                                           "GO111MODULE"
-                                           "GOPROXY"
-                                           "GOBIN"
-                                           "GOPATH"
-                                           "JAVA_HOME"
-                                           "JAVA_OPTS"
-                                           "SBT_OPTS"
-                                           "COURSIER_REPOSITORIES"
-                                           "NVM_DIR"))
+    (setq exec-path-from-shell-variables '("TERM" "PATH" "MANPATH"))
     (exec-path-from-shell-initialize)))

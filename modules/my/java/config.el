@@ -1,5 +1,8 @@
 ;;; my/java/config.el -*- lexical-binding: t; -*-
 
+(after! exec-path-from-shell
+  (exec-path-from-shell-copy-envs '("JAVA_HOME" "JAVA_OPTS")))
+
 (after! lsp-java
   (setq lsp-java-jdt-download-url "http://mirrors.ustc.edu.cn/eclipse/jdtls/snapshots/jdt-language-server-latest.tar.gz"
         lsp-java-workspace-dir (concat doom-etc-dir "eclipse.jdt.ls/workspace/")
