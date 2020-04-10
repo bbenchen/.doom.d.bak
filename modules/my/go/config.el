@@ -34,7 +34,12 @@
                                                  go-unconvert
                                                  go-staticcheck))))
 
-  (map! (:when (featurep! :lang go +lsp)
+  (when (featurep! :tools lsp)
+    (defadvice! +godef-describe (point)
+      :override #'godef-describe
+      (lsp-describe-thing-at-point)))
+
+  (map! (:when (featurep! :tools lsp)
           (:map go-mode-map
             :localleader
             (:prefix ("r" . "reflect")
