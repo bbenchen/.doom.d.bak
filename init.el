@@ -61,10 +61,11 @@
        ;;word-wrap                      ; soft wrapping with language-aware indent
 
        :emacs
-       (dired +ranger)            ; making dired pretty [functional]
-       electric                   ; smarter, keyword-based electric-indent
-       (ibuffer +icons)           ; interactive buffer management
-       vc                         ; version-control and Emacs, sitting in a tree
+       (dired +ranger)   ; making dired pretty [functional]
+       electric          ; smarter, keyword-based electric-indent
+       (ibuffer +icons)  ; interactive buffer management
+       undo              ; persistent, smarter undo for your inevitable mistakes
+       vc                ; version-control and Emacs, sitting in a tree
 
        :term
        ;;eshell      ; a consistent, cross-platform shell (WIP)
