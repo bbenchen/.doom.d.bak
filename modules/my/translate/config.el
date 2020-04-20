@@ -36,11 +36,9 @@
                   (goto-char (point-min))
                   (set (make-local-variable 'current-buffer-word) word)))
               (posframe-show youdao-dictionary-buffer-name
-                             :font ivy-posframe-font
                              :background-color (face-background 'mode-line)
                              :foreground-color (face-foreground 'mode-line)
-                             :internal-border-width 10
-                             :internal-border-color (face-foreground 'mode-line))
+                             :internal-border-width 10)
               (unwind-protect
                   (push (read-event) unread-command-events)
                 (posframe-delete youdao-dictionary-buffer-name)))
