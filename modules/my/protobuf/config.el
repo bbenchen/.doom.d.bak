@@ -1,6 +1,7 @@
 ;;; my/protobuf/config.el -*- lexical-binding: t; -*-
 
-(after! protobuf-mode
+(use-package! protobuf-mode
+  :init
   (add-hook! 'protobuf-mode-hook
     (defun setup-protobuf-imenu ()
       "Setup imenu regex for protocol buffers."
@@ -9,4 +10,4 @@
        '((nil "^[[:space:]]*\\(message\\|service\\|enum\\)[[:space:]]+\\([[:alnum:]]+\\)" 2)))))
 
   (add-hook! 'protobuf-mode-hook
-             (display-line-numbers-mode t)))
+    (display-line-numbers-mode t)))
