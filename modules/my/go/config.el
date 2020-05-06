@@ -40,10 +40,10 @@
       (lsp-describe-thing-at-point)))
 
   (map! (:when (featurep! :tools lsp)
-          (:map go-mode-map
-            :localleader
-            (:prefix ("r" . "reflect")
-              :desc "rename" "r" #'lsp-rename)))))
+         (:map go-mode-map
+          :localleader
+          (:prefix ("r" . "reflect")
+           :desc "rename" "r" #'lsp-rename)))))
 
 (after! lsp-mode
   (lsp-register-custom-settings
@@ -56,7 +56,7 @@
   (map! :map go-mode-map
         :localleader
         (:prefix ("r" . "reflect")
-          "I" #'go-impl))
+         "I" #'go-impl))
   :config
   (setq go-impl-enter-function t))
 
@@ -66,4 +66,4 @@
   (map! :map go-mode-map
         :localleader
         (:prefix ("r" . "reflect")
-          "s" #'go-fill-struct)))
+         "s" #'go-fill-struct)))
