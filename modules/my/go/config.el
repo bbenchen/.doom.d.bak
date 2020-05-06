@@ -35,7 +35,7 @@
                                                  go-staticcheck))))
 
   (when (featurep! :tools lsp)
-    (defadvice! +godef-describe (point)
+    (defadvice! godef-describe-a (point)
       :override #'godef-describe
       (lsp-describe-thing-at-point)))
 
