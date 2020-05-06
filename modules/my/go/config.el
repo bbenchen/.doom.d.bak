@@ -21,7 +21,7 @@
     (if command
         (setq gofmt-command command)))
 
-  (add-hook 'before-save-hook #'gofmt-before-save)
+  ;; (add-hook 'before-save-hook #'gofmt-before-save)
 
   (if (featurep! :checkers syntax)
       (add-hook! 'go-mode-hook
