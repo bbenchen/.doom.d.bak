@@ -2,4 +2,4 @@
 ;;; ~/.doom.d/packages.el
 
 (disable-packages! centered-window company-dict tide)
-(unpin! t)
+;; (unpin! t)
