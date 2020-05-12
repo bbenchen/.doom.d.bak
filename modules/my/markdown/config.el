@@ -10,14 +10,7 @@
         (setq-local flycheck-markdown-markdownlint-cli-config
                     (expand-file-name (concat md-lint-dir md-lint))))))
 
-(use-package! grip-mode
-  :defer t
-  :commands (grip-mode)
-  :init
-  (map! (:map (markdown-mode-map org-mode-map)
-          :localleader
-          "v" #'grip-mode))
-  :config
+(after! grip-mode
   (if (featurep 'xwidget-internal)
       ;; Use embedded webkit to previe
       (setq grip-preview-use-webkit t))
