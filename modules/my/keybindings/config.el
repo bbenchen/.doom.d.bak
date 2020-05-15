@@ -1,5 +1,8 @@
 ;;; my/keybindings/config.el -*- lexical-binding: t; -*-
 
+(global-set-key (kbd "C-z") nil)
+(global-set-key (kbd "C-x C-z") nil)
+
 (map! :leader
       (:prefix-map ("f" . "file")
         :desc "Find file in dotfiles" "t" #'find-in-dotfiles
