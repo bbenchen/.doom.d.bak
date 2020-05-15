@@ -5,17 +5,17 @@
 
 (map! :leader
       (:prefix-map ("f" . "file")
-        :desc "Find file in dotfiles" "t" #'find-in-dotfiles
-        :desc "Browse dotfiles" "T" #'browse-dotfiles)
+       :desc "Find file in dotfiles" "t" #'find-in-dotfiles
+       :desc "Browse dotfiles" "T" #'browse-dotfiles)
 
       (:prefix-map ("t" . "toggle")
-        :desc "Frame transparency" "T" #'toggle-frame-transparency)
+       :desc "Frame transparency" "T" #'toggle-frame-transparency)
 
       (:prefix-map ("w" . "workspaces/windows")
-        "<up>" #'shrink-window
-        "<down>" #'enlarge-window
-        "<left>" #'shrink-window-horizontally
-        "<right>" #'enlarge-window-horizontally))
+       "<up>" #'shrink-window
+       "<down>" #'enlarge-window
+       "<left>" #'shrink-window-horizontally
+       "<right>" #'enlarge-window-horizontally))
 
 (map! (:when (featurep! :tools make)
         (:map makefile-mode-map
