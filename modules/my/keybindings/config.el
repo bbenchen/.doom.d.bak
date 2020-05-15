@@ -1,7 +1,11 @@
 ;;; my/keybindings/config.el -*- lexical-binding: t; -*-
 
-(global-set-key (kbd "C-z") nil)
-(global-set-key (kbd "C-x C-z") nil)
+(map! "C-z" nil
+      "M-z" nil
+      "C-x C-z" nil
+
+      "M-n" #'forward-paragraph
+      "M-p" #'backward-paragraph)
 
 (map! :leader
       (:prefix-map ("f" . "file")
