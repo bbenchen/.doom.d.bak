@@ -11,7 +11,7 @@
           :desc "Search from input"   "S" #'youdao-dictionary-search-from-input
           :desc "Play voice at point" "p" #'youdao-dictionary-play-voice-at-point))
   :config
-  (set-popup-rule! "^\\*Youdao Dictionary\\*" :side 'right :size 0.4 :select t)
+  (set-popup-rule! "^\\*Youdao Dictionary\\*" :side 'bottom :size 0.3 :select t)
   (let ((credentials (auth-source-user-and-password "openapi.youdao.com")))
     (setq youdao-dictionary-app-key (car credentials)
           youdao-dictionary-secret-key (cadr credentials)))
