@@ -48,8 +48,6 @@
   (setq projectile-project-search-path '("~/")
         projectile-files-cache-expire 3600)
 
-  (add-to-list 'projectile-project-root-files-bottom-up ".projectile")
-
   (dolist (suffix '(".bak" ".exe"))
     (add-to-list 'projectile-globally-ignored-file-suffixes suffix)))
 
