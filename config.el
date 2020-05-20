@@ -10,8 +10,8 @@
       user-mail-address "517926804@qq.com"
       epa-file-encrypt-to user-mail-address)
 
-(add-hook! emacs-startup-hook (setq default-directory "~/"
-                                    org-directory "~/Documents/org"))
+(add-hook! 'emacs-startup-hook (setq default-directory "~/"
+                                     org-directory "~/Documents/org"))
 
 ;; display line number
 (setq display-line-numbers-type 'relative)
