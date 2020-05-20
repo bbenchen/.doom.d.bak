@@ -47,8 +47,7 @@
 
 (after! lsp-mode
   (lsp-register-custom-settings
-   '(("gopls.completeUnimported" t t)
-     ("gopls.staticcheck" t t))))
+   '(("gopls.completeUnimported" t t))))
 
 (use-package! go-impl
   :defer t
