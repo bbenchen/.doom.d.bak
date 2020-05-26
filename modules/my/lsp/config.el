@@ -13,8 +13,8 @@
   (push "[/\\\\][^/\\\\]*\\.\\(json\\|html\\|jade\\)$" lsp-file-watch-ignored) ;; json
 
   ;; kotlin
-  (setq lsp-clients-kotlin-server-executable (concat doom-etc-dir "kotlin/server/bin/kotlin-language-server")
-        lsp-kotlin-debug-adapter-path (concat doom-etc-dir "kotlin/adapter/bin/kotlin-debug-adapter")))
+  (setq lsp-clients-kotlin-server-executable (concat lsp-server-install-dir "kotlin/server/bin/kotlin-language-server")
+        lsp-kotlin-debug-adapter-path (concat lsp-server-install-dir "kotlin/adapter/bin/kotlin-debug-adapter")))
 
 ;; lsp-treemacs
 (use-package! lsp-treemacs
