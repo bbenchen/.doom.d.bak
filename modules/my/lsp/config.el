@@ -17,8 +17,6 @@
         lsp-kotlin-debug-adapter-path (concat lsp-server-install-dir "kotlin/adapter/bin/kotlin-debug-adapter")))
 
 ;; lsp-treemacs
-(use-package! lsp-treemacs
-  :when (featurep! :tools lsp)
-  :config
+(after! lsp-treemacs
   (lsp-metals-treeview-enable t)
   (setq lsp-metals-treeview-show-when-views-received nil))
