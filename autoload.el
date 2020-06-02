@@ -57,8 +57,8 @@ If FRAME is nil, it defaults to the selected frame."
 (defun proxy-http-show ()
   "Show HTTP/HTTPS proxy."
   (interactive)
-  (if url-proxy-services
-      (message "Current HTTP proxy is `%s'" centaur-proxy)
+  (if (bound-and-true-p url-proxy-services)
+      (message "Current HTTP proxy is `127.0.0.1:7890'")
     (message "No HTTP proxy")))
 
 ;;;###autoload
@@ -82,6 +82,6 @@ If FRAME is nil, it defaults to the selected frame."
 (defun proxy-http-toggle ()
   "Toggle HTTP/HTTPS proxy."
   (interactive)
-  (if url-proxy-services
+  (if (bound-and-true-p url-proxy-services)
       (proxy-http-disable)
     (proxy-http-enable)))
