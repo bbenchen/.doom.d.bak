@@ -1,4 +1,4 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; my/tools/packages.el
 
-(package! exec-path-from-shell :pin "9365c94ef18a2d58e73d47e0fe878c7d5007a827")
+(package! exec-path-from-shell :pin "e1f14450f172d29a0024806404dfe4b70bfcd371")
