@@ -21,8 +21,12 @@
   ;; sbt-supershell kills sbt-mode:  https://github.com/hvesalai/emacs-sbt-mode/issues/152
   (setq sbt:program-options '("-Dsbt.supershell=false")))
 
-;; lsp-mode
-(after! lsp-mode
-  ;; metals
-  (setq lsp-metals-sbt-script "sbt"
-        lsp-metals-java-home (getenv "JAVA_HOME")))
+;; lsp-metals
+(use-package! lsp-metals
+  :after lsp-mode
+  :config
+  (setq lsp-metals-java-home (getenv "JAVA_HOME")
+        lsp-metals-sbt-script "sbt"
+        lsp-metals-maven-script "mvn"
+        lsp-metals-bloop-sbt-already-installed t
+        lsp-metals-super-method-lenses-enabled t))
