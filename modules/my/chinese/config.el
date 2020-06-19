@@ -22,7 +22,10 @@
   ('scala-mode . (lambda ()
                    (add-hook! 'post-command-hook :local
                      (if (fboundp 'rime--redisplay)
-                         (rime--redisplay))))))
+                         (rime--redisplay)))))
+  :config
+  (custom-set-faces!
+    `(rime-default-face :foreground ,(doom-color 'modeline-fg) :background ,(doom-color 'modeline-bg))))
 
 ;;; Hacks
 (defadvice! +chinese--org-html-paragraph-a (args)
