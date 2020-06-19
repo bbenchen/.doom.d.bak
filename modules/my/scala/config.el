@@ -22,9 +22,7 @@
   (setq sbt:program-options '("-Dsbt.supershell=false")))
 
 ;; lsp-metals
-(use-package! lsp-metals
-  :after lsp-mode
-  :config
+(after! lsp-metals
   (setq lsp-metals-java-home (getenv "JAVA_HOME")
         lsp-metals-sbt-script "sbt"
         lsp-metals-maven-script "mvn"
