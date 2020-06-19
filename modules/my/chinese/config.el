@@ -22,18 +22,7 @@
   ('scala-mode . (lambda ()
                    (add-hook! 'post-command-hook :local
                      (if (fboundp 'rime--redisplay)
-                         (rime--redisplay)))))
-  :config
-  (if (featurep! +childframe)
-      (defadvice! +rime--posframe-display-content-a (args)
-        "给 `rime--posframe-display-content' 传入的字符串加一个全角空
-格，以解决 `posframe' 偶尔吃字的问题。"
-        :filter-args #'rime--posframe-display-content
-        (cl-destructuring-bind (content) args
-          (let ((newresult (if (string-blank-p content)
-                               content
-                             (concat content "　"))))
-            (list newresult))))))
+                         (rime--redisplay))))))
 
 ;;; Hacks
 (defadvice! +chinese--org-html-paragraph-a (args)
