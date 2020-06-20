@@ -6,7 +6,7 @@
   (when (or IS-LINUX IS-MAC)
     (setq exec-path-from-shell-check-startup-files nil)
     (setq exec-path-from-shell-arguments '("-l"))
-    (setq exec-path-from-shell-variables '("LANG" "TERM" "PATH" "MANPATH"))
+    (setq exec-path-from-shell-variables '("LANG" "LC_ALL" "TERM" "PATH" "MANPATH"))
     (exec-path-from-shell-initialize))
   :config
   (if IS-MAC
