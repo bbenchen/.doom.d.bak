@@ -32,10 +32,7 @@
   (add-to-list 'default-frame-alist '(fullscreen . maximized))
   (add-hook! 'emacs-startup-hook
              ;; maximized frame
-             (toggle-frame-maximized))
-  (add-hook! 'doom-load-theme-hook
-    (custom-theme-set-faces! 'doom-one
-      `(hl-line :background "#282c34"))))
+             (toggle-frame-maximized)))
 
 ;; frame
 (add-hook 'after-make-frame-functions #'(lambda (frame)
