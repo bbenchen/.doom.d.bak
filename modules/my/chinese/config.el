@@ -15,6 +15,7 @@
   (rime-disable-predicates '(rime-predicate-after-alphabet-char-p
                              rime-predicate-prog-in-code-p))
   (rime-inline-predicates '(rime-predicate-current-uppercase-letter-p))
+  (rime-posframe-fixed-position t)
   :hook
   ((after-init kill-emacs) . (lambda ()
                                (when (fboundp 'rime-lib-sync-user-data)
