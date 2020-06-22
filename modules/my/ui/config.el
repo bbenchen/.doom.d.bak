@@ -19,4 +19,4 @@
 
 ;; treemacs
 (after! treemacs
-  (setq treemacs-show-cursor t))
+  (setq treemacs-show-cursor IS-MAC))
