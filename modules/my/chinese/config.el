@@ -5,7 +5,8 @@
   :defer t
   :bind
   (:map rime-mode-map
-    ("C-`" . #'rime-send-keybinding))
+   ("s-j" . #'rime-force-enable)
+   ("C-`" . #'rime-send-keybinding))
   :custom
   (default-input-method "rime")
   (rime-librime-root (if IS-MAC (expand-file-name "librime/dist/" doom-etc-dir)))
@@ -13,7 +14,9 @@
   (rime-show-candidate (if (featurep! +childframe) 'posframe))
   (rime-inline-ascii-trigger 'shift-l)
   (rime-disable-predicates '(rime-predicate-after-alphabet-char-p
-                             rime-predicate-prog-in-code-p))
+                             rime-predicate-prog-in-code-p
+                             rime-predicate-ace-window-p
+                             rime-predicate-hydra-p))
   (rime-inline-predicates '(rime-predicate-current-uppercase-letter-p))
   (rime-posframe-fixed-position t)
   :hook
