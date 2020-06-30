@@ -16,9 +16,6 @@
 ;; display line number
 (setq display-line-numbers-type 'relative)
 
-;; theme
-(setq doom-theme 'doom-one)
-
 ;; fonts
 (when (and IS-LINUX (display-graphic-p))
   (setq doom-font (font-spec :family "Hack Nerd Font" :size 10)))
@@ -27,12 +24,26 @@
 
 (when (display-graphic-p)
   ;; no broder
-  (set-frame-parameter nil 'undecorated t)
-  (add-to-list 'default-frame-alist '(undecorated . t))
-  (add-to-list 'default-frame-alist '(fullscreen . maximized))
+  ;; (set-frame-parameter nil 'undecorated t)
+  ;; (add-to-list 'default-frame-alist '(undecorated . t))
+  ;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
   (add-hook! 'emacs-startup-hook
              ;; maximized frame
-             (toggle-frame-maximized)))
+             (toggle-frame-maximized))
+
+  ;; theme
+  (pcase (frame-parameter nil 'ns-appearance)
+    ('light (setq doom-theme 'doom-one-light))
+    (_ (setq doom-theme 'doom-one)))
+
+  (if (and IS-MAC
+           (boundp 'ns-system-appearance-change-functions))
+      (add-hook! 'ns-system-appearance-change-functions
+                 #'(lambda (appearance)
+                     (mapc #'disable-theme custom-enabled-themes)
+                     (pcase appearance
+                       ('light (load-theme 'doom-one-light t))
+                       ('dark (load-theme 'doom-one t)))))))
 
 ;; frame
 (add-hook 'after-make-frame-functions #'(lambda (frame)
