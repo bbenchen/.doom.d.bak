@@ -7,7 +7,8 @@
         lsp-enable-links nil
         lsp-enable-symbol-highlighting nil
         lsp-file-watch-threshold 5000
-        lsp-eldoc-enable-hover nil)
+        lsp-eldoc-enable-hover nil
+        lsp-modeline-code-actions-enable nil)
 
   ;; don't scan 3rd party javascript libraries
   (push "[/\\\\][^/\\\\]*\\.\\(json\\|html\\|jade\\)$" lsp-file-watch-ignored) ;; json
