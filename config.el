@@ -8,7 +8,8 @@
 
 (setq user-full-name "Chen Xianbin"
       user-mail-address "517926804@qq.com"
-      epa-file-encrypt-to user-mail-address)
+      epa-file-encrypt-to user-mail-address
+      auth-sources '("~/.authinfo.gpg"))
 
 (add-hook! 'emacs-startup-hook (setq default-directory "~/"
                                      org-directory "~/Documents/org"))
