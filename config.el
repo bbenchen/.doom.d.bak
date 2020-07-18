@@ -4,7 +4,7 @@
 
 ;; (setq warning-minimum-level :error)
 
-(setq fill-column 120)
+(setq-default fill-column 120)
 
 (setq user-full-name "Chen Xianbin"
       user-mail-address "517926804@qq.com"
