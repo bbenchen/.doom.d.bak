@@ -3,4 +3,4 @@
 
 (package! rime :pin "345e8c5bd6ef6f381880c4c315506dc6a5bc4cca")
 (when (featurep! +childframe)
-  (package! posframe :pin "c4459028fbe6740315ff1ed6f37e8c4decd3d050"))
+  (package! posframe :pin "922e4d239f7a083213d856de67a9686a091b1e27"))
