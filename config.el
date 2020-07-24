@@ -28,9 +28,10 @@
   ;; (set-frame-parameter nil 'undecorated t)
   ;; (add-to-list 'default-frame-alist '(undecorated . t))
   ;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
-  (add-hook! 'emacs-startup-hook
-             ;; maximized frame
-             (toggle-frame-maximized))
+  ;; (add-hook! 'emacs-startup-hook
+  ;;            ;; maximized frame
+  ;;            (toggle-frame-maximized))
+  (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
   ;; theme
   (pcase (frame-parameter nil 'ns-appearance)
