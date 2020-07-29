@@ -64,6 +64,9 @@
   (dolist (suffix '(".bak" ".exe"))
     (add-to-list 'projectile-globally-ignored-file-suffixes suffix)))
 
+;; lookup
+(setq +lookup-open-url-fn #'+lookup-xwidget-webkit-open-url-fn)
+
 ;; company
 (after! company
   (setq company-idle-delay 1))
