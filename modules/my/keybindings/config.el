@@ -13,7 +13,8 @@
        :desc "Browse dotfiles" "T" #'browse-dotfiles)
 
       (:prefix-map ("t" . "toggle")
-       :desc "Frame transparency" "T" #'toggle-frame-transparency)
+       :desc "Frame transparency" "T" #'toggle-frame-transparency
+       :desc "Window maximize" "m" #'doom/window-maximize-buffer)
 
       (:prefix-map ("w" . "workspaces/windows")
        "<up>" #'shrink-window
