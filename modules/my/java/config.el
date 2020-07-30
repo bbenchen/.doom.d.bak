@@ -22,3 +22,15 @@
         lsp-java-maven-download-sources t
         ;; Support java decompiler
         lsp-java-content-provider-preferred "fernflower"))
+
+(when (and (featurep! :editor format)
+           (featurep! +google-java-format))
+  (set-formatter! 'google-java-format
+    '("google-java-format" "-")
+    :modes 'java-mode)
+
+  ;; Enforce Google Java Style Guide.
+  ;; See https://google.github.io/styleguide/javaguide.html
+  (setq-hook! 'java-mode-hook
+    tab-width 2
+    fill-column 120))
