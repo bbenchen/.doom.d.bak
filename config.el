@@ -34,6 +34,8 @@
   (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
   ;; theme
+  (after! doom-themes
+    (setq doom-themes-treemacs-theme "doom-colors"))
   (pcase (frame-parameter nil 'ns-appearance)
     ('light (setq doom-theme 'doom-one-light))
     (_ (setq doom-theme 'doom-one)))
