@@ -12,7 +12,8 @@
       auth-sources '("~/.authinfo.gpg"))
 
 (add-hook! 'emacs-startup-hook (setq default-directory "~/"
-                                     org-directory "~/Documents/org"))
+                                     org-directory "~/Documents/org"
+                                     org-noter-notes-search-path '("~/Documents/org")))
 
 ;; display line number
 (setq display-line-numbers-type 'relative)

@@ -6,7 +6,7 @@
              global-centered-cursor-mode)
   :init
   (map! :leader
-        :desc "Centered point" "-" #'centered-cursor-mode)
+        :desc "Centered point" "C--" #'centered-cursor-mode)
   :config
   (setq ccm-recenter-at-end-of-file t))
 
