@@ -195,6 +195,7 @@
        magit
        (translate +childframe)
        tools
+       debuger
        lsp
        markdown
        plantuml
