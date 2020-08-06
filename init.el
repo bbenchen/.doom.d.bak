@@ -108,37 +108,38 @@
        ;;coq                            ; proofs-as-programs
        ;;crystal                        ; ruby at the speed of c
        ;;csharp                         ; unity, .NET, and mono shenanigans
-       data                     ; config/data formats
+       data                             ; config/data formats
        ;;erlang                         ; an elegant language for a more civilized age
        ;;elixir                         ; erlang done right
        ;;elm                            ; care for a cup of TEA?
-       emacs-lisp               ; drown in parentheses
+       emacs-lisp                       ; drown in parentheses
        ;;ess                            ; emacs speaks statistics
        ;;fsharp                         ; ML stands for Microsoft's Language
-       (go +lsp)                ; the hipster dialect
+       (go +lsp)                        ; the hipster dialect
        ;;(haskell +intero)              ; a language that's lazier than I am
        ;;hy                             ; readability of scheme w/ speed of python
        ;;idris                          ;
-       json                     ; At least it ain't XML
-       (java +lsp)              ; the poster child for carpal tunnel syndrome
-       (javascript +lsp)        ; all(hope(abandon(ye(who(enter(here))))))
+       json                             ; At least it ain't XML
+       (java +lsp)                      ; the poster child for carpal tunnel syndrome
+       (javascript +lsp)                ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia                          ; a better, faster MATLAB
        ;;(kotlin +lsp)                  ; a better, slicker Java(Script)
        ;;latex                          ; writing papers in Emacs has never been so fun
        ;;ledger                         ; an accounting system in Emacs
        ;;lua                            ; one-based indices? one-based indices
-       (markdown +grip)         ; writing docs for people to ignore
+       (markdown +grip)                 ; writing docs for people to ignore
        ;;nim                            ; python + lisp at the speed of c
        ;;nix                            ; I hereby declare "nix geht mehr!"
        ;;ocaml                          ; an objective camel
-       (org                     ; organize your plain life in plain text
-        +dragndrop              ; drag & drop files/images into org buffers
-        +hugo                   ; use Emacs for hugo blogging
-        ;; +jupyter                ; ipython/jupyter support for babel
-        +pandoc                 ; export-with-pandoc support
-        +present                ; using Emacs for presentations
-        +pomodoro               ; be fruitful with the tomato technique
-        +journal)               ; using org-mode for presentations
+       (org                             ; organize your plain life in plain text
+        +dragndrop                      ; drag & drop files/images into org buffers
+        +hugo                           ; use Emacs for hugo blogging
+        +jupyter                        ; ipython/jupyter support for babel
+        +pandoc                         ; export-with-pandoc support
+        +present                        ; using Emacs for presentations
+        +pomodoro                       ; be fruitful with the tomato technique
+        +journal                        ; using org-mode for presentations
+        +pretty)
        ;;perl                           ; write code no one else can comprehend
        ;;php                            ; perl's insecure younger brother
        plantuml                 ; diagrams for confusing people more
