@@ -1,5 +1,6 @@
-;;; my/debuger/config.el -*- lexical-binding: t; -*-
+;;; my/debugger/config.el -*- lexical-binding: t; -*-
 
+;; dap-mode
 (after! dap-mode
   (add-hook! '(dap-session-created-hook dap-stopped-hook)
     (defun show-dap-hydra (&rest _)

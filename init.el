@@ -20,8 +20,7 @@
        ;;ido                            ; the other *other* search engine...
        (ivy                             ; a search engine for love and life
         +prescient
-        +fuzzy
-        +childframe)
+        +fuzzy)
 
        :ui
        ;;deft                           ; notational velocity for Emacs
@@ -135,7 +134,7 @@
        (org                     ; organize your plain life in plain text
         +dragndrop              ; drag & drop files/images into org buffers
         +hugo                   ; use Emacs for hugo blogging
-        +jupyter                ; ipython/jupyter support for babel
+        ;; +jupyter                ; ipython/jupyter support for babel
         +pandoc                 ; export-with-pandoc support
         +present                ; using Emacs for presentations
         +pomodoro               ; be fruitful with the tomato technique
@@ -195,7 +194,7 @@
        magit
        (translate +childframe)
        tools
-       debuger
+       debugger
        lsp
        markdown
        plantuml
