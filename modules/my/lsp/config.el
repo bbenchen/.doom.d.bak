@@ -9,6 +9,7 @@
         lsp-file-watch-threshold 5000
         lsp-eldoc-enable-hover nil
         lsp-modeline-code-actions-enable nil
+        lsp-modeline-diagnostics-enable nil
         lsp-signature-auto-activate nil)
 
   ;; don't scan 3rd party javascript libraries
