@@ -35,7 +35,7 @@
                                                  go-staticcheck))))
 
   (when (featurep! :tools lsp)
-    (defadvice! godef-describe-a (point)
+    (defadvice! godef-describe-a (_point)
       :override #'godef-describe
       (lsp-describe-thing-at-point)))
 
@@ -48,6 +48,10 @@
 (after! lsp-mode
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t))))
+
+(after! dap-mode
+  (setq dap-go-debug-program `("node"
+                               ,(f-join dap-go-debug-path "extension/dist/debugAdapter.js"))))
 
 (use-package! go-impl
   :defer t
