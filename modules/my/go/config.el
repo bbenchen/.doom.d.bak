@@ -49,7 +49,7 @@
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t))))
 
-(after! dap-mode
+(after! dap-go
   (setq dap-go-debug-program `("node"
                                ,(f-join dap-go-debug-path "extension/dist/debugAdapter.js"))))
 
