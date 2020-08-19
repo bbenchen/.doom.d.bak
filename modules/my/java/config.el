@@ -11,8 +11,7 @@
                                 "-Xmx4G"
                                 "-XX:+UseG1GC"
                                 "-XX:+UseStringDeduplication"
-                                (concat "-javaagent:" lombok-jar-path)
-                                (concat "-Xbootclasspath/a:" lombok-jar-path))))
+                                (concat "-javaagent:" lombok-jar-path))))
   (setq lsp-java-format-enabled nil
         lsp-java-format-comments-enabled nil
         lsp-java-format-on-type-enabled nil
