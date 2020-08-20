@@ -20,7 +20,11 @@
         lsp-java-trace-server "messages"
         lsp-java-maven-download-sources t
         ;; Support java decompiler
-        lsp-java-content-provider-preferred "fernflower"))
+        lsp-java-content-provider-preferred "fernflower")
+
+  (when (featurep! :tools debugger +lsp)
+    (setq lsp-jt-root (concat lsp-java-server-install-dir "java-test/server/")
+          dap-java-test-runner (concat lsp-java-server-install-dir "test-runner/junit-platform-console-standalone.jar"))))
 
 (when (and (featurep! :editor format)
            (featurep! +google-java-format))
