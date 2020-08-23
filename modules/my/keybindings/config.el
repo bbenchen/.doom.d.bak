@@ -27,10 +27,6 @@
           :localleader
           :desc "Run task" "r" #'+make/run)))
 
-(map! (:when (featurep! :checkers spell)
-        :map flyspell-mode-map
-        "s-;" #'flyspell-correct-wrapper))
-
 (map! (:when IS-LINUX
         "s-w" #'+delete-window
         "s-W" #'delete-frame
