@@ -27,6 +27,9 @@
           :localleader
           :desc "Run task" "r" #'+make/run)))
 
+(map! (:map vterm-mode-map
+       "C-\\" #'toggle-input-method))
+
 (map! (:when IS-LINUX
         "s-w" #'+delete-window
         "s-W" #'delete-frame
