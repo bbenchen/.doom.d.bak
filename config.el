@@ -51,10 +51,12 @@
                        ('dark (load-theme 'doom-one t)))))))
 
 ;; frame
-(add-hook 'after-make-frame-functions #'(lambda (frame)
-                                          (when (not (display-graphic-p frame))
-                                            (select-frame frame)
-                                            (doom/reload-theme))))
+(add-hook! 'after-make-frame-functions #'(lambda (frame)
+                                           (when (not (display-graphic-p frame))
+                                             (select-frame frame)
+                                             (doom/reload-theme))))
+
+(add-hook! 'after-init-hook #'windmove-default-keybindings)
 
 ;; workspaces
 (setq +workspaces-on-switch-project-behavior t)
