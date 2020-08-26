@@ -195,6 +195,7 @@
        (chinese +childframe)
        ui
        editor
+       spell
        calendar
        dired
        magit
