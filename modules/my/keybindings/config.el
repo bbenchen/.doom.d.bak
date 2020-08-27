@@ -43,6 +43,7 @@
         "s-/" (λ! (save-excursion (comment-line 1)))))
 
 (map! (:when IS-MAC
+        "s-x" #'kill-region
         "<s-up>" #'shrink-window
         "<s-down>" #'enlarge-window
         "<s-left>" #'shrink-window-horizontally
