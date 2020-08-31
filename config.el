@@ -66,10 +66,6 @@
 ;; lookup
 (setq +lookup-open-url-fn #'+lookup-xwidget-webkit-open-url-fn)
 
-;; company
-(after! company
-  (setq company-idle-delay 1))
-
 ;; org
 (after! org
   ;; https://manateelazycat.github.io/emacs/2020/04/02/org-font.html
