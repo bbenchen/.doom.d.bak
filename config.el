@@ -18,13 +18,11 @@
 ;; display line number
 (setq display-line-numbers-type 'relative)
 
-;; fonts
-(when (and IS-LINUX (display-graphic-p))
-  (setq doom-font (font-spec :family "Hack Nerd Font" :size 10)))
-(when (and IS-MAC (display-graphic-p))
-  (setq doom-font (font-spec :family "Hack Nerd Font" :size 12)))
-
 (when (display-graphic-p)
+  ;; fonts
+  (cond (IS-LINUX (setq doom-font (font-spec :family "Hack Nerd Font" :size 10)))
+        (IS-MAC (setq doom-font (font-spec :family "Hack Nerd Font" :size 12))))
+
   ;; no broder
   ;; (set-frame-parameter nil 'undecorated t)
   ;; (add-to-list 'default-frame-alist '(undecorated . t))
