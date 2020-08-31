@@ -48,7 +48,7 @@
   "Toggle between transparent and opaque state for FRAME.
 If FRAME is nil, it defaults to the selected frame."
   (interactive)
-  (if (equal (frame-parameter frame 'alpha) 85)
+  (if (< (frame-parameter frame 'alpha) 100)
       (set-frame-parameter frame 'alpha 100)
     (set-frame-parameter frame 'alpha 85)))
 
