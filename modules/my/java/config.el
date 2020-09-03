@@ -7,8 +7,15 @@
   (setq lsp-java-jdt-download-url "https://mirrors.tuna.tsinghua.edu.cn/eclipse/jdtls/snapshots/jdt-language-server-latest.tar.gz")
   (let ((lombok-jar-path (expand-file-name "lombok.jar" doom-private-dir)))
     (setq lsp-java-vmargs (list "-Dfile.encoding=utf8"
+                                "-server"
                                 "-noverify"
+                                "-Xms4G"
                                 "-Xmx4G"
+                                "-Xmn2G"
+                                "-Xss256K"
+                                "-XX:MetaspaceSize=256M"
+                                "-XX:MaxMetaspaceSize=512M"
+                                "-XX:ReservedCodeCacheSize=256M"
                                 "-XX:+UseG1GC"
                                 "-XX:+UseStringDeduplication"
                                 (concat "-javaagent:" lombok-jar-path))))
