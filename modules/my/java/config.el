@@ -19,9 +19,21 @@
                                 "-XX:+UseG1GC"
                                 "-XX:+UseStringDeduplication"
                                 (concat "-javaagent:" lombok-jar-path))))
-  (setq lsp-java-format-enabled nil
-        lsp-java-format-comments-enabled nil
-        lsp-java-format-on-type-enabled nil
+
+  (setq lsp-java-configuration-runtimes (cond (IS-MAC '[(:name "JavaSE-11"
+                                                         :path "/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home"
+                                                         :default t)])
+                                              (IS-LINUX '[(:name "JavaSE-11"
+                                                           :path "/usr/lib/jvm/java-11-openjdk"
+                                                           :default t)
+                                                          (:name "JavaSE-1.8"
+                                                           :path "usr/lib/jvm/java-8-openjdk")])
+                                              (t nil)))
+
+  (if-let ((java-home (getenv "JAVA_HOME")))
+      (setq lsp-java-java-path (concat java-home "/bin/java")))
+
+  (setq lsp-java-format-on-type-enabled nil
         lsp-java-format-settings-url (concat "file://" (expand-file-name "eclipse-java-google-style.xml" doom-private-dir))
         lsp-java-format-settings-profile "GoogleStyle"
         lsp-java-trace-server "messages"
