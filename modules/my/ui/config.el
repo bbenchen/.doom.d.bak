@@ -16,7 +16,3 @@
         doom-modeline-persp-name t
         doom-modeline-enable-word-count t
         doom-modeline-indent-info t))
-
-;; treemacs
-(after! treemacs
-  (setq treemacs-show-cursor IS-MAC))
