@@ -27,7 +27,7 @@
                                                            :path "/usr/lib/jvm/java-11-openjdk"
                                                            :default t)
                                                           (:name "JavaSE-1.8"
-                                                           :path "usr/lib/jvm/java-8-openjdk")])
+                                                           :path "/usr/lib/jvm/java-8-openjdk")])
                                               (t nil)))
 
   (if-let ((java-home (getenv "JAVA_HOME")))
