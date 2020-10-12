@@ -6,6 +6,7 @@
         lsp-enable-folding nil
         lsp-enable-links nil
         lsp-enable-symbol-highlighting nil
+        lsp-enable-file-watchers nil
         lsp-file-watch-threshold 5000
         lsp-eldoc-enable-hover nil
         lsp-modeline-code-actions-enable nil
