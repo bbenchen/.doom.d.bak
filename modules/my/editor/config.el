@@ -9,6 +9,10 @@
   (add-to-list 'mc/cmds-to-run-for-all 'hungry-delete-forward)
   (add-to-list 'mc/cmds-to-run-for-all 'hungry-delete-backward))
 
+(after! smartparens
+  (unbind-key "M-<left>" smartparens-mode-map)
+  (unbind-key "M-<right>" smartparens-mode-map))
+
 ;; hungry-delete
 (use-package! hungry-delete
   :hook ((prog-mode text-mode conf-mode) . hungry-delete-mode)
