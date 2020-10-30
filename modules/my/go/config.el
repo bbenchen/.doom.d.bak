@@ -49,10 +49,6 @@
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t))))
 
-(after! dap-go
-  (setq dap-go-debug-program `("node"
-                               ,(f-join dap-go-debug-path "extension/dist/debugAdapter.js"))))
-
 (use-package! go-impl
   :defer t
   :init
