@@ -27,4 +27,6 @@
         lsp-metals-sbt-script "sbt"
         lsp-metals-maven-script "mvn"
         lsp-metals-bloop-sbt-already-installed t
-        lsp-metals-super-method-lenses-enabled t))
+        lsp-metals-super-method-lenses-enabled t
+        lsp-metals-implicit-argument-annotations-enabled t
+        lsp-metals-type-annotations-enabled t))
