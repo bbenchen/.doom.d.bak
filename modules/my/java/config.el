@@ -33,7 +33,9 @@
   (if-let ((java-home (getenv "JAVA_HOME")))
       (setq lsp-java-java-path (concat java-home "/bin/java")))
 
-  (setq lsp-java-format-on-type-enabled nil
+  (setq lsp-java-format-enabled nil
+        lsp-java-format-comments-enabled nil
+        lsp-java-format-on-type-enabled nil
         lsp-java-format-settings-url (concat "file://" (expand-file-name "eclipse-java-google-style.xml" doom-private-dir))
         lsp-java-format-settings-profile "GoogleStyle"
         lsp-java-trace-server "messages"
@@ -48,7 +50,7 @@
 (when (and (featurep! :editor format)
            (featurep! +google-java-format))
   (set-formatter! 'google-java-format
-    '("google-java-format" "-")
+    '("google-java-format" "-" "--skip-sorting-imports")
     :modes 'java-mode)
 
   ;; Enforce Google Java Style Guide.
