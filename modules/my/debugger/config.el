@@ -2,8 +2,6 @@
 
 ;; dap-mode
 (after! dap-mode
-  (setq dap-auto-configure-features '(sessions locals breakpoints expressions controls))
-
   (add-hook! '(dap-session-created-hook dap-stopped-hook)
     (defun show-dap-hydra (&rest _)
       "Show dap hydra"
