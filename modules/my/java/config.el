@@ -21,8 +21,10 @@
                                 (concat "-javaagent:" lombok-jar-path))))
 
   (setq lsp-java-configuration-runtimes (cond (IS-MAC '[(:name "JavaSE-11"
-                                                         :path "/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home"
-                                                         :default t)])
+                                                         :path "/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home"
+                                                         :default t)
+                                                        (:name "JavaSE-1.8"
+                                                         :path "/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home")])
                                               (IS-LINUX '[(:name "JavaSE-11"
                                                            :path "/usr/lib/jvm/java-11-openjdk"
                                                            :default t)
