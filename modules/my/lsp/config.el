@@ -20,6 +20,10 @@
   (setq lsp-clients-kotlin-server-executable (concat lsp-server-install-dir "kotlin/server/bin/kotlin-language-server")
         lsp-kotlin-debug-adapter-path (concat lsp-server-install-dir "kotlin/adapter/bin/kotlin-debug-adapter")))
 
+(after! lsp-ui
+  (setq lsp-ui-sideline-enable t
+        lsp-ui-sideline-ignore-duplicate t))
+
 (use-package! lsp-treemacs
   :after lsp-mode
   :bind (:map lsp-mode-map
