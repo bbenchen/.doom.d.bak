@@ -1,8 +1,5 @@
 ;;; my/java/config.el -*- lexical-binding: t; -*-
 
-(after! exec-path-from-shell
-  (exec-path-from-shell-copy-envs '("JAVA_HOME" "JAVA_OPTS")))
-
 (after! lsp-java
   (setq lsp-java-jdt-download-url "https://mirrors.tuna.tsinghua.edu.cn/eclipse/jdtls/snapshots/jdt-language-server-latest.tar.gz")
   (let ((lombok-jar-path (expand-file-name "lombok.jar" doom-private-dir)))

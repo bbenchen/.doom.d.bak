@@ -1,8 +1,5 @@
 ;;; my/go/config.el -*- lexical-binding: t; -*-
 
-(after! exec-path-from-shell
-  (exec-path-from-shell-copy-envs '("GOPATH" "GOBIN" "GO111MODULE" "GOPROXY")))
-
 ;; go
 (after! go-mode
   (when (executable-find "gopkgs")

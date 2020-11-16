@@ -1,8 +1,5 @@
 ;;; my/scala/config.el -*- lexical-binding: t; -*-
 
-(after! exec-path-from-shell
-  (exec-path-from-shell-copy-envs '("JAVA_HOME" "JAVA_OPTS" "SBT_OPTS")))
-
 ;; projectile
 (after! projectile
   (dolist (dir '(".bloop" ".metals"))
@@ -23,8 +20,10 @@
 
 ;; lsp-metals
 (after! lsp-metals
-  (setq lsp-metals-java-home (getenv "JAVA_HOME")
-        lsp-metals-sbt-script "sbt"
+  (if-let ((java-home (getenv "JAVA_HOME")))
+    (setq lsp-metals-java-home java-home))
+
+  (setq lsp-metals-sbt-script "sbt"
         lsp-metals-maven-script "mvn"
         lsp-metals-bloop-sbt-already-installed t
         lsp-metals-super-method-lenses-enabled t
