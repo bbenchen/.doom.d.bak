@@ -63,9 +63,6 @@
   (dolist (suffix '(".bak" ".exe"))
     (add-to-list 'projectile-globally-ignored-file-suffixes suffix)))
 
-;; lookup
-(setq +lookup-open-url-fn #'+lookup-xwidget-webkit-open-url-fn)
-
 ;; org
 (after! org
   ;; https://manateelazycat.github.io/emacs/2020/04/02/org-font.html
