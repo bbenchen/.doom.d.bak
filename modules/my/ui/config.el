@@ -41,8 +41,8 @@
       (when (or IS-LINUX IS-MAC)
         (make-face 'width-font-face)
         (if IS-LINUX
-            (set-face-attribute 'width-font-face nil :font "Sarasa Nerd Font 10")
-          (set-face-attribute 'width-font-face nil :font "Sarasa Nerd Font 12"))
+            (set-face-attribute 'width-font-face nil :font "Sarasa Mono SC Nerd 10")
+          (set-face-attribute 'width-font-face nil :font "Sarasa Mono SC Nerd 12"))
         (setq buffer-face-mode-face 'width-font-face)
         (buffer-face-mode)))
 
