@@ -48,3 +48,5 @@
         "<s-down>" #'enlarge-window
         "<s-left>" #'shrink-window-horizontally
         "<s-right>" #'enlarge-window-horizontally))
+
+(add-hook! 'after-init-hook #'windmove-default-keybindings)
