@@ -17,6 +17,10 @@
   ;; maximize the window
   (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
+  ;; (when (and (> (length (display-monitor-attributes-list)) 1)
+  ;;            (> (display-pixel-width) 1920))
+  ;;   (set-frame-parameter nil 'left -3840))
+
   ;; theme
   (after! doom-themes
     (setq doom-themes-treemacs-theme "doom-colors"))
