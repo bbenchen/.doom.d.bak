@@ -7,8 +7,8 @@
 
 (when (display-graphic-p)
   ;; fonts
-  (cond (IS-LINUX (setq doom-font (font-spec :family "Hack Nerd Font" :size 10)))
-        (IS-MAC (setq doom-font (font-spec :family "Hack Nerd Font" :size 12))))
+  (cond (IS-LINUX (setq doom-font (font-spec :family "Sarasa Mono SC Nerd" :size 11)))
+        (IS-MAC (setq doom-font (font-spec :family "Sarasa Mono SC Nerd" :size (if (> (display-pixel-width) 1920) 14 12)))))
 
   ;; no broder
   ;; (set-frame-parameter nil 'undecorated t)
@@ -34,19 +34,19 @@
         (t (setq doom-theme 'doom-tomorrow-day)))
 
   ;; org
-  (after! org
-    ;; https://manateelazycat.github.io/emacs/2020/04/02/org-font.html
-    (defun org-buffer-face-mode-variable ()
-      (interactive)
-      (when (or IS-LINUX IS-MAC)
-        (make-face 'width-font-face)
-        (if IS-LINUX
-            (set-face-attribute 'width-font-face nil :font "Sarasa Mono SC Nerd 10")
-          (set-face-attribute 'width-font-face nil :font "Sarasa Mono SC Nerd 12"))
-        (setq buffer-face-mode-face 'width-font-face)
-        (buffer-face-mode)))
+  ;; (after! org
+  ;;   ;; https://manateelazycat.github.io/emacs/2020/04/02/org-font.html
+  ;;   (defun org-buffer-face-mode-variable ()
+  ;;     (interactive)
+  ;;     (when (or IS-LINUX IS-MAC)
+  ;;       (make-face 'width-font-face)
+  ;;       (if IS-LINUX
+  ;;           (set-face-attribute 'width-font-face nil :font "Sarasa Mono SC Nerd 10")
+  ;;         (set-face-attribute 'width-font-face nil :font "Sarasa Mono SC Nerd 12"))
+  ;;       (setq buffer-face-mode-face 'width-font-face)
+  ;;       (buffer-face-mode)))
 
-    (add-hook! 'org-mode-hook #'org-buffer-face-mode-variable))
+  ;;   (add-hook! 'org-mode-hook #'org-buffer-face-mode-variable))
   )
 
 ;; frame
