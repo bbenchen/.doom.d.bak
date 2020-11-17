@@ -12,9 +12,11 @@
          :desc "Play voice at point" "p" #'youdao-dictionary-play-voice-at-point))
   :config
   (set-popup-rule! "^\\*Youdao Dictionary\\*" :side 'bottom :size 0.3 :select t)
-  (let ((credentials (auth-source-user-and-password "openapi.youdao.com")))
-    (setq youdao-dictionary-app-key (car credentials)
-          youdao-dictionary-secret-key (cadr credentials)))
+  (after! auth-source
+    (let ((credentials (auth-source-user-and-password "openapi.youdao.com")))
+      (setq youdao-dictionary-app-key (car credentials)
+            youdao-dictionary-secret-key (cadr credentials))))
+
   (setq url-automatic-caching t
         ;; Set file path for saving search history
         youdao-dictionary-search-history-file (concat doom-cache-dir "youdao")
@@ -62,3 +64,7 @@
   (map! :leader
         (:prefix-map ("y" . "translate")
          :desc "Insert translated name" "i" #'insert-translated-name-insert)))
+
+;; (use-package! english-teacher
+;;   :hook ((Info-mode
+;;           helpful-mode) . english-teacher-follow-mode))
