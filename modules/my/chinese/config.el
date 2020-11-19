@@ -38,13 +38,13 @@
                                content
                              (concat content "　"))))
             (list newresult)))))
-  (if IS-MAC
-      (map! (:map rime-mode-map
-             "s-j" #'rime-force-enable
-             "C-`" #'rime-send-keybinding))
-    (map! (:map rime-mode-map
-           "C-j" #'rime-force-enable
-            "C-`" #'rime-send-keybinding))))
+
+  (map! (:map rime-mode-map
+         (:when IS-MAC
+          "s-j" #'rime-force-enable)
+         (:unless IS-MAC
+          "C-j" #'rime-force-enable)
+         "C-`" #'rime-send-keybinding)))
 
 ;;; Hacks
 (defadvice! +chinese--org-html-paragraph-a (args)
