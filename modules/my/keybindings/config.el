@@ -30,18 +30,6 @@
 (map! (:map vterm-mode-map
        "C-\\" #'toggle-input-method))
 
-(map! (:when IS-LINUX
-        "s-w" #'+delete-window
-        "s-W" #'delete-frame
-        "s-n" #'+default/new-buffer
-        "s-k" #'doom/kill-this-buffer-in-all-windows
-        "s-s" #'save-buffer
-        "s-a" #'mark-whole-buffer
-        "s-f" #'swiper
-        "s-u" #'revert-buffer
-        "s-z" #'undo
-        "s-/" (λ! (save-excursion (comment-line 1)))))
-
 (map! (:when IS-MAC
         "s-x" #'kill-region
         "<s-up>" #'shrink-window

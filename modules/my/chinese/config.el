@@ -3,10 +3,6 @@
 ;; rime
 (use-package! rime
   :defer t
-  :bind
-  (:map rime-mode-map
-   ("s-j" . #'rime-force-enable)
-   ("C-`" . #'rime-send-keybinding))
   :custom
   (default-input-method "rime")
   (rime-librime-root (if IS-MAC (expand-file-name "librime/dist/" doom-etc-dir)))
@@ -41,7 +37,14 @@
           (let ((newresult (if (string-blank-p content)
                                content
                              (concat content "　"))))
-            (list newresult))))))
+            (list newresult)))))
+  (if IS-MAC
+      (map! (:map rime-mode-map
+             "s-j" #'rime-force-enable
+             "C-`" #'rime-send-keybinding))
+    (map! (:map rime-mode-map
+           "C-j" #'rime-force-enable
+            "C-`" #'rime-send-keybinding))))
 
 ;;; Hacks
 (defadvice! +chinese--org-html-paragraph-a (args)

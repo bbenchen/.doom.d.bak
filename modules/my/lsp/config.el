@@ -27,7 +27,7 @@
 (use-package! lsp-treemacs
   :after lsp-mode
   :bind (:map lsp-mode-map
-         ("s-<f8>" . #'lsp-treemacs-java-deps-list)
+         ("C-<f8>" . #'lsp-treemacs-java-deps-list)
          ("M-<f8>" . #'lsp-treemacs-symbols))
   :init (lsp-treemacs-sync-mode 1)
   :config
