@@ -4,7 +4,7 @@
 (package! youdao-dictionary :pin "bd839711e3cf6d3eb9c308cea5694369a440899e")
 
 (when (featurep! +childframe)
-  (package! posframe :pin "395aca928b00c8f76aaeb65a85481c99e88c6873"))
+  (package! posframe :pin "9e9b16b0b27d1ca1973773db9bcdfada9475f34a"))
 
 (when (featurep! :completion company)
   (package! company-english-helper
