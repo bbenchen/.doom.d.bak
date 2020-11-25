@@ -44,6 +44,7 @@
           "s-j" #'rime-force-enable)
          (:unless IS-MAC
           "C-j" #'rime-force-enable)
+         "M-j" #'rime-inline-ascii
          "C-`" #'rime-send-keybinding)))
 
 ;;; Hacks
