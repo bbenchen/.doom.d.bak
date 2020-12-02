@@ -66,6 +66,9 @@
          :desc "Insert translated name" "i" #'insert-translated-name-insert)))
 
 (use-package! english-teacher
+  :defer t
+  :custom
+  (english-teacher-backend 'google)
   :hook ((Info-mode
            helpful-mode
            Man-mode
