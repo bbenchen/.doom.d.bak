@@ -65,6 +65,8 @@
         (:prefix-map ("y" . "translate")
          :desc "Insert translated name" "i" #'insert-translated-name-insert)))
 
-;; (use-package! english-teacher
-;;   :hook ((Info-mode
-;;           helpful-mode) . english-teacher-follow-mode))
+(use-package! english-teacher
+  :hook ((Info-mode
+           helpful-mode
+           Man-mode
+           Woman-mode) . english-teacher-follow-mode))

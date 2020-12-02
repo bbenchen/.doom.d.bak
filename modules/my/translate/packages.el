@@ -14,3 +14,7 @@
 (package! insert-translated-name
   :recipe (:host github :repo "manateelazycat/insert-translated-name")
   :pin "a11b8f565006ca99995021ba70084e386dc2f0f5")
+
+(package! english-teacher
+  :recipe (:host github :repo "loyalpartner/english-teacher.el")
+  :pin "2a029d546124fb9407bc56ee5513872555ff366b")
