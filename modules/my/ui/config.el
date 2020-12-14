@@ -35,7 +35,7 @@
                                    (pcase appearance
                                      ('light (load-theme 'doom-one-light t))
                                      ('dark (load-theme 'doom-one t)))))))
-        (t (setq doom-theme 'doom-one-light)))
+        (t (setq doom-theme 'doom-dracula)))
 
   ;; org
   ;; (after! org
