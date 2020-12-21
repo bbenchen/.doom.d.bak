@@ -36,6 +36,7 @@
   :defer t
   :custom
   (eaf-config-location (expand-file-name "eaf/" doom-etc-dir))
+  (eaf-wm-focus-fix-wms '("i3" "bspwm" "LG3D"))
   (eaf-find-alternate-file-in-dired t)
   (eaf-proxy-type "http")
   (eaf-proxy-host "127.0.0.1")
