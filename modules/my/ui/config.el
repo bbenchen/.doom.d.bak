@@ -14,6 +14,9 @@
   ;; (set-frame-parameter nil 'undecorated t)
   ;; (add-to-list 'initial-frame-alist '(undecorated . t))
 
+  ;; transparency
+  (set-frame-parameter nil 'alpha 85)
+
   ;; maximize the window
   (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
@@ -35,7 +38,7 @@
                                    (pcase appearance
                                      ('light (load-theme 'doom-one-light t))
                                      ('dark (load-theme 'doom-one t)))))))
-        (t (setq doom-theme 'doom-dracula)))
+        (t (setq doom-theme 'doom-nord)))
 
   ;; org
   ;; (after! org
