@@ -5,6 +5,8 @@
 ;; display line number
 (setq display-line-numbers-type 'relative)
 
+(use-cjk-char-width-table 'zh_CN)
+
 (when (display-graphic-p)
   ;; fonts
   (cond (IS-LINUX (setq doom-font (font-spec :family "Sarasa Mono SC Nerd" :size 11)))
