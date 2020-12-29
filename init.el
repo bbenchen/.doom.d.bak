@@ -204,6 +204,7 @@
        debugger
        lsp
        markdown
+       org
        plantuml
        protobuf
        go
