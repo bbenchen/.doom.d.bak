@@ -11,7 +11,8 @@
         lsp-eldoc-enable-hover nil
         lsp-modeline-code-actions-enable nil
         lsp-modeline-diagnostics-enable nil
-        lsp-signature-auto-activate nil)
+        lsp-signature-auto-activate nil
+        lsp-headerline-breadcrumb-enable nil)
 
   ;; don't scan 3rd party javascript libraries
   (push "[/\\\\][^/\\\\]*\\.\\(json\\|html\\|jade\\)$" lsp-file-watch-ignored) ;; json
