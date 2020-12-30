@@ -1,4 +1,4 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; my/org/packages.el
 
-(package! valign :pin "a8809287899b280a0d4ac836ea195803e7b3072c")
+(package! valign :pin "1d2ecd2afdb77021eaffc213d9fbbc6d9c38ed82")
