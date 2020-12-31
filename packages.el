@@ -1,5 +1,4 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; ~/.doom.d/packages.el
 
-(disable-packages! centered-window company-dict tide)
-;; (unpin! t)
+(unpin! (:completion ivy) (:ui doom) (:emacs ibuffer) (:checkers spell) (:tools magit debugger lsp) (:lang java scala))
