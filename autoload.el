@@ -55,7 +55,7 @@ If FRAME is nil, it defaults to the selected frame."
 
 ;; Network Proxy
 ;;;###autoload
-(defun proxy-http-show ()
+(defun show-proxy-http ()
   "Show HTTP/HTTPS proxy."
   (interactive)
   (if (bound-and-true-p url-proxy-services)
@@ -63,26 +63,26 @@ If FRAME is nil, it defaults to the selected frame."
     (message "No HTTP proxy")))
 
 ;;;###autoload
-(defun proxy-http-enable ()
+(defun enable-proxy-http ()
   "Enable HTTP/HTTPS proxy."
   (interactive)
   (setq url-proxy-services
         `(("http" . "127.0.0.1:8889")
           ("https" . "127.0.0.1:8889")
           ("no_proxy" . "^\\(localhost\\|127.0.0.1\\|192.168.*\\|172.16.*\\|10.0.*\\)")))
-  (proxy-http-show))
+  (show-proxy-http))
 
 ;;;###autoload
-(defun proxy-http-disable ()
+(defun disable-proxy-http ()
   "Disable HTTP/HTTPS proxy."
   (interactive)
   (setq url-proxy-services nil)
-  (proxy-http-show))
+  (show-proxy-http))
 
 ;;;###autoload
-(defun proxy-http-toggle ()
+(defun toggle-proxy-http ()
   "Toggle HTTP/HTTPS proxy."
   (interactive)
   (if (bound-and-true-p url-proxy-services)
-      (proxy-http-disable)
-    (proxy-http-enable)))
+      (disable-proxy-http)
+    (enable-proxy-http)))
