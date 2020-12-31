@@ -17,4 +17,4 @@
 
 (package! english-teacher
   :recipe (:host github :repo "loyalpartner/english-teacher.el")
-  :pin "2a029d546124fb9407bc56ee5513872555ff366b")
+  :pin "772c0f70211cc4199eafe6c165341b347462880a")
