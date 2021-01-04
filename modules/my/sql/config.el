@@ -11,6 +11,13 @@
   :config
   (setq sqlup-blacklist (append sqlup-blacklist '("name" "user"))))
 
+(use-package! sql-indent
+  :defer t
+  :init
+  (add-hook! 'sql-mode-hook :append #'sqlind-minor-mode))
+
+(use-package! ob-sql-mode)
+
 (after! flycheck
   (add-hook! 'sql-mode-hook
     (defun sql-disable-flycheck ()
