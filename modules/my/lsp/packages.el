@@ -1,4 +1,4 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; my/lsp/packages.el
 
-(package! lsp-treemacs :pin "642e922e16fd2b2c3cc075d7cba68448f1aaa006")
+(package! lsp-treemacs :pin "64e375fcc700d4d47cf52ad912e6863d479e3bfa")
