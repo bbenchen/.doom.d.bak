@@ -3,18 +3,18 @@
 ;; rime
 (use-package! rime
   :defer t
-  :custom
-  (default-input-method "rime")
-  (rime-librime-root (if IS-MAC (expand-file-name "librime/dist/" doom-etc-dir)))
-  (rime-user-data-dir (expand-file-name "rime/" doom-etc-dir))
-  (rime-show-candidate 'posframe)
-  (rime-inline-ascii-trigger 'shift-l)
-  (rime-disable-predicates '(rime-predicate-after-alphabet-char-p
-                             rime-predicate-prog-in-code-p
-                             rime-predicate-ace-window-p
-                             rime-predicate-hydra-p))
-  (rime-inline-predicates '(rime-predicate-current-uppercase-letter-p))
-  (rime-posframe-fixed-position t)
+  :init
+  (setq default-input-method "rime"
+        rime-librime-root (if IS-MAC (expand-file-name "librime/dist/" doom-etc-dir))
+        rime-user-data-dir (expand-file-name "rime/" doom-etc-dir)
+        rime-show-candidate 'posframe
+        rime-inline-ascii-trigger 'shift-l
+        rime-disable-predicates '(rime-predicate-after-alphabet-char-p
+                                  rime-predicate-prog-in-code-p
+                                  rime-predicate-ace-window-p
+                                  rime-predicate-hydra-p)
+        rime-inline-predicates '(rime-predicate-current-uppercase-letter-p)
+        rime-posframe-fixed-position t)
   :hook
   ((after-init kill-emacs) . (lambda ()
                                (when (fboundp 'rime-lib-sync-user-data)

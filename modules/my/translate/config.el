@@ -55,18 +55,18 @@
 
 ;; insert-translated-name
 (use-package! insert-translated-name
-  :custom
-  (insert-translated-name-default-style 'origin)
   :init
   (map! :leader
         (:prefix-map ("y" . "translate")
-         :desc "Insert translated name" "i" #'insert-translated-name-insert)))
+         :desc "Insert translated name" "i" #'insert-translated-name-insert))
+  :config
+  (setq insert-translated-name-default-style 'origin))
 
 (use-package! english-teacher
   :defer t
-  :custom
-  (english-teacher-backend 'google)
   :hook ((Info-mode
           helpful-mode
           Man-mode
-          Woman-mode) . english-teacher-follow-mode))
+          Woman-mode) . english-teacher-follow-mode)
+  :config
+  (setq english-teacher-backend 'google))
