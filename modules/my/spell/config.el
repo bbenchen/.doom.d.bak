@@ -1,7 +1,8 @@
 ;;; my/spell/config.el -*- lexical-binding: t; -*-
 
 (after! ispell
-  (setq ispell-dictionary "en_US"))
+  (setq ispell-dictionary "en_US")
+  (setq ispell-alternate-dictionary (expand-file-name "english-words" doom-private-dir)))
 
 (when (featurep! :checkers spell)
   (after! nxml-mode
