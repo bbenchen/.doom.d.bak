@@ -17,7 +17,7 @@
   ;; (add-to-list 'initial-frame-alist '(undecorated . t))
 
   ;; transparency
-  (set-frame-parameter nil 'alpha 85)
+  ;; (set-frame-parameter nil 'alpha 85)
 
   ;; maximize the window
   (add-to-list 'initial-frame-alist '(fullscreen . maximized))
