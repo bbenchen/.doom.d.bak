@@ -7,7 +7,7 @@
   (default-input-method "rime")
   (rime-librime-root (if IS-MAC (expand-file-name "librime/dist/" doom-etc-dir)))
   (rime-user-data-dir (expand-file-name "rime/" doom-etc-dir))
-  (rime-show-candidate (if (featurep! +childframe) 'posframe))
+  (rime-show-candidate 'posframe)
   (rime-inline-ascii-trigger 'shift-l)
   (rime-disable-predicates '(rime-predicate-after-alphabet-char-p
                              rime-predicate-prog-in-code-p
@@ -27,8 +27,7 @@
   (custom-set-faces!
     `(rime-default-face :foreground ,(doom-color 'modeline-fg) :background ,(doom-color 'modeline-bg)))
 
-  (if (and (featurep! +childframe)
-           (fboundp 'rime--posframe-display-content))
+  (if (fboundp 'rime--posframe-display-content)
       (defadvice! +rime--posframe-display-content-a (args)
         "给 `rime--posframe-display-content' 传入的字符串加一个全角空
 格，以解决 `posframe' 偶尔吃字的问题。"

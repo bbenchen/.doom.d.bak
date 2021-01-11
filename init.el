@@ -192,14 +192,14 @@
        (default +bindings +smartparens)
 
        :my
-       (chinese +childframe)
+       chinese
        ui
        editor
        spell
        calendar
        dired
        magit
-       (translate +childframe)
+       translate
        tools
        debugger
        lsp
