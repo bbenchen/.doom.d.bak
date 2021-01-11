@@ -47,6 +47,7 @@
 
 ;; company-english-helper
 (use-package! company-english-helper
+  :defer t
   :commands toggle-company-english-helper
   :init
   (map! :leader
