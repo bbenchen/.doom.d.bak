@@ -6,4 +6,4 @@
 (if IS-LINUX
     (package! eaf
       :recipe (:host github :repo "manateelazycat/emacs-application-framework" :files ("*"))
-      :pin "d410bfae4b6c51207e57ab45cde62f84f07e8b51"))
+      :pin "f28acac25c283a1fdc737cb8565050091e9ae92d"))
