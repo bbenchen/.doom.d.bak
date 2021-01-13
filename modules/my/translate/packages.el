@@ -3,7 +3,7 @@
 
 (package! youdao-dictionary :pin "8a4815a43565b9bfd257246e4895b8bfafb9d573")
 
-(package! posframe :pin "3543f1616a6a27a9156403d8677f04ec2f7fc129")
+(package! posframe :pin "efd7ea490defc53a5b78e7469a3a35d225b766cc")
 
 (when (featurep! :completion company)
   (package! company-english-helper
