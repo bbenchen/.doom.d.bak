@@ -12,6 +12,8 @@
 (add-hook! 'emacs-startup-hook (setq default-directory "~/"
                                      org-directory "~/Documents/org"))
 
+(setq x-select-enable-clipboard-manager nil)
+
 ;; workspaces
 (setq +workspaces-on-switch-project-behavior t)
 
