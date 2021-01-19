@@ -26,52 +26,52 @@
         lsp-ui-sideline-ignore-duplicate t)
 
   (defun +lsp-ui-util-line-number-display-width ()
-  "Safe way to get value from function `line-number-display-width'."
-  (if (bound-and-true-p display-line-numbers-mode)
-      ;; For some reason, function `line-number-display-width' gave
-      ;; us error `args-out-of-range' even we do not pass anything towards
-      ;; to it function. See the following links,
-      ;;
-      ;; - https://github.com/emacs-lsp/lsp-ui/issues/294
-      ;; - https://github.com/emacs-lsp/lsp-ui/issues/533 (duplicate)
-      (+ (or (ignore-errors (line-number-display-width)) 0) 2)
-    0))
+    "Safe way to get value from function `line-number-display-width'."
+    (if (bound-and-true-p display-line-numbers-mode)
+        ;; For some reason, function `line-number-display-width' gave
+        ;; us error `args-out-of-range' even we do not pass anything towards
+        ;; to it function. See the following links,
+        ;;
+        ;; - https://github.com/emacs-lsp/lsp-ui/issues/294
+        ;; - https://github.com/emacs-lsp/lsp-ui/issues/533 (duplicate)
+        (+ (or (ignore-errors (line-number-display-width)) 0) 2)
+      0))
 
   (defadvice! lsp-ui-sideline--margin-width-a ()
     :override #'lsp-ui-sideline--margin-width
     (+ (if fringes-outside-margins right-margin-width 0)
-     (or (and (boundp 'fringe-mode)
-              (consp fringe-mode)
-              (or (equal (car fringe-mode) 0)
-                  (equal (cdr fringe-mode) 0))
-              1)
-         (and (boundp 'fringe-mode) (equal fringe-mode 0) 1)
+       (or (and (boundp 'fringe-mode)
+                (consp fringe-mode)
+                (or (equal (car fringe-mode) 0)
+                    (equal (cdr fringe-mode) 0))
+                1)
+           (and (boundp 'fringe-mode) (equal fringe-mode 0) 1)
+           0)
+       (let ((win-fringes (window-fringes)))
+         (if (or (equal (car win-fringes) 0)
+                 (equal (cadr win-fringes) 0))
+             2
+           0))
+       (if (< emacs-major-version 27)
+           ;; This was necessary with emacs < 27, recent versions take
+           ;; into account the display-line width with :align-to
+           (+lsp-ui-util-line-number-display-width)
          0)
-     (let ((win-fringes (window-fringes)))
-       (if (or (equal (car win-fringes) 0)
-               (equal (cadr win-fringes) 0))
-           2
-         0))
-     (if (< emacs-major-version 27)
-         ;; This was necessary with emacs < 27, recent versions take
-         ;; into account the display-line width with :align-to
-         (+lsp-ui-util-line-number-display-width)
-       0)
-     (if (or
-          (bound-and-true-p whitespace-mode)
-          (bound-and-true-p global-whitespace-mode))
-         1
-       0)))
+       (if (or
+            (bound-and-true-p whitespace-mode)
+            (bound-and-true-p global-whitespace-mode))
+           1
+         0)))
 
   (defadvice! lsp-ui-sideline--window-width-a ()
     :override #'lsp-ui-sideline--window-width
     (- (min (window-text-width) (window-body-width))
-     (lsp-ui-sideline--margin-width)
-     (or (and (>= emacs-major-version 27)
-              ;; We still need this number when calculating available space
-              ;; even with emacs >= 27
-              (+lsp-ui-util-line-number-display-width))
-         0))))
+       (lsp-ui-sideline--margin-width)
+       (or (and (>= emacs-major-version 27)
+                ;; We still need this number when calculating available space
+                ;; even with emacs >= 27
+                (+lsp-ui-util-line-number-display-width))
+           0))))
 
 (use-package! lsp-treemacs
   :after lsp-mode
