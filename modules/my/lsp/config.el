@@ -85,9 +85,9 @@
       (push 'lsp-treemacs-symbols-mode aw-ignored-buffers)
       (push 'lsp-treemacs-java-deps-mode aw-ignored-buffers)))
 
-  (with-no-warnings
+  (after! treemacs
     (when (require 'all-the-icons nil t)
-      (treemacs-create-theme "my-colors"
+      (treemacs-create-theme "lsp-colors"
         :extends "doom-colors"
         :config
         (progn
@@ -253,5 +253,4 @@
           (treemacs-create-icon
            :icon (format "%s " (all-the-icons-octicon "repo" :height 1.0 :v-adjust -0.1 :face 'all-the-icons-blue))
            :extensions (java-project))))
-
-      (setq lsp-treemacs-theme "my-colors"))))
+      (setq lsp-treemacs-theme "lsp-colors"))))

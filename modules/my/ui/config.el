@@ -26,10 +26,6 @@
   ;;            (> (display-pixel-width) 1920))
   ;;   (set-frame-parameter nil 'left -3840))
 
-  ;; theme
-  (after! doom-themes
-    (setq doom-themes-treemacs-theme "doom-colors"))
-
   (cond (IS-MAC (pcase (frame-parameter nil 'ns-appearance)
                   ('light (setq doom-theme 'doom-one-light))
                   (_ (setq doom-theme 'doom-one)))
