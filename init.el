@@ -193,6 +193,7 @@
 
        :my
        chinese
+       company
        ui
        editor
        spell
