@@ -19,8 +19,7 @@
 
 ;; projectile
 (after! projectile
-  (setq projectile-project-search-path '("~/")
-        projectile-files-cache-expire 3600)
+  (setq projectile-project-search-path '("~/"))
 
   (dolist (suffix '(".bak" ".exe"))
     (add-to-list 'projectile-globally-ignored-file-suffixes suffix)))
