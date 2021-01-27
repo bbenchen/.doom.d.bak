@@ -3,7 +3,8 @@
 
 (package! exec-path-from-shell :pin "d14d6d2966efe5a1409f84a6b9d998268f74761d")
 (package! command-log-mode :pin "af600e6b4129c8115f464af576505ea8e789db27")
-(if IS-LINUX
-    (package! eaf
-      :recipe (:host github :repo "manateelazycat/emacs-application-framework" :files ("*"))
-      :pin "133b827cc2ed1f43b0a8f92e8048a0728bd9e2c5"))
+(when IS-LINUX
+  (package! eaf
+    :recipe (:host github :repo "manateelazycat/emacs-application-framework" :files ("*"))
+    :pin "fdc6d2828e783433169e40aa05929ee769573f63")
+  (package! epc :pin "e1bfa5ca163273859336e3cc89b4b6460f7f8cda"))
