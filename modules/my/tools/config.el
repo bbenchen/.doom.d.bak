@@ -66,7 +66,7 @@
   (unbind-key "C-c i" eaf-mode-map*)
 
   (require 'eaf-org)
-  (defun eaf-org-open-file (file &optional link)
+  (defun eaf-org-open-file (file &rest _)
     "An wrapper function on `eaf-open'."
     (eaf-open file))
 
