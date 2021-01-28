@@ -3,6 +3,9 @@
 (after! prog-mode
   (set-company-backend! 'prog-mode '(company-capf :with company-yasnippet)))
 
+(after! company
+  (setq company-minimum-prefix-length 1))
+
 (after! company-yasnippet
   (defadvice! company-yasnippet-disable-inline-a (fun command &optional arg &rest _ignore)
     "Enable yasnippet but disable it inline."
