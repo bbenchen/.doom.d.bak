@@ -43,6 +43,16 @@
   (eaf-proxy-port "8889")
   (browse-url-browser-function #'eaf-open-browser)
   :config
+  (if-let ((bookmarks (file-exists-p! (and (or "chromium/Default/Bookmarks"
+                                               "google-chrome/Default/Bookmarks"))
+                                      "~/.config")))
+      (setq eaf-chrome-bookmark-file bookmarks))
+
+  (if-let ((history (file-exists-p! (and (or "chromium/Default/History"
+                                             "google-chrome/Default/History"))
+                                    "~/.config")))
+      (eaf-setq eaf-browser-chrome-history-file history))
+
   ;; (defalias 'browse-web #'eaf-open-browser)
   (eaf-setq eaf-browser-aria2-proxy-host "127.0.0.1")
   (eaf-setq eaf-browser-aria2-proxy-port "8889")
