@@ -59,7 +59,7 @@
   ;; (eaf-setq eaf-browser-dark-mode "false")
   (eaf-setq eaf-browser-enable-adblocker "true")
   (eaf-setq eaf-terminal-font-size "11")
-  (eaf-setq eaf-terminal-font-family "Hack Nerd Font")
+  (eaf-setq eaf-terminal-font-family "Sarasa Mono SC Nerd")
   (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding)
   (eaf-bind-key scroll_down "C-p" eaf-pdf-viewer-keybinding)
   (eaf-bind-key take_photo "p" eaf-camera-keybinding)
