@@ -33,7 +33,7 @@
 
 (use-package! eaf
   :when IS-LINUX
-  :defer t
+  :defer 2
   :custom
   (eaf-config-location (expand-file-name "eaf/" doom-etc-dir))
   (eaf-wm-focus-fix-wms '("i3" "bspwm" "LG3D"))
@@ -53,4 +53,12 @@
   (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding)
   (eaf-bind-key scroll_down "C-p" eaf-pdf-viewer-keybinding)
   (eaf-bind-key take_photo "p" eaf-camera-keybinding)
-  (unbind-key "C-c i" eaf-mode-map*))
+  (unbind-key "C-c i" eaf-mode-map*)
+
+  (require 'eaf-org)
+  (defun eaf-org-open-file (file &optional link)
+    "An wrapper function on `eaf-open'."
+    (eaf-open file))
+
+  ;; use `emacs-application-framework' to open PDF file: link
+  (add-to-list 'org-file-apps '("\\.pdf\\'" . eaf-org-open-file)))
