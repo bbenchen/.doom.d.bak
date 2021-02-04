@@ -3,6 +3,6 @@
 
 (package! valign
   :recipe (:host github :repo "casouri/valign")
-  :pin "1d2ecd2afdb77021eaffc213d9fbbc6d9c38ed82")
+  :pin "6b0345e29cdec8526c9c19b73bdea53295ec998e")
 
-(package! org-link-beautify :pin "621ff93a7229cce9f6090cdabeb318e857278c4c")
+(package! org-link-beautify :pin "50ce65075f5129771c2f03de4ba9437267a83818")
