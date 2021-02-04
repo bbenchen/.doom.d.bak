@@ -11,19 +11,20 @@
         rime-inline-ascii-trigger 'shift-l
         rime-disable-predicates '(rime-predicate-after-alphabet-char-p
                                   rime-predicate-prog-in-code-p
+                                  rime-predicate-in-code-string-p
                                   rime-predicate-ace-window-p
                                   rime-predicate-hydra-p)
-        rime-inline-predicates '(rime-predicate-current-uppercase-letter-p)
         rime-posframe-fixed-position t)
-  :hook
-  ((after-init kill-emacs) . (lambda ()
-                               (when (fboundp 'rime-lib-sync-user-data)
-                                 (ignore-errors (rime-sync)))))
-  ('scala-mode . (lambda ()
-                   (add-hook! 'post-command-hook :local
-                     (if (fboundp 'rime--redisplay)
-                         (rime--redisplay)))))
   :config
+  (add-hook! '(after-init-hook kill-emacs-hook) :append
+    (when (fboundp 'rime-lib-sync-user-data)
+      (ignore-errors (rime-sync))))
+
+  (add-hook! 'scala-mode-hook :append
+    (add-hook! 'post-command-hook :local
+      (if (fboundp 'rime--redisplay)
+          (rime--redisplay))))
+
   (custom-set-faces!
     `(rime-default-face :foreground ,(doom-color 'modeline-fg) :background ,(doom-color 'modeline-bg)))
 
