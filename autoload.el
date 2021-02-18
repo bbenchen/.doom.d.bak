@@ -44,6 +44,20 @@
     (select-window (active-minibuffer-window))))
 
 ;;;###autoload
+(defun hidden-dos-eol ()
+  "Do not show ^M in files containing mixed UNIX and DOS line endings."
+  (interactive)
+  (setq buffer-display-table (make-display-table))
+  (aset buffer-display-table ?\^M []))
+
+;;;###autoload
+(defun remove-dos-eol ()
+  "Replace DOS eolns CR LF with Unix eolns CR"
+  (interactive)
+  (goto-char (point-min))
+  (while (search-forward "\r" nil t) (replace-match "")))
+
+;;;###autoload
 (defun toggle-frame-transparency (&optional frame)
   "Toggle between transparent and opaque state for FRAME.
 If FRAME is nil, it defaults to the selected frame."
