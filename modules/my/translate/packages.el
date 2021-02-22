@@ -3,7 +3,7 @@
 
 (package! youdao-dictionary :pin "8a4815a43565b9bfd257246e4895b8bfafb9d573")
 
-(package! posframe :pin "5e654b0f7023055a0acae82eb4e68904819c3529")
+(package! posframe :pin "3454a4cb9d218c38f9c5b88798dfb2f7f85ad936")
 
 (when (featurep! :completion company)
   (package! company-english-helper
@@ -16,4 +16,4 @@
 
 (package! english-teacher
   :recipe (:host github :repo "loyalpartner/english-teacher.el")
-  :pin "08da3aa37e7e1aaa17bc8b1c58011c356ee5b035")
+  :pin "aaf37ffa3df92ac447f22e848502bb86f6a11eef")

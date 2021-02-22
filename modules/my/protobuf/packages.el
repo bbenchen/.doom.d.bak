@@ -3,4 +3,4 @@
 
 (package! protobuf-mode
   :recipe (:host github :repo "emacsmirror/protobuf-mode" :files ("*.el"))
-  :pin "34d2bec69ddec511ec2dd4a8108fb920c27efe11")
+  :pin "08557364b8187ac25b008782d8acab84a69d8881")
