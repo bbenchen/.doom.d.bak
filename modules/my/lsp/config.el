@@ -83,10 +83,11 @@
          ("M-<f8>" . #'lsp-treemacs-symbols))
   :init (lsp-treemacs-sync-mode 1)
   :config
-  (with-eval-after-load 'ace-window
+  (after! ace-window
     (when (boundp 'aw-ignored-buffers)
-      (push 'lsp-treemacs-symbols-mode aw-ignored-buffers)
-      (push 'lsp-treemacs-java-deps-mode aw-ignored-buffers)))
+      (push lsp-treemacs-symbols-buffer-name aw-ignored-buffers)
+      (push lsp-treemacs-deps-buffer-name aw-ignored-buffers)
+      (push lsp-treemacs-errors-buffer-name aw-ignored-buffers)))
 
   (after! treemacs
     (when (require 'all-the-icons nil t)
