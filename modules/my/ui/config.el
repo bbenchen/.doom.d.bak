@@ -31,15 +31,15 @@
   ;;   (set-frame-parameter nil 'left -3840))
 
   (cond (IS-MAC (pcase (frame-parameter nil 'ns-appearance)
-                  ('light (setq doom-theme 'doom-one-light))
-                  (_ (setq doom-theme 'doom-one)))
+                  ('light (setq doom-theme 'doom-nord-light))
+                  (_ (setq doom-theme 'doom-nord)))
                 (if (boundp 'ns-system-appearance-change-functions)
                     (add-hook! 'ns-system-appearance-change-functions
                                #'(lambda (appearance)
                                    (mapc #'disable-theme custom-enabled-themes)
                                    (pcase appearance
-                                     ('light (load-theme 'doom-one-light t))
-                                     ('dark (load-theme 'doom-one t)))))))
+                                     ('light (load-theme 'doom-nord-light t))
+                                     ('dark (load-theme 'doom-nord t)))))))
         (t (setq doom-theme 'doom-nord)))
 
   ;; org
