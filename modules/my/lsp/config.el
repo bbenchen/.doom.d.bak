@@ -78,11 +78,11 @@
 
 (use-package! lsp-treemacs
   :after lsp-mode
-  :bind (:map lsp-mode-map
-         ("C-<f8>" . #'lsp-treemacs-java-deps-list)
-         ("M-<f8>" . #'lsp-treemacs-symbols))
   :init (lsp-treemacs-sync-mode 1)
   :config
+  (map! (:map lsp-mode-map
+         ("C-<f8>" #'lsp-treemacs-java-deps-list)
+         ("M-<f8>" #'lsp-treemacs-symbols)))
   (after! ace-window
     (when (boundp 'aw-ignored-buffers)
       (push lsp-treemacs-symbols-buffer-name aw-ignored-buffers)
