@@ -11,7 +11,6 @@
         rime-inline-ascii-trigger 'shift-l
         rime-disable-predicates '(rime-predicate-after-alphabet-char-p
                                   rime-predicate-prog-in-code-p
-                                  rime-predicate-in-code-string-p
                                   rime-predicate-ace-window-p
                                   rime-predicate-hydra-p)
         rime-posframe-fixed-position t)
