@@ -8,7 +8,7 @@
            (md-lint-dir (and md-file
                              (locate-dominating-file md-file md-lint))))
       (setq-local flycheck-markdown-markdownlint-cli-config
-                  (expand-file-name (concat md-lint-dir md-lint))))))
+                  (expand-file-name md-lint md-lint-dir)))))
 
 (after! grip-mode
   (if (featurep 'xwidget-internal)
