@@ -24,3 +24,13 @@
   (dolist (suffix '(".bak" ".exe"))
     (add-to-list 'projectile-globally-ignored-file-suffixes suffix)))
 
+(if (featurep! :editor file-templates)
+    (set-file-template! "/pom\\.xml$" :trigger "__pom.xml" :mode 'nxml-mode))
+
+(after! nxml-mode
+  (setq nxml-auto-insert-xml-declaration-flag nil
+        nxml-slash-auto-complete-flag t)
+
+  (defadvice! +nxml-electric-slash-a (&optional _)
+    :after #'nxml-electric-slash
+    (save-excursion (delete-char -1))))
