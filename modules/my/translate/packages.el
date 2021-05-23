@@ -2,6 +2,7 @@
 ;;; my/translate/packages.el
 
 (package! youdao-dictionary :pin "8a4815a43565b9bfd257246e4895b8bfafb9d573")
+(package! google-translate :pin "0f7f48a09bca064999ecea03102a7c96f52cbd1b")
 
 (package! posframe :pin "739d8fd1081bdd0d20dee9e437d64df58747b871")
 
