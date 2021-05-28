@@ -56,7 +56,7 @@
                            :internal-border-width 10)
             (add-hook 'post-command-hook 'youdao-dictionary-hide-tooltip-after-move)
             (setq youdao-dictionary-tooltip-last-point (point))
-            (setq youdao-dictionary-tooltip-last-scroll-offset (window-start))            )
+            (setq youdao-dictionary-tooltip-last-scroll-offset (window-start)))
         (message "Nothing to look up")))))
 
 ;; google-translate
