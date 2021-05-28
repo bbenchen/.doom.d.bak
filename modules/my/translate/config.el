@@ -10,6 +10,7 @@
          :desc "Play voice at point" "p" #'youdao-dictionary-play-voice-at-point))
   :config
   (set-popup-rule! "^\\*Youdao Dictionary\\*" :side 'right :size 0.4 :select t)
+
   (after! auth-source
     (let ((credentials (auth-source-user-and-password "openapi.youdao.com")))
       (setq youdao-dictionary-app-key (car credentials)
@@ -36,22 +37,16 @@
           (posframe-delete youdao-dictionary-buffer-name)
           (kill-buffer youdao-dictionary-buffer-name)))))
 
-  (defadvice! +youdao-dictionary--posframe-tip-a (string)
+  (defadvice! +youdao-dictionary--posframe-tip-a (text)
     "Show STRING using posframe-show."
     :override #'youdao-dictionary--posframe-tip
     (let ((word (youdao-dictionary--region-or-word)))
       (if word
           (progn
-            (with-current-buffer (get-buffer-create youdao-dictionary-buffer-name)
-              (let ((inhibit-read-only t))
-                (erase-buffer)
-                (youdao-dictionary-mode)
-                (insert string)
-                (goto-char (point-min))
-                (set (make-local-variable 'youdao-dictionary-current-buffer-word) word)))
             (posframe-show youdao-dictionary-buffer-name
                            :background-color (face-background 'mode-line)
                            :foreground-color (face-foreground 'mode-line)
+                           :string text
                            :timeout 30
                            :internal-border-width 10)
             (add-hook 'post-command-hook 'youdao-dictionary-hide-tooltip-after-move)
