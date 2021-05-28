@@ -10,7 +10,8 @@
       auth-sources '("~/.authinfo.gpg"))
 
 (add-hook! 'emacs-startup-hook (setq default-directory "~/"
-                                     org-directory "~/Documents/org"))
+                                     org-directory "~/Documents/org"
+                                     org-agenda-files (list org-directory)))
 
 (setq x-select-enable-clipboard-manager nil)
 
