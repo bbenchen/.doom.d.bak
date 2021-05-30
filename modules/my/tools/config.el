@@ -3,7 +3,8 @@
 ;; lookup
 (if (and IS-MAC
          (featurep 'xwidget-internal))
-    (setq +lookup-open-url-fn #'+lookup-xwidget-webkit-open-url-fn))
+    (setq +lookup-open-url-fn #'+lookup-xwidget-webkit-open-url-fn
+          browse-url-browser-function #'xwidget-webkit-browse-url))
 
 ;; exec-path-from-shell
 (use-package! exec-path-from-shell
