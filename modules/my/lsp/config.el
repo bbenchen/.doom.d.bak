@@ -29,7 +29,7 @@
         lsp-ui-sideline-ignore-duplicate t))
 
 (after! lsp-treemacs
-  (lsp-treemacs-sync-mode 1)
+  (lsp-treemacs-sync-mode -1)
 
   (map! (:map lsp-mode-map
          ("C-<f8>" #'lsp-treemacs-java-deps-list)
