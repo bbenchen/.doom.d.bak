@@ -9,7 +9,7 @@
                                 "-Xms4G"
                                 "-Xmx4G"
                                 "-Xmn2G"
-                                "-Xss256K"
+                                "-Xss512K"
                                 "-XX:MetaspaceSize=256M"
                                 "-XX:MaxMetaspaceSize=512M"
                                 "-XX:ReservedCodeCacheSize=256M"
