@@ -68,7 +68,7 @@
         google-translate-default-target-language "zh-CN")
 
   (map! :leader
-        :prefix ("y" . "Translate")
+        :prefix ("y" . "translate")
         "g" #'google-translate-chinese-at-point++
         "G" #'google-translate-chinese-at-point)
   :config
