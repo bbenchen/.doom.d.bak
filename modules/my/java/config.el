@@ -32,8 +32,8 @@
   (if-let ((java-home (getenv "JAVA_HOME")))
       (setq lsp-java-java-path (concat java-home "/bin/java")))
 
-  (setq lsp-java-format-enabled nil
-        lsp-java-format-comments-enabled nil
+  (setq lsp-java-format-enabled t
+        lsp-java-format-comments-enabled t
         lsp-java-format-on-type-enabled nil
         lsp-java-format-settings-url (concat "file://" (expand-file-name "eclipse-java-google-style.xml" doom-private-dir))
         lsp-java-format-settings-profile "GoogleStyle"
@@ -45,15 +45,3 @@
   (when (featurep! :tools debugger +lsp)
     (setq lsp-jt-root (concat lsp-java-server-install-dir "java-test/server/")
           dap-java-test-runner (concat lsp-java-server-install-dir "test-runner/junit-platform-console-standalone.jar"))))
-
-(when (and (featurep! :editor format)
-           (featurep! +google-java-format))
-  (set-formatter! 'google-java-format
-    '("google-java-format" "-" "--skip-sorting-imports")
-    :modes 'java-mode)
-
-  ;; Enforce Google Java Style Guide.
-  ;; See https://google.github.io/styleguide/javaguide.html
-  (setq-hook! 'java-mode-hook
-    tab-width 2
-    fill-column 120))
