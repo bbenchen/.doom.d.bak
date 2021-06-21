@@ -33,7 +33,6 @@
   (setq command-log-mode-auto-show t))
 
 (use-package! eaf
-  :when IS-LINUX
   :defer 2
   :custom
   (eaf-config-location (expand-file-name "eaf/" doom-etc-dir))
@@ -42,8 +41,12 @@
   (eaf-proxy-type "http")
   (eaf-proxy-host "127.0.0.1")
   (eaf-proxy-port "8889")
-  (browse-url-browser-function #'eaf-open-browser)
   :config
+  (require 'eaf-all-the-icons)
+
+  (setq +lookup-open-url-fn #'eaf-open-browser
+        browse-url-browser-function #'eaf-open-browser)
+
   (if-let ((bookmarks (file-exists-p! (and (or "chromium/Default/Bookmarks"
                                                "google-chrome/Default/Bookmarks"))
                                       "~/.config")))
@@ -57,7 +60,7 @@
   ;; (defalias 'browse-web #'eaf-open-browser)
   (eaf-setq eaf-browser-aria2-proxy-host "127.0.0.1")
   (eaf-setq eaf-browser-aria2-proxy-port "8889")
-  ;; (eaf-setq eaf-browser-dark-mode "false")
+  (eaf-setq eaf-browser-dark-mode "true")
   (eaf-setq eaf-browser-enable-adblocker "true")
   (eaf-setq eaf-terminal-font-size "11")
   (eaf-setq eaf-terminal-font-family "Sarasa Mono SC Nerd")
@@ -66,10 +69,11 @@
   (eaf-bind-key take_photo "p" eaf-camera-keybinding)
   (unbind-key "C-c i" eaf-mode-map*)
 
-  (require 'eaf-org)
-  (defun eaf-org-open-file (file &rest _)
-    "An wrapper function on `eaf-open'."
-    (eaf-open file))
+  (after! org
+    (require 'eaf-org)
+    (defun eaf-org-open-file (file &rest _)
+      "An wrapper function on `eaf-open'."
+      (eaf-open file))
 
-  ;; use `emacs-application-framework' to open PDF file: link
-  (add-to-list 'org-file-apps '("\\.pdf\\'" . eaf-org-open-file)))
+    ;; use `emacs-application-framework' to open PDF file: link
+    (add-to-list 'org-file-apps '("\\.pdf\\'" . eaf-org-open-file))))
