@@ -139,12 +139,12 @@
        (org                             ; organize your plain life in plain text
         +dragndrop                      ; drag & drop files/images into org buffers
         +noter
-        ;; +hugo                           ; use Emacs for hugo blogging
-        ;; +jupyter                        ; ipython/jupyter support for babel
+        ;;+hugo                         ; use Emacs for hugo blogging
+        ;;+jupyter                      ; ipython/jupyter support for babel
         +pandoc                         ; export-with-pandoc support
-        ;; +present                        ; using Emacs for presentations
-        ;; +pomodoro                       ; be fruitful with the tomato technique
-        ;; +journal                        ; using org-mode for presentations
+        ;;+present                      ; using Emacs for presentations
+        ;;+pomodoro                     ; be fruitful with the tomato technique
+        ;;+journal                      ; using org-mode for presentations
         +pretty)
        ;;perl                           ; write code no one else can comprehend
        ;;php                            ; perl's insecure younger brother
