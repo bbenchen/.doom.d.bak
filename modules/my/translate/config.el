@@ -217,11 +217,4 @@
   :config
   (setq insert-translated-name-default-style 'origin))
 
-(use-package! english-teacher
-  :defer t
-  :hook ((Info-mode
-          helpful-mode
-          Man-mode
-          Woman-mode) . english-teacher-follow-mode)
-  :config
-  (setq english-teacher-backend 'google))
+
