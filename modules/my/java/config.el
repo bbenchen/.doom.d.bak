@@ -37,11 +37,8 @@
         lsp-java-format-on-type-enabled nil
         lsp-java-format-settings-url (concat "file://" (expand-file-name "eclipse-java-google-style.xml" doom-private-dir))
         lsp-java-format-settings-profile "GoogleStyle"
+        lsp-java-completion-max-results 200
         lsp-java-trace-server "messages"
         lsp-java-maven-download-sources t
         ;; Support java decompiler
-        lsp-java-content-provider-preferred "fernflower")
-
-  (when (featurep! :tools debugger +lsp)
-    (setq lsp-jt-root (concat lsp-java-server-install-dir "java-test/server/")
-          dap-java-test-runner (concat lsp-java-server-install-dir "test-runner/junit-platform-console-standalone.jar"))))
+        lsp-java-content-provider-preferred "fernflower"))
