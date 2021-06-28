@@ -4,6 +4,10 @@
 (after! magit
   (setq magit-revision-show-gravatars nil))
 
+(after! git-commit
+  (if (featurep! :checkers spell +flyspell)
+      (remove-hook! 'git-commit-mode-hook #'flyspell-mode)))
+
 ;; magit-todos
 (if (executable-find "nice")
     (setq magit-todos-nice t))
