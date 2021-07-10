@@ -1,4 +1,4 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; my/editor/packages.el
 
-(package! hungry-delete :pin "0513152525c38519a5597db2d6495b56dd9cc3f0")
+(package! hungry-delete :pin "d919e555e5c13a2edf4570f3ceec84f0ade71657")
