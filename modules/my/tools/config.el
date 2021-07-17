@@ -29,8 +29,34 @@
 
 (use-package! command-log-mode
   :commands global-command-log-mode
-  :config
-  (setq command-log-mode-auto-show t))
+  :init
+  (setq command-window-frame nil)
+
+  (defun toggle-command-window ()
+    "Show or hide the command window"
+    (interactive)
+    (if command-window-frame
+        (progn
+          (posframe-delete-frame command-log-buffer)
+          (setq command-window-frame nil))
+      (progn
+        (global-command-log-mode t)
+        (with-current-buffer
+            (setq command-log-buffer
+                  (get-buffer-create " *command-log*"))
+          (text-scale-set -0.5))
+        (setq command-window-frame
+              (posframe-show
+               command-log-buffer
+               :position `(,(- (x-display-pixel-width) 420) . 0)
+               :width 55
+               :height 5
+               :min-width 55
+               :min-height 5
+               :internal-border-width 10
+               :background-color (face-background 'mode-line)
+               :foreground-color (face-foreground 'mode-line)
+               :override-parameters '((parent-frame . nil))))))))
 
 (use-package! eaf
   :defer 2
