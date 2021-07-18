@@ -35,3 +35,8 @@
   (defadvice! +nxml-electric-slash-a (&optional _)
     :after #'nxml-electric-slash
     (save-excursion (delete-char -1))))
+
+(after! recentf
+  (add-to-list 'recentf-exclude "\\.mail")
+  (add-to-list 'recentf-exclude "/var")
+  (add-to-list 'recentf-exclude "/autosave"))
