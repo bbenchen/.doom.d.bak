@@ -4,7 +4,8 @@
   (set-company-backend! 'prog-mode '(company-capf :with company-yasnippet)))
 
 (after! company
-  (setq company-minimum-prefix-length 1))
+  (setq company-minimum-prefix-length 2)
+  (add-to-list #'company-transformers #'delete-dups))
 
 (after! company-yasnippet
   (defadvice! company-yasnippet-disable-inline-a (fun command &optional arg &rest _ignore)
