@@ -165,7 +165,7 @@
        yaml                             ; JSON, but readable
 
        :email
-       ;;(mu4e +gmail)                  ; WIP
+       mu4e                             ; WIP
        ;;notmuch                        ; WIP
        ;;(wanderlust +gmail)            ; WIP
 
@@ -201,6 +201,7 @@
        dired
        magit
        translate
+       email
        tools
        debugger
        lsp
