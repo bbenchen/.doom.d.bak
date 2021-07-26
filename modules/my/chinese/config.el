@@ -40,10 +40,9 @@
 
   (map! (:map rime-mode-map
          (:when IS-MAC
-          "s-j" #'rime-force-enable)
+          "M-j" #'rime-force-enable)
          (:unless IS-MAC
           "C-j" #'rime-force-enable)
-         "M-j" #'rime-inline-ascii
          "C-`" #'rime-send-keybinding)))
 
 ;;; Hacks
