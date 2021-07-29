@@ -80,7 +80,9 @@
   :config
   (map! (:map mu4e-headers-mode-map
          "M-n" #'mu4e-views-cursor-msg-view-window-down
-         "M-p" #'mu4e-views-cursor-msg-view-window-up))
+         "M-p" #'mu4e-views-cursor-msg-view-window-up
+         "o" #'mu4e-views-mu4e-view-open-attachment
+         "e" #'mu4e-views-mu4e-view-save-attachment))
   (setq mu4e-views-completion-method 'ivy)
   (setq mu4e-views-default-view-method "html")
   (mu4e-views-mu4e-use-view-msg-method "html")
