@@ -82,9 +82,9 @@
          "M-n" #'mu4e-views-cursor-msg-view-window-down
          "M-p" #'mu4e-views-cursor-msg-view-window-up))
   (setq mu4e-views-completion-method 'ivy)
-  (setq mu4e-views-default-view-method "gnus")
-  (mu4e-views-mu4e-use-view-msg-method "gnus")
-  (setq mu4e-views-next-previous-message-behaviour 'always-switch-to-view)
+  (setq mu4e-views-default-view-method "html")
+  (mu4e-views-mu4e-use-view-msg-method "html")
+  ;; (setq mu4e-views-next-previous-message-behaviour 'always-switch-to-view)
   (setq mu4e-views-auto-view-selected-message t))
 
 (use-package! mu4e-alert
