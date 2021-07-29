@@ -85,7 +85,12 @@
   (setq mu4e-views-default-view-method "html")
   (mu4e-views-mu4e-use-view-msg-method "html")
   ;; (setq mu4e-views-next-previous-message-behaviour 'always-switch-to-view)
-  (setq mu4e-views-auto-view-selected-message t))
+  (setq mu4e-views-auto-view-selected-message t)
+  (defadvice! mu4e~headers-quit-buffer-a (fun)
+    :around #'mu4e~headers-quit-buffer
+    (if (mu4e-views-get-view-window-maybe)
+        (mu4e-views-mu4e-headers-windows-only)
+      (funcall fun))))
 
 (use-package! mu4e-alert
   :after mu4e
