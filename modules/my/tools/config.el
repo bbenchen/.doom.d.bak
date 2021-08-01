@@ -30,6 +30,8 @@
 (use-package! command-log-mode
   :commands global-command-log-mode
   :init
+  (setq command-log-mode-auto-show nil)
+
   (defvar command-window-frame nil)
 
   (defun toggle-command-window ()
@@ -37,9 +39,6 @@
     (interactive)
     (if (posframe-workable-p)
         (progn
-          (if command-log-mode-auto-show
-              (setq command-log-mode-auto-show nil))
-
           (if command-window-frame
               (progn
                 (global-command-log-mode -1)
