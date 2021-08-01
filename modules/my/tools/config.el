@@ -30,33 +30,45 @@
 (use-package! command-log-mode
   :commands global-command-log-mode
   :init
-  (setq command-window-frame nil)
+  (defvar command-window-frame nil)
 
   (defun toggle-command-window ()
     "Show or hide the command window"
     (interactive)
-    (if command-window-frame
+    (if (posframe-workable-p)
         (progn
-          (posframe-delete-frame command-log-buffer)
-          (setq command-window-frame nil))
+          (if command-log-mode-auto-show
+              (setq command-log-mode-auto-show nil))
+
+          (if command-window-frame
+              (progn
+                (global-command-log-mode -1)
+                (posframe-delete-frame clm/command-log-buffer)
+                (setq command-window-frame nil))
+            (progn
+              (global-command-log-mode 1)
+              (with-current-buffer
+                  (setq clm/command-log-buffer
+                        (get-buffer-create " *command-log*"))
+                (text-scale-set -0.5))
+              (setq command-window-frame
+                    (posframe-show
+                     clm/command-log-buffer
+                     :position `(,(- (x-display-pixel-width) 420) . 0)
+                     :width 55
+                     :height 5
+                     :min-width 55
+                     :min-height 5
+                     :internal-border-width 10
+                     :background-color (face-background 'mode-line)
+                     :foreground-color (face-foreground 'mode-line)
+                     :override-parameters '((parent-frame . nil)))))))
       (progn
-        (global-command-log-mode t)
-        (with-current-buffer
-            (setq command-log-buffer
-                  (get-buffer-create " *command-log*"))
-          (text-scale-set -0.5))
-        (setq command-window-frame
-              (posframe-show
-               command-log-buffer
-               :position `(,(- (x-display-pixel-width) 420) . 0)
-               :width 55
-               :height 5
-               :min-width 55
-               :min-height 5
-               :internal-border-width 10
-               :background-color (face-background 'mode-line)
-               :foreground-color (face-foreground 'mode-line)
-               :override-parameters '((parent-frame . nil))))))))
+        (if (not command-log-mode-auto-show)
+            (setq command-log-mode-auto-show t))
+        (if (bound-and-true-p global-command-log-mode)
+            (global-command-log-mode -1)
+          (global-command-log-mode 1))))))
 
 (use-package! eaf
   :defer 2
