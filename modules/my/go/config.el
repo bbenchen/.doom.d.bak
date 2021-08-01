@@ -46,15 +46,15 @@
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t))))
 
-(use-package! go-impl
-  :defer t
-  :init
-  (map! :map go-mode-map
-        :localleader
-        (:prefix ("r" . "reflect")
-         "I" #'go-impl))
-  :config
-  (setq go-impl-enter-function t))
+;; (use-package! go-impl
+;;   :defer t
+;;   :init
+;;   (map! :map go-mode-map
+;;         :localleader
+;;         (:prefix ("r" . "reflect")
+;;          "I" #'go-impl))
+;;   :config
+;;   (setq go-impl-enter-function t))
 
 (use-package! go-fill-struct
   :defer t
