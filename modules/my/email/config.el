@@ -65,48 +65,40 @@
             :query "flag:attach AND maildir:/INBOX/ AND NOT flag:trash"
             :key ?p))))
 
-(after! org-msg
-  (setq org-msg-convert-citation t
-        org-msg-signature "
-
- Best Regards,
-
- #+begin_signature
- *陈显彬（Mike Chen）*
- #+end_signature"))
-
-(use-package! mu4e-views
-  :after mu4e
-  :config
-  (map! (:map mu4e-headers-mode-map
-         "M-n" #'mu4e-views-cursor-msg-view-window-down
-         "M-p" #'mu4e-views-cursor-msg-view-window-up
-         "o" #'mu4e-views-mu4e-view-open-attachment
-         "e" #'mu4e-views-mu4e-view-save-attachment))
-  (setq mu4e-views-completion-method 'ivy)
-  (setq mu4e-views-default-view-method "html")
-  (mu4e-views-mu4e-use-view-msg-method "html")
-  ;; (setq mu4e-views-next-previous-message-behaviour 'always-switch-to-view)
-  (setq mu4e-views-auto-view-selected-message t)
-  (defadvice! mu4e~headers-quit-buffer-a (fun)
-    :around #'mu4e~headers-quit-buffer
-    (if (mu4e-views-get-view-window-maybe)
-        (mu4e-views-mu4e-headers-windows-only)
-      (funcall fun))))
-
-(use-package! mu4e-alert
-  :after mu4e
-  :config
-  ;; Show unread emails from all inboxes
-  (setq doom-modeline-mu4e t
-        mu4e-alert-interesting-mail-query "flag:unread AND maildir:/INBOX/ AND NOT flag:trash")
+(after! mu4e-alert
+  (if IS-MAC
+      (mu4e-alert-set-default-style 'notifier))
 
   ;; Show notifications for mails already notified
   (setq mu4e-alert-notify-repeated-mails nil)
 
-  (if IS-MAC
-      (mu4e-alert-set-default-style 'notifier)
-    (mu4e-alert-set-default-style 'libnotify))
+  (setq mu4e-alert-interesting-mail-query "flag:unread AND maildir:/INBOX/ AND NOT flag:trash"))
 
-  (mu4e-alert-enable-notifications)
-  (mu4e-alert-enable-mode-line-display))
+;; (after! org-msg
+;;   (setq org-msg-convert-citation t
+;;         org-msg-signature "
+
+;;  Best Regards,
+
+;;  #+begin_signature
+;;  *陈显彬（Mike Chen）*
+;;  #+end_signature"))
+
+;; (use-package! mu4e-views
+;;   :after mu4e
+;;   :config
+;;   (map! (:map mu4e-headers-mode-map
+;;          "M-n" #'mu4e-views-cursor-msg-view-window-down
+;;          "M-p" #'mu4e-views-cursor-msg-view-window-up
+;;          "o" #'mu4e-views-mu4e-view-open-attachment
+;;          "e" #'mu4e-views-mu4e-view-save-attachment))
+;;   (setq mu4e-views-completion-method 'ivy)
+;;   (setq mu4e-views-default-view-method "html")
+;;   (mu4e-views-mu4e-use-view-msg-method "html")
+;;   ;; (setq mu4e-views-next-previous-message-behaviour 'always-switch-to-view)
+;;   (setq mu4e-views-auto-view-selected-message t)
+;;   (defadvice! mu4e~headers-quit-buffer-a (fun)
+;;     :around #'mu4e~headers-quit-buffer
+;;     (if (mu4e-views-get-view-window-maybe)
+;;         (mu4e-views-mu4e-headers-windows-only)
+;;       (funcall fun))))
