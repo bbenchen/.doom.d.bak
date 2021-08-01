@@ -71,7 +71,7 @@
           (global-command-log-mode 1))))))
 
 (use-package! eaf
-  :defer 2
+  :defer 5
   :custom
   (eaf-config-location (expand-file-name "eaf/" doom-etc-dir))
   (eaf-wm-focus-fix-wms '("i3" "bspwm" "dwm" "LG3D"))
@@ -84,6 +84,9 @@
 
   (setq +lookup-open-url-fn #'eaf-open-browser
         browse-url-browser-function #'eaf-open-browser)
+
+  (if IS-MAC
+      (setq eaf-find-file-ext-blacklist '("avi" "webm" "rmvb" "ogg" "mp4" "mkv" "m4v")))
 
   (if-let ((bookmarks (file-exists-p! (and (or "chromium/Default/Bookmarks"
                                                "google-chrome/Default/Bookmarks"))
