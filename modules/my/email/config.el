@@ -19,6 +19,9 @@
                     t)
 
 (after! mu4e
+  ;; load mu4e-contrib
+  (require 'mu4e-contrib)
+
   (setq mu4e-bookmarks
         `(,(make-mu4e-bookmark
             :name  "Unread messages"
