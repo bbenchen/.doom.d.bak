@@ -77,15 +77,15 @@
 
   (setq mu4e-alert-interesting-mail-query "flag:unread AND maildir:/INBOX/ AND NOT flag:trash"))
 
-;; (after! org-msg
-;;   (setq org-msg-convert-citation t
-;;         org-msg-signature "
+(after! org-msg
+  (setq org-msg-convert-citation t
+        org-msg-signature "
 
-;;  Best Regards,
+ Best Regards,
 
-;;  #+begin_signature
-;;  *陈显彬（Mike Chen）*
-;;  #+end_signature"))
+ #+begin_signature
+ *陈显彬（Mike Chen）*
+ #+end_signature"))
 
 ;; (use-package! mu4e-views
 ;;   :after mu4e
