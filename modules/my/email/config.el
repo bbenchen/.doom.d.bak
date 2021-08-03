@@ -22,6 +22,45 @@
   ;; load mu4e-contrib
   (require 'mu4e-contrib)
 
+  ;;
+  ;; Xapian, the search engine of mu has a poor support of CJK characters,
+  ;; which causes only query contains no more than 2 CJK characters works.
+  ;;
+  ;; https://researchmap.jp/?page_id=457
+  ;;
+  ;; This workaroud breaks any CJK words longer than 2 characters into
+  ;; combines of bi-grams. Example: 我爱你 -> (我爱 爱你)
+  ;;
+  (defun mu4e~break-cjk-word (word)
+    "Break CJK word into list of bi-grams like: 我爱你 -> 我爱 爱你"
+    (if (or (<= (length word) 2)
+            (equal (length word) (string-bytes word))) ; only ascii chars
+        word
+      (let ((pos nil)
+            (char-list nil)
+            (br-word nil))
+        (if (setq pos (string-match ":" word))     ; like: "s:abc"
+            (concat (substring word 0 (+ 1 pos))
+                    (mu4e~break-cjk-word (substring word (+ 1 pos))))
+          (if (memq 'ascii (find-charset-string word)) ; ascii mixed with others like: abcあいう
+              word
+            (progn
+              (setq char-list (split-string word "" t))
+              (while (cdr char-list)
+                (setq br-word (concat br-word (concat (car char-list) (cadr char-list)) " "))
+                (setq char-list (cdr char-list)))
+              br-word))))))
+
+  (defun mu4e~break-cjk-query (expr)
+    "Break CJK strings into bi-grams in query."
+    (let ((word-list (split-string expr " " t))
+          (new ""))
+      (dolist (word word-list new)
+        (setq new (concat new (mu4e~break-cjk-word word) " ")))))
+
+  (setq mu4e-query-rewrite-function #'mu4e~break-cjk-query)
+
+
   (setq mu4e-bookmarks
         `(,(make-mu4e-bookmark
             :name  "Unread messages"
@@ -87,21 +126,22 @@
  *陈显彬（Mike Chen）*
  #+end_signature"))
 
-;; (use-package! mu4e-views
-;;   :after mu4e
-;;   :config
-;;   (map! (:map mu4e-headers-mode-map
-;;          "M-n" #'mu4e-views-cursor-msg-view-window-down
-;;          "M-p" #'mu4e-views-cursor-msg-view-window-up
-;;          "o" #'mu4e-views-mu4e-view-open-attachment
-;;          "e" #'mu4e-views-mu4e-view-save-attachment))
-;;   (setq mu4e-views-completion-method 'ivy)
-;;   (setq mu4e-views-default-view-method "html")
-;;   (mu4e-views-mu4e-use-view-msg-method "html")
-;;   ;; (setq mu4e-views-next-previous-message-behaviour 'always-switch-to-view)
-;;   (setq mu4e-views-auto-view-selected-message t)
-;;   (defadvice! mu4e~headers-quit-buffer-a (fun)
-;;     :around #'mu4e~headers-quit-buffer
-;;     (if (mu4e-views-get-view-window-maybe)
-;;         (mu4e-views-mu4e-headers-windows-only)
-;;       (funcall fun))))
+(use-package! mu4e-views
+  :after mu4e
+  :config
+  (map! (:map mu4e-headers-mode-map
+         "M-n" #'mu4e-views-cursor-msg-view-window-down
+         "M-p" #'mu4e-views-cursor-msg-view-window-up
+         "o" #'mu4e-views-mu4e-view-open-attachment
+         "e" #'mu4e-views-mu4e-view-save-attachment))
+  (if (featurep! :completion ivy)
+      (setq mu4e-views-completion-method 'ivy))
+  (setq mu4e-views-default-view-method "html")
+  (mu4e-views-mu4e-use-view-msg-method "html")
+  ;; (setq mu4e-views-next-previous-message-behaviour 'always-switch-to-view)
+  (setq mu4e-views-auto-view-selected-message t)
+  (defadvice! mu4e~headers-quit-buffer-a (fun)
+    :around #'mu4e~headers-quit-buffer
+    (if (mu4e-views-get-view-window-maybe)
+        (mu4e-views-mu4e-headers-windows-only)
+      (funcall fun))))
