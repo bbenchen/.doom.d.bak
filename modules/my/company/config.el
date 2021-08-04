@@ -1,18 +1,18 @@
 ;;; my/company/config.el -*- lexical-binding: t; -*-
 
 (after! prog-mode
-  (set-company-backend! 'prog-mode '(company-capf :with company-yasnippet)))
+  (set-company-backend! 'prog-mode '(:separate company-yasnippet company-capf)))
 
 (after! company
   (setq company-minimum-prefix-length 2)
   (add-to-list #'company-transformers #'delete-dups))
 
 (after! company-yasnippet
-  (defadvice! company-yasnippet-disable-inline-a (fun command &optional arg &rest _ignore)
+  (defadvice! company-yasnippet-disable-inline-a (fn cmd &optional arg &rest _ignore)
     "Enable yasnippet but disable it inline."
     :around #'company-yasnippet
-    (if (eq command 'prefix)
-        (when-let ((prefix (funcall fun 'prefix)))
+    (if (eq cmd  'prefix)
+        (when-let ((prefix (funcall fn 'prefix)))
           (unless (memq (char-before (- (point) (length prefix)))
                         '(?. ?< ?> ?\( ?\) ?\[ ?{ ?} ?\" ?' ?`))
             prefix))
@@ -24,4 +24,4 @@
                  (len (length arg)))
             (put-text-property 0 len 'yas-annotation snip arg)
             (put-text-property 0 len 'yas-annotation-patch t arg)))
-        (funcall fun command arg)))))
+        (funcall fn cmd  arg)))))

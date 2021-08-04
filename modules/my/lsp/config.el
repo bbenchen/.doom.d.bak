@@ -1,7 +1,7 @@
 ;;; my/lsp/config.el -*- lexical-binding: t; -*-
 
 (if (featurep! :editor snippets)
-    (setq +lsp-company-backends '(company-capf :with company-yasnippet)))
+    (setq +lsp-company-backends '(:separate company-yasnippet company-capf)))
 
 ;; lsp
 (after! lsp-mode
