@@ -22,7 +22,12 @@
 
   ;; kotlin
   (setq lsp-clients-kotlin-server-executable (concat lsp-server-install-dir "kotlin/server/bin/kotlin-language-server")
-        lsp-kotlin-debug-adapter-path (concat lsp-server-install-dir "kotlin/adapter/bin/kotlin-debug-adapter")))
+        lsp-kotlin-debug-adapter-path (concat lsp-server-install-dir "kotlin/adapter/bin/kotlin-debug-adapter"))
+
+  (defadvice! lsp--init-if-visible-a (fn &rest args)
+    :around #'lsp--init-if-visible
+    (unless (bound-and-true-p git-timemachine-mode)
+      (apply fn args))))
 
 (after! lsp-ui
   (setq lsp-ui-sideline-enable t
