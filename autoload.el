@@ -1,6 +1,13 @@
 ;;; ~/.doom.d/autoload.el -*- lexical-binding: t; -*-
 
 ;;;###autoload
+(defun +lookup/password (&rest keys)
+  (let ((result (apply #'auth-source-search keys)))
+    (if result
+        (funcall (plist-get (car result) :secret))
+      nil)))
+
+;;;###autoload
 (defun find-in-dotfiles ()
   "Open a file somewhere in ~/.dotfiles via a fuzzy filename search."
   (interactive)
