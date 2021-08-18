@@ -32,13 +32,23 @@
   (if-let ((java-home (getenv "JAVA_HOME")))
       (setq lsp-java-java-path (concat java-home "/bin/java")))
 
-  (setq lsp-java-format-enabled t
-        lsp-java-format-comments-enabled t
+  (setq lsp-java-format-enabled nil
         lsp-java-format-on-type-enabled nil
-        lsp-java-format-settings-url (concat "file://" (expand-file-name "eclipse-java-google-style.xml" doom-private-dir))
-        lsp-java-format-settings-profile "GoogleStyle"
         lsp-java-completion-max-results 200
         lsp-java-trace-server "messages"
         lsp-java-maven-download-sources t
         ;; Support java decompiler
-        lsp-java-content-provider-preferred "fernflower"))
+        lsp-java-content-provider-preferred "fernflower")
+
+  (if (and (featurep! :editor format)
+           (featurep! +google-java-format))
+      (progn
+        (set-formatter! 'google-java-format
+          '("google-java-format" "-" "-a" "-" "--skip-sorting-imports")
+          :modes 'java-mode)
+
+        (setq-hook! 'java-mode-hook
+          tab-width 4
+          fill-column 120))
+    (setq lsp-java-format-enabled t
+          lsp-java-format-comments-enabled t)))
