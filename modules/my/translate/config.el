@@ -22,6 +22,9 @@
         ;; Enable Chinese word segmentation support
         youdao-dictionary-use-chinese-word-segmentation t)
 
+  (defvar youdao-translate-tooltip-name "*youdao-translate-posframe*"
+    "The name of youdao translate tooltip name.")
+
   (defvar youdao-dictionary-tooltip-last-point 0
     "Hold last point when show tooltip, use for hide tooltip after move point.")
 
@@ -30,12 +33,12 @@
 
   (defun youdao-dictionary-hide-tooltip-after-move ()
     (ignore-errors
-      (when (get-buffer youdao-dictionary-buffer-name)
+      (when (get-buffer youdao-translate-tooltip-name)
         (unless (and
                  (equal (point) youdao-dictionary-tooltip-last-point)
                  (equal (window-start) youdao-dictionary-tooltip-last-scroll-offset))
-          (posframe-delete youdao-dictionary-buffer-name)
-          (kill-buffer youdao-dictionary-buffer-name)))))
+          (posframe-delete youdao-translate-tooltip-name)
+          (kill-buffer youdao-translate-tooltip-name)))))
 
   (defadvice! +youdao-dictionary--posframe-tip-a (text)
     "Show STRING using posframe-show."
@@ -43,11 +46,12 @@
     (let ((word (youdao-dictionary--region-or-word)))
       (if word
           (progn
-            (posframe-show youdao-dictionary-buffer-name
+            (posframe-show youdao-translate-tooltip-name
+                           :string text
+                           :position (point)
+                           :timeout 30
                            :background-color (face-background 'mode-line)
                            :foreground-color (face-foreground 'mode-line)
-                           :string text
-                           :timeout 30
                            :internal-border-width 10)
             (add-hook 'post-command-hook 'youdao-dictionary-hide-tooltip-after-move)
             (setq youdao-dictionary-tooltip-last-point (point))
