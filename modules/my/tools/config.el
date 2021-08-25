@@ -1,10 +1,12 @@
 ;;; my/tools/config.el -*- lexical-binding: t; -*-
 
 ;; lookup
-(if (and IS-MAC
-         (featurep 'xwidget-internal))
-    (setq +lookup-open-url-fn #'+lookup-xwidget-webkit-open-url-fn
-          browse-url-browser-function #'xwidget-webkit-browse-url))
+(when (and IS-MAC
+           (featurep 'xwidget-internal))
+  (setq +lookup-open-url-fn #'+lookup-xwidget-webkit-open-url-fn
+        browse-url-browser-function #'xwidget-webkit-browse-url)
+  (if (boundp 'xwidget-webkit-enable-plugins)
+      (setq xwidget-webkit-enable-plugins t)))
 
 ;; exec-path-from-shell
 (use-package! exec-path-from-shell
