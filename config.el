@@ -9,11 +9,16 @@
       epa-file-encrypt-to user-mail-address
       auth-sources '("~/.authinfo.gpg"))
 
-(add-hook! 'emacs-startup-hook (setq default-directory "~/"
-                                     org-directory "~/Documents/org"
-                                     org-agenda-files (list org-directory)))
+(setq default-directory "~/"
+      org-directory "~/Documents/org"
+      org-agenda-files (list org-directory)
+      org-roam-directory (expand-file-name "roam" org-directory))
 
-(setq x-select-enable-clipboard-manager nil)
+(setq system-time-locale "zh_CN")
+
+(setq confirm-kill-processes nil
+      confirm-kill-emacs nil
+      x-select-enable-clipboard-manager nil)
 
 ;; workspaces
 (setq +workspaces-on-switch-project-behavior t)

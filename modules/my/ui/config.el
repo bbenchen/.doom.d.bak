@@ -69,7 +69,8 @@
   (setq doom-modeline-major-mode-icon t
         doom-modeline-persp-name t
         doom-modeline-enable-word-count t
-        doom-modeline-indent-info t))
+        doom-modeline-indent-info t
+        doom-modeline-buffer-file-name-style 'truncate-with-project))
 
 ;; centered-cursor
 (use-package! centered-cursor-mode
