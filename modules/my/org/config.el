@@ -12,6 +12,9 @@
   ;;         "xelatex -interaction nonstopmode -output-directory %o %f")) ;; org v8
   ;; }}
 
+  (setq org-ditaa-jar-path (expand-file-name "ditaa.jar" doom-private-dir)))
+
+(after! ox-latex
   ;; @see https://yuchi.me/post/export-org-mode-in-chinese-to-pdf-with-custom-latex-class
   ;; download elegantpaper.cls and place it in the same level as the org document
   (setq org-latex-pdf-process '("latexmk -xelatex -quiet -shell-escape -f %f"))
@@ -27,9 +30,7 @@
                  ("\\paragraph{%s}" . "\\paragraph*{%s}")
                  ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
   (setq org-latex-listings 'minted)
-  (add-to-list 'org-latex-packages-alist '("" "minted"))
-
-  (setq org-ditaa-jar-path (expand-file-name "ditaa.jar" doom-private-dir)))
+  (add-to-list 'org-latex-packages-alist '("" "minted")))
 
 (use-package! valign
   :config
