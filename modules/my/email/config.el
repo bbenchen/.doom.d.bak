@@ -9,7 +9,7 @@
                       (mu4e-drafts-folder     . "/fa-software.com/草稿")
                       (mu4e-trash-folder      . "/fa-software.com/已删除")
                       (mu4e-refile-folder     . "/fa-software.com/INBOX")
-                      (mu4e-update-interval   . nil)
+                      ;; (mu4e-update-interval   . 300)
                       (smtpmail-smtp-user     . "xianbin.chen@fa-software.com")
                       (smtpmail-smtp-server   . "smtp.qiye.aliyun.com")
                       (smtpmail-smtp-service  . 465)
@@ -22,6 +22,13 @@
   ;; load mu4e-contrib
   (require 'mu4e-contrib)
 
+  (map! :map mu4e-headers-mode-map
+        "l" #'+mu4e/capture-msg-to-agenda)
+
+  (when (version<= "1.6" mu4e-mu-version)
+    (map! :map mu4e-view-mode-map
+          "A" #'+mu4e-view-select-mime-part-action
+          "o" #'+mu4e-view-open-attachment))
   ;;
   ;; Xapian, the search engine of mu has a poor support of CJK characters,
   ;; which causes only query contains no more than 2 CJK characters works.
@@ -59,7 +66,6 @@
         (setq new (concat new (mu4e~break-cjk-word word) " ")))))
 
   (setq mu4e-query-rewrite-function #'mu4e~break-cjk-query)
-
 
   (setq mu4e-bookmarks
         `(,(make-mu4e-bookmark
@@ -125,23 +131,3 @@
  #+begin_signature
  *陈显彬（Mike Chen）*
  #+end_signature"))
-
-(use-package! mu4e-views
-  :after mu4e
-  :config
-  (map! (:map mu4e-headers-mode-map
-         "M-n" #'mu4e-views-cursor-msg-view-window-down
-         "M-p" #'mu4e-views-cursor-msg-view-window-up
-         "o" #'mu4e-views-mu4e-view-open-attachment
-         "e" #'mu4e-views-mu4e-view-save-attachment))
-  (if (featurep! :completion ivy)
-      (setq mu4e-views-completion-method 'ivy))
-  (setq mu4e-views-default-view-method "html")
-  (mu4e-views-mu4e-use-view-msg-method "html")
-  ;; (setq mu4e-views-next-previous-message-behaviour 'always-switch-to-view)
-  (setq mu4e-views-auto-view-selected-message t)
-  (defadvice! mu4e~headers-quit-buffer-a (fun)
-    :around #'mu4e~headers-quit-buffer
-    (if (mu4e-views-get-view-window-maybe)
-        (mu4e-views-mu4e-headers-windows-only)
-      (funcall fun))))
