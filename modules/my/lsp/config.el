@@ -31,7 +31,8 @@
 
 (after! lsp-ui
   (setq lsp-ui-sideline-enable t
-        lsp-ui-sideline-ignore-duplicate t))
+        lsp-ui-sideline-ignore-duplicate t
+        lsp-ui-doc-enable nil))
 
 (after! lsp-treemacs
   (lsp-treemacs-sync-mode -1)
