@@ -35,11 +35,7 @@
 
 (after! nxml-mode
   (setq nxml-auto-insert-xml-declaration-flag nil
-        nxml-slash-auto-complete-flag t)
-
-  (defadvice! +nxml-electric-slash-a (&optional _)
-    :after #'nxml-electric-slash
-    (save-excursion (delete-char -1))))
+        nxml-slash-auto-complete-flag nil))
 
 (after! recentf
   (add-to-list 'recentf-exclude "\\.mail")
