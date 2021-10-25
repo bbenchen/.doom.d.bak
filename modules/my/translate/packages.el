@@ -4,7 +4,7 @@
 (package! youdao-dictionary :pin "8a4815a43565b9bfd257246e4895b8bfafb9d573")
 (package! google-translate :pin "0f7f48a09bca064999ecea03102a7c96f52cbd1b")
 
-(package! posframe :pin "f97c4aff2c2c376ca62276d5597aa108546633a9")
+(package! posframe :pin "d16dfbdab1b62ca140bf4a39fedff812ae9a71ec")
 
 (when (featurep! :completion company)
   (package! company-english-helper
