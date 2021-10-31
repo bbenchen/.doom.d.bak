@@ -12,8 +12,7 @@
         rime-disable-predicates '(rime-predicate-after-alphabet-char-p
                                   rime-predicate-prog-in-code-p
                                   rime-predicate-ace-window-p
-                                  rime-predicate-hydra-p)
-        rime-posframe-fixed-position t)
+                                  rime-predicate-hydra-p))
   :config
   (add-hook! '(after-init-hook kill-emacs-hook) :append
     (when (fboundp 'rime-lib-sync-user-data)
@@ -33,31 +32,6 @@
                            content
                          (concat content "　"))))
         (list newresult))))
-
-  (defadvice! +rime--posframe-display-content-a (content)
-    "显示可输入的内容，如果使用mu4e发送邮件时，使用popup显示，
-在mu4e发送邮件时，使用posframe显示输入内容存在BUG"
-    :override #'rime--posframe-display-content
-    (if (and (featurep 'posframe)
-             (display-graphic-p)
-             (not (or (derived-mode-p 'mu4e-compose-mode)
-                      (derived-mode-p 'org-msg-edit-mode))))
-        (if (string-blank-p content)
-            (posframe-hide rime-posframe-buffer)
-          (let* ((preedit (rime--current-preedit))
-                 (x (cond
-                     ((not rime-posframe-fixed-position) 0)
-                     ((not preedit) 0)
-                     ((not (overlayp rime--preedit-overlay)) 0)
-                     (t (rime--string-pixel-width preedit)))))
-            (apply #'posframe-show rime-posframe-buffer
-                   :string content
-                   :x-pixel-offset (- x)
-                   :background-color (doom-color 'modeline-bg)
-                   :foreground-color (doom-color 'modeline-fg)
-                   rime-posframe-properties)))
-      ;; Fallback to popup when not available.
-      (rime--popup-display-content content)))
 
   (map! (:map rime-mode-map
          (:when IS-MAC
