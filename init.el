@@ -212,7 +212,7 @@
        plantuml
        protobuf
        go
-       (java +google-java-format)
+       java
        scala
        sql
        pkgbuild
