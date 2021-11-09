@@ -99,10 +99,10 @@
       (setq eaf-chrome-bookmark-file bookmarks))
 
   (if-let ((history (cond (IS-MAC "~/Library/Application Support/Google/Chrome/Default/History")
-                            (IS-LINUX (file-exists-p! (and (or "chromium/Default/History"
-                                                               "google-chrome/Default/History"))
-                                                      "~/.config"))
-                            (t nil))))
+                          (IS-LINUX (file-exists-p! (and (or "chromium/Default/History"
+                                                             "google-chrome/Default/History"))
+                                                    "~/.config"))
+                          (t nil))))
       (setq eaf-browser-chrome-history-file history))
 
   (unbind-key "C-c i" eaf-mode-map*)
