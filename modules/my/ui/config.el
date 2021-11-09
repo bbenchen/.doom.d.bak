@@ -10,11 +10,16 @@
 (when (display-graphic-p)
   ;; fonts
   (let ((font "Sarasa Mono SC Nerd"))
-    (cond (IS-LINUX (setq doom-font (font-spec :family font :size 11)))
-          (IS-MAC (setq doom-font (font-spec :family font :size (if (> (display-pixel-width) 1920) 14 12)))))
+    (cond (IS-LINUX (setq doom-font (font-spec :family font :size 11)
+                          doom-variable-pitch-font doom-font))
+          (IS-MAC (setq doom-font (font-spec :family font :size (if (> (display-pixel-width) 1920) 14 12))
+                        doom-variable-pitch-font doom-font)))
     (add-hook! 'after-setting-font-hook :append
       (set-fontset-font t 'cjk-misc font nil 'prepend)
       (set-fontset-font t 'han font nil 'prepend)))
+
+  (if (featurep! :ui zen)
+      (setq +zen-text-scale 1))
 
   ;; no broder
   ;; (set-frame-parameter nil 'undecorated t)
