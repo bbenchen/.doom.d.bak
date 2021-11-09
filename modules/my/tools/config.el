@@ -72,43 +72,38 @@
           (global-command-log-mode 1))))))
 
 (use-package! eaf
-  :defer 5
+  :load-path (lambda () (list (expand-file-name "lisp/eaf" doom-private-dir)))
+  :defer 2
   :custom
   (eaf-config-location (expand-file-name "eaf/" doom-etc-dir))
-  (eaf-wm-focus-fix-wms '("i3" "bspwm" "dwm" "LG3D"))
-  (eaf-find-alternate-file-in-dired t)
+  (eaf-wm-focus-fix-wms '("i3" "bspwm" "dwm" "LG3D" "Xpra" "EXWM" "Xfwm4"))
   (eaf-proxy-type "http")
   (eaf-proxy-host "127.0.0.1")
-  (eaf-proxy-port "8889")
+  (eaf-proxy-port "7890")
   :config
-  (require 'eaf-all-the-icons)
+  (require 'eaf-all-the-icons nil t)
+  (require 'eaf-browser nil t)
 
   (setq +lookup-open-url-fn #'eaf-open-browser
-        browse-url-browser-function #'eaf-open-browser)
+        browse-url-browser-function #'eaf-open-browser
+        eaf-browser-enable-adblocker t
+        eaf-browser-aria2-proxy-host "127.0.0.1"
+        eaf-browser-aria2-proxy-port "7890")
 
-  (if IS-MAC
-      (setq eaf-find-file-ext-blacklist '("avi" "webm" "rmvb" "ogg" "mp4" "mkv" "m4v")))
-
-  (if-let ((bookmarks (file-exists-p! (and (or "chromium/Default/Bookmarks"
-                                               "google-chrome/Default/Bookmarks"))
-                                      "~/.config")))
+  (if-let ((bookmarks (cond (IS-MAC "~/Library/Application Support/Google/Chrome/Default/Bookmarks")
+                            (IS-LINUX (file-exists-p! (and (or "chromium/Default/Bookmarks"
+                                                               "google-chrome/Default/Bookmarks"))
+                                                      "~/.config"))
+                            (t nil))))
       (setq eaf-chrome-bookmark-file bookmarks))
 
-  (if-let ((history (file-exists-p! (and (or "chromium/Default/History"
-                                             "google-chrome/Default/History"))
-                                    "~/.config")))
-      (eaf-setq eaf-browser-chrome-history-file history))
+  (if-let ((history (cond (IS-MAC "~/Library/Application Support/Google/Chrome/Default/History")
+                            (IS-LINUX (file-exists-p! (and (or "chromium/Default/History"
+                                                               "google-chrome/Default/History"))
+                                                      "~/.config"))
+                            (t nil))))
+      (setq eaf-browser-chrome-history-file history))
 
-  ;; (defalias 'browse-web #'eaf-open-browser)
-  (eaf-setq eaf-browser-aria2-proxy-host "127.0.0.1")
-  (eaf-setq eaf-browser-aria2-proxy-port "8889")
-  (eaf-setq eaf-browser-dark-mode "true")
-  (eaf-setq eaf-browser-enable-adblocker "true")
-  (eaf-setq eaf-terminal-font-size "11")
-  (eaf-setq eaf-terminal-font-family "Sarasa Mono SC Nerd")
-  (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding)
-  (eaf-bind-key scroll_down "C-p" eaf-pdf-viewer-keybinding)
-  (eaf-bind-key take_photo "p" eaf-camera-keybinding)
   (unbind-key "C-c i" eaf-mode-map*)
 
   (after! org
