@@ -70,7 +70,7 @@ If FRAME is nil, it defaults to the selected frame."
   "Show HTTP/HTTPS proxy."
   (interactive)
   (if (bound-and-true-p url-proxy-services)
-      (message "Current HTTP proxy is `127.0.0.1:8889'")
+      (message "Current HTTP proxy is `127.0.0.1:7890'")
     (message "No HTTP proxy")))
 
 ;;;###autoload
@@ -78,8 +78,8 @@ If FRAME is nil, it defaults to the selected frame."
   "Enable HTTP/HTTPS proxy."
   (interactive)
   (setq url-proxy-services
-        `(("http" . "127.0.0.1:8889")
-          ("https" . "127.0.0.1:8889")
+        `(("http" . "127.0.0.1:7890")
+          ("https" . "127.0.0.1:7890")
           ("no_proxy" . "^\\(localhost\\|127.0.0.1\\|192.168.*\\|172.16.*\\|10.0.*\\)")))
   (show-proxy-http))
 
