@@ -83,6 +83,7 @@
   :config
   (require 'eaf-all-the-icons nil t)
   (require 'eaf-browser nil t)
+  (require 'eaf-pdf-viewer nil t)
 
   (setq +lookup-open-url-fn #'eaf-open-browser
         browse-url-browser-function #'eaf-open-browser
