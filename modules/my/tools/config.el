@@ -82,14 +82,19 @@
   (eaf-proxy-port "7890")
   :config
   (require 'eaf-all-the-icons nil t)
-  (require 'eaf-browser nil t)
+  (require 'eaf-image-viewer nil t)
   (require 'eaf-pdf-viewer nil t)
+  (require 'eaf-browser nil t)
+  (require 'eaf-markdown-previewer nil t)
+  (require 'eaf-file-manager nil t)
+  (require 'eaf-org-previewer nil t)
 
   (setq +lookup-open-url-fn #'eaf-open-browser
         browse-url-browser-function #'eaf-open-browser
         eaf-browser-enable-adblocker t
         eaf-browser-aria2-proxy-host "127.0.0.1"
-        eaf-browser-aria2-proxy-port "7890")
+        eaf-browser-aria2-proxy-port "7890"
+        eaf-file-manager-show-icon nil)
 
   (if-let ((bookmarks (cond (IS-MAC "~/Library/Application Support/Google/Chrome/Default/Bookmarks")
                             (IS-LINUX (file-exists-p! (and (or "chromium/Default/Bookmarks"
