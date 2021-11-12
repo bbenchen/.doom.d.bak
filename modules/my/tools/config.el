@@ -112,6 +112,9 @@
 
   (unbind-key "C-c i" eaf-mode-map*)
 
+  (after! mu4e
+    (require 'eaf-mail))
+
   (after! org
     (require 'eaf-org)
     (defun eaf-org-open-file (file &rest _)
