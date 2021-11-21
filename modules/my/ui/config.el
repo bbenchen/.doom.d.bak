@@ -19,7 +19,8 @@
       (set-fontset-font t 'han font nil 'prepend)))
 
   (if (featurep! :ui zen)
-      (setq +zen-text-scale 1))
+      (setq writeroom-width 120
+            +zen-text-scale 1))
 
   ;; no broder
   ;; (set-frame-parameter nil 'undecorated t)
