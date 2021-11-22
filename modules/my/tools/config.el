@@ -73,6 +73,7 @@
 
 (use-package! eaf
   :load-path (lambda () (list (expand-file-name "lisp/eaf" doom-private-dir)))
+  :when IS-LINUX
   :defer 2
   :custom
   (eaf-config-location (expand-file-name "eaf/" doom-etc-dir))
