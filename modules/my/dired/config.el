@@ -7,6 +7,10 @@
   (if (boundp 'dired-kill-when-opening-new-dired-buffer)
       (setq dired-kill-when-opening-new-dired-buffer t)))
 
+(after! all-the-icons-dired
+  ;; display icons with colors
+  (setq all-the-icons-dired-monochrome nil))
+
 ;; ranger
 (after! ranger
   (setq ranger-excluded-extensions '("mkv" "iso" "mp4" "bin" "exe" "msi" "jar")))
