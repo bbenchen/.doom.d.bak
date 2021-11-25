@@ -13,7 +13,7 @@
   (if (executable-find "gogetdoc")
       (setq godoc-at-point-function 'godoc-gogetdoc))
 
-  (let ((command (or (executable-find "gofumports")
+  (let ((command (or (executable-find "gofumpt")
                      (executable-find "goimports"))))
     (if command
         (setq gofmt-command command)))
