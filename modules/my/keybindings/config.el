@@ -22,7 +22,12 @@
        "<up>" #'shrink-window
        "<down>" #'enlarge-window
        "<left>" #'shrink-window-horizontally
-       "<right>" #'enlarge-window-horizontally))
+       "<right>" #'enlarge-window-horizontally)
+
+      (:when (and (featurep! :tools magit)
+                  (featurep! :my magit))
+       (:prefix-map ("v" . "versioning")
+        :desc "Blamer" "b" #'blamer-mode)))
 
 (map! (:when (featurep! :tools make)
        (:map makefile-mode-map

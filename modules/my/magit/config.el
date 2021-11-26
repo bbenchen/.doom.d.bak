@@ -24,10 +24,8 @@
 (use-package! blamer
   :defer 5
   :custom
-  (blamer-idle-time 0.3)
+  (blamer-idle-time 0.5)
   (blamer-min-offset 70)
   :config
   (custom-set-faces!
-    `(blamer-face :foreground "#7a88cf" :background nil :italic t))
-
-  (global-blamer-mode 1))
+    `(blamer-face :foreground "#7a88cf" :background nil :italic t)))
