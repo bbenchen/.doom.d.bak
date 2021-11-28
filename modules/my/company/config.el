@@ -4,7 +4,8 @@
   (set-company-backend! 'prog-mode '(:separate company-yasnippet company-capf)))
 
 (after! company
-  (setq company-minimum-prefix-length 2)
+  (setq company-minimum-prefix-length 2
+        company-selection-wrap-around t)
   (add-to-list #'company-transformers #'delete-dups))
 
 (after! company-yasnippet
