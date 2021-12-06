@@ -89,7 +89,7 @@
        ;;ein                            ; tame Jupyter notebooks with emacs
        (eval +overlay)                  ; run code, run (also, repls)
        ;;gist                           ; interacting with github gists
-       lookup                           ; helps you navigate your code and documentation
+       (lookup +dictionary)             ; helps you navigate your code and documentation
        (lsp +peek)
        magit                            ; a git porcelain for Emacs
        make                             ; run make tasks from Emacs
