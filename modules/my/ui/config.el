@@ -64,6 +64,14 @@
   ;;   (add-hook! 'org-mode-hook #'org-buffer-face-mode-variable))
   )
 
+(if (boundp 'pixel-scroll-precision-mode)
+    (pixel-scroll-precision-mode t)
+  (use-package! good-scroll
+    :init
+    (add-hook! 'after-init-hook #'good-scroll-mode)
+    (global-set-key [remap next]  #'good-scroll-up-full-screen)
+    (global-set-key [remap prior] #'good-scroll-down-full-screen)))
+
 ;; frame
 (add-hook! 'after-make-frame-functions #'(lambda (frame)
                                            (when (not (display-graphic-p frame))
