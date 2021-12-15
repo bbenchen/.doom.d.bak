@@ -42,7 +42,3 @@
   (add-to-list 'recentf-exclude "/var")
   (add-to-list 'recentf-exclude "/autosave"))
 
-;; https://github.com/hlissner/doom-emacs/issues/5785#issuecomment-977536787
-(when (> emacs-major-version 28)
-  (general-auto-unbind-keys :off)
-  (remove-hook 'doom-after-init-modules-hook #'general-auto-unbind-keys))
