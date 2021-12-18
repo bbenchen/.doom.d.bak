@@ -2,7 +2,9 @@
 
 ;; magit
 (after! magit
-  (setq magit-revision-show-gravatars nil))
+  (setq magit-revision-show-gravatars nil)
+
+  (remove-hook! 'server-switch-hook #'magit-commit-diff))
 
 (after! git-commit
   (if (featurep! :checkers spell +flyspell)
