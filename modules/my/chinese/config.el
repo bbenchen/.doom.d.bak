@@ -14,6 +14,9 @@
                                   rime-predicate-ace-window-p
                                   rime-predicate-hydra-p))
   :config
+  (custom-set-faces!
+    `(rime-default-face :foreground ,(doom-color 'modeline-fg) :background ,(doom-color 'modeline-bg)))
+
   (add-hook! '(after-init-hook kill-emacs-hook) :append
     (when (fboundp 'rime-lib-sync-user-data)
       (ignore-errors (rime-sync))))
