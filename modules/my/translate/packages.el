@@ -9,7 +9,7 @@
 (when (featurep! :completion company)
   (package! company-english-helper
     :recipe (:host github :repo "cxb811201/company-english-helper")
-    :pin "242bd431f7f25a15f033b5e441ec90624acd59cc"))
+    :pin "5c8ead05988ab6e6351825af83a93dbf1cff0392"))
 
 (package! insert-translated-name
   :recipe (:host github :repo "manateelazycat/insert-translated-name")
