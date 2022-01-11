@@ -4,7 +4,7 @@
 (package! youdao-dictionary :pin "8a4815a43565b9bfd257246e4895b8bfafb9d573")
 (package! google-translate :pin "0f7f48a09bca064999ecea03102a7c96f52cbd1b")
 
-(package! posframe :pin "e75f61ceec483b9e47cf6c73612fe1b03ba057e8")
+(package! posframe :pin "6c0e63d6b3b6638c11729c5db28019a38ff44f5b")
 
 (when (featurep! :completion company)
   (package! company-english-helper
@@ -13,5 +13,4 @@
 
 (package! insert-translated-name
   :recipe (:host github :repo "manateelazycat/insert-translated-name")
-  :pin "a11b8f565006ca99995021ba70084e386dc2f0f5")
-
+  :pin "ff2c2cfac801c155b72fafdb39414b9de30d1d41")
