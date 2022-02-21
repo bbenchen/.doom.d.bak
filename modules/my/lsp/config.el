@@ -24,6 +24,9 @@
   (setq lsp-clients-kotlin-server-executable (concat lsp-server-install-dir "kotlin/server/bin/kotlin-language-server")
         lsp-kotlin-debug-adapter-path (concat lsp-server-install-dir "kotlin/adapter/bin/kotlin-debug-adapter"))
 
+  ;; xml
+  (setq lsp-xml-jar-file (expand-file-name "org.eclipse.lemminx-0.19.1-uber.jar" lsp-server-install-dir))
+
   (defadvice! lsp--init-if-visible-a (fn &rest args)
     :around #'lsp--init-if-visible
     (unless (bound-and-true-p git-timemachine-mode)
