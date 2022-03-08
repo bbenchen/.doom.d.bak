@@ -5,7 +5,8 @@
 
 ;; multiple-cursors
 (after! multiple-cursors-core
-  (add-to-list 'mc/cmds-to-run-once 'counsel-M-x)
+  (if (functionp 'counsel-M-x)
+      (add-to-list 'mc/cmds-to-run-once 'counsel-M-x))
   (add-to-list 'mc/cmds-to-run-for-all 'hungry-delete-forward)
   (add-to-list 'mc/cmds-to-run-for-all 'hungry-delete-backward))
 
