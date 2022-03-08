@@ -15,6 +15,6 @@
 
 ;; hungry-delete
 (use-package! hungry-delete
-  :hook ((prog-mode text-mode conf-mode) . hungry-delete-mode)
   :config
+  (add-hook! (prog-mode text-mode conf-mode) #'hungry-delete-mode)
   (setq-default hungry-delete-chars-to-skip " \t\f\v"))
