@@ -5,7 +5,11 @@
       "C-x C-z" nil
 
       "M-n" #'forward-paragraph
-      "M-p" #'backward-paragraph)
+      "M-p" #'backward-paragraph
+
+      "C-s" #'phi-search
+      "C-r" #'phi-search-backward
+      "M-%" #'phi-replace)
 
 (map! :leader
       (:prefix-map ("f" . "file")
