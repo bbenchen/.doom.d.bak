@@ -9,10 +9,14 @@
       epa-file-encrypt-to user-mail-address
       auth-sources '("~/.authinfo.gpg"))
 
-(setq default-directory "~/"
-      org-directory "~/Documents/org"
-      org-agenda-files (list org-directory)
-      org-roam-directory (expand-file-name "roam" org-directory))
+;; (setq default-directory "~/"
+;;       org-directory "~/Documents/org"
+;;       org-id-locations-file (expand-file-name ".orgids" org-directory)
+;;       +org-capture-journal-file (expand-file-name "journal.org" org-directory)
+;;       org-agenda-files (list org-directory)
+;;       org-roam-directory (expand-file-name "roam" org-directory))
+
+(setq default-directory "~/")
 
 (setq system-time-locale "zh_CN")
 
