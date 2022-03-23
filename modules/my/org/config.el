@@ -32,10 +32,10 @@
   (setq org-latex-listings 'minted)
   (add-to-list 'org-latex-packages-alist '("" "minted")))
 
-(use-package! valign
+(use-package! org-appear
+  :defer t
+  :init (add-hook! org-mode #'org-appear-mode)
   :config
-  (after! org
-    (add-hook! 'org-mode-hook :append
-      ;; (display-line-numbers-mode -1)
-      ;; (org-indent-mode -1)
-      (valign-mode +1))))
+  (setq org-appear-autolinks t
+        org-appear-autosubmarkers t
+        org-appear-delay 0.3))
