@@ -12,6 +12,8 @@
                          ("melpa" . "https://mirrors.cloud.tencent.com/elpa/melpa/")
                          ("org"   . "https://mirrors.cloud.tencent.com/elpa/org/")))
 
+(setq org-directory "~/Documents/org")
+
 (doom! :input
 
        :completion
