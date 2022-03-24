@@ -1,18 +1,8 @@
 ;;; my/org/config.el -*- lexical-binding: t; -*-
 
-(after! org
-  ;; {{ export org-mode in Chinese into PDF
-  ;; @see http://freizl.github.io/posts/tech/2012-04-06-export-orgmode-file-in-Chinese.html
-  ;; and you need install texlive-xetex on different platforms
-  ;; To install texlive-xetex:
-  ;;    `sudo USE="cjk" emerge texlive-xetex` on Gentoo Linux
-  ;; (setq org-latex-pdf-process
-  ;;       '("xelatex -interaction nonstopmode -output-directory %o %f"
-  ;;         "xelatex -interaction nonstopmode -output-directory %o %f"
-  ;;         "xelatex -interaction nonstopmode -output-directory %o %f")) ;; org v8
-  ;; }}
-
-  (setq org-ditaa-jar-path (expand-file-name "ditaa.jar" doom-private-dir)))
+(after! ob-ditaa
+  (setq org-ditaa-jar-path (expand-file-name "ditaa.jar" doom-private-dir)
+        org-ditaa-eps-jar-path (expand-file-name "DitaaEps.jar" doom-private-dir)))
 
 (after! ox-latex
   ;; @see https://yuchi.me/post/export-org-mode-in-chinese-to-pdf-with-custom-latex-class
