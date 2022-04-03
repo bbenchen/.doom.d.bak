@@ -1,5 +1,20 @@
 ;;; my/org/config.el -*- lexical-binding: t; -*-
 
+(after! org
+  (add-to-list 'org-modules 'org-tempo t)
+
+  (add-to-list 'org-structure-template-alist '("sh" . "src sh"))
+  (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+  (add-to-list 'org-structure-template-alist '("li" . "src lisp"))
+  (add-to-list 'org-structure-template-alist '("sc" . "src scheme"))
+  (add-to-list 'org-structure-template-alist '("ts" . "src typescript"))
+  (add-to-list 'org-structure-template-alist '("js" . "src javascript"))
+  (add-to-list 'org-structure-template-alist '("py" . "src python"))
+  (add-to-list 'org-structure-template-alist '("go" . "src go"))
+  (add-to-list 'org-structure-template-alist '("yaml" . "src yaml"))
+  (add-to-list 'org-structure-template-alist '("json" . "src json"))
+  (add-to-list 'org-structure-template-alist '("sql" . "src sql")))
+
 (after! ob-ditaa
   (setq org-ditaa-jar-path (expand-file-name "ditaa.jar" doom-private-dir)
         org-ditaa-eps-jar-path (expand-file-name "DitaaEps.jar" doom-private-dir)))
