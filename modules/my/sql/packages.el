@@ -6,3 +6,6 @@
   :recipe (:host github :repo "alex-hhh/emacs-sql-indent")
   :pin "ca2fa754dc32810402765621105a5f392feeed21")
 (package! ob-sql-mode :pin "b31a016585324ad91f1742ff6205bcb76f3ece6e")
+(package! ejc-sql
+  :recipe (:host github :repo "cxb811201/ejc-sql")
+  :pin "325c746955ac9772a0a51df3122ff53daede6a32")
