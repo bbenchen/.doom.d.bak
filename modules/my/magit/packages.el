@@ -5,4 +5,4 @@
          (executable-find "git-svn"))
   (package! magit-svn :pin "350493217afdb7637564e089f475909adecd9208"))
 
-(package! blamer :pin "0dc1328b8640207ac75a009c690d392f63c44f4d")
+(package! blamer :pin "f5c0b5ef2ae46062ba13dd03215cdfc49d0fd30b")
