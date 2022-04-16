@@ -12,9 +12,13 @@
                                 "-Xss512K"
                                 "-XX:MetaspaceSize=1536M"
                                 "-XX:MaxMetaspaceSize=1536M"
-                                "-XX:ReservedCodeCacheSize=256M"
+                                "-XX:InitialCodeCacheSize=128M"
+                                "-XX:ReservedCodeCacheSize=512M"
                                 "-XX:+UseG1GC"
                                 "-XX:+UseStringDeduplication"
+                                "-XX:GCTimeRatio=19"
+                                "-XX:AdaptiveSizePolicyWeight=90"
+                                "-Dsun.zip.disableMemoryMapping=true"
                                 (concat "-javaagent:" lombok-jar-path))))
 
   (setq lsp-java-configuration-runtimes (cond (IS-MAC '[(:name "JavaSE-11"
