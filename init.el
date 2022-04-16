@@ -24,7 +24,7 @@
        ;; +prescient
        ;; ;; +fuzzy
        ;; +icons)
-       (vertico +icons)                 ; the search engine of the future
+       (vertico +icons +childframe)                 ; the search engine of the future
 
        :ui
        ;;deft                           ; notational velocity for Emacs
