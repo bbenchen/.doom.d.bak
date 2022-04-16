@@ -25,7 +25,8 @@
                                          "GOPATH"
                                          "GOBIN"
                                          "GO111MODULE"
-                                         "GOPROXY"))
+                                         "GOPROXY"
+                                         "LSP_USE_PLISTS"))
   ;; (setq exec-path-from-shell-debug t)
   (exec-path-from-shell-initialize))
 
