@@ -8,6 +8,10 @@
   (if (boundp 'xwidget-webkit-enable-plugins)
       (setq xwidget-webkit-enable-plugins t)))
 
+;; vterm
+(after! vterm
+  (setq vterm-disable-underline t))
+
 ;; exec-path-from-shell
 (use-package! exec-path-from-shell
   :when IS-MAC
