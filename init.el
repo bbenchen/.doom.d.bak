@@ -217,5 +217,6 @@
        java
        scala
        sql
+       web
        pkgbuild
        keybindings)
