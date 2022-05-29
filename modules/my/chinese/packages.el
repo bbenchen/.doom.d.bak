@@ -1,5 +1,5 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; my/chinese/packages.el
 
-(package! rime :pin "e6a89e9fa9eabc32063bffb2eacfcece46f7a049")
-(package! posframe :pin "c91d4d53fa479ceb604071008ce0a901770eff57")
+(package! rime :pin "0b4a2709159f5e975544b26302b8463deb7640d8")
+(package! posframe :pin "0d23bc5f7cfac00277d83ae7ba52c48685bcbc68")
