@@ -20,11 +20,12 @@
        (company +childframe)            ; the ultimate code completion backend
        ;;helm                           ; the *other* search engine for love and life
        ;;ido                            ; the other *other* search engine...
-       ;;(ivy                          ; a search engine for love and life
+       ;; (ivy                          ; a search engine for love and life
        ;; +prescient
        ;; ;; +fuzzy
+       ;; ;; +childframe
        ;; +icons)
-       (vertico +icons +childframe)                 ; the search engine of the future
+       (vertico +icons +childframe)     ; the search engine of the future
 
        :ui
        ;;deft                           ; notational velocity for Emacs
