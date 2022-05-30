@@ -101,6 +101,7 @@
        rgb                              ; creating color strings
        ;;terraform                      ; infrastructure as code
        ;;tmux                           ; an API for interacting with tmux
+       tree-sitter                      ; syntax and parsing, sitting in a tree...
        ;;upload                         ; map local to remote projects via ssh/ftp
        ;;wakatime
 
@@ -123,13 +124,13 @@
        emacs-lisp                       ; drown in parentheses
        ;;ess                            ; emacs speaks statistics
        ;;fsharp                         ; ML stands for Microsoft's Language
-       (go +lsp)                        ; the hipster dialect
+       (go +lsp +tree-sitter)           ; the hipster dialect
        ;;(haskell +intero)              ; a language that's lazier than I am
        ;;hy                             ; readability of scheme w/ speed of python
        ;;idris                          ;
-       json                             ; At least it ain't XML
-       (java +lsp)                      ; the poster child for carpal tunnel syndrome
-       (javascript +lsp)                ; all(hope(abandon(ye(who(enter(here))))))
+       (json +tree-sitter)              ; At least it ain't XML
+       (java +lsp +tree-sitter)         ; the poster child for carpal tunnel syndrome
+       (javascript +lsp +tree-sitter)   ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia                          ; a better, faster MATLAB
        ;;(kotlin +lsp)                  ; a better, slicker Java(Script)
        ;;latex                          ; writing papers in Emacs has never been so fun
@@ -159,13 +160,13 @@
        rest                             ; Emacs as a REST client
        ;;ruby                           ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
        ;;rust                           ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
-       (scala +lsp)                     ; java, but good
+       (scala +lsp +tree-sitter)        ; java, but good
        ;;scheme                         ; a fully conniving family of lisps
-       sh                               ; she sells {ba,z,fi}sh shells on the C xor
+       (sh +tree-sitter)                ; she sells {ba,z,fi}sh shells on the C xor
        ;;solidity                       ; do you need a blockchain? No.
        ;;swift                          ; who asked for emoji variables?
        ;;terra                          ; Earth and Moon in alignment for performance.
-       (web +lsp)                       ; the tubes
+       (web +lsp +tree-sitter)          ; the tubes
        yaml                             ; JSON, but readable
 
        :email
