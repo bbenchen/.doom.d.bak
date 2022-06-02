@@ -216,7 +216,7 @@
        plantuml
        protobuf
        go
-       java
+       (java +google-java-format)
        scala
        sql
        web
