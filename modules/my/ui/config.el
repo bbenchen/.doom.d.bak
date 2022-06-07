@@ -23,14 +23,18 @@
             +zen-text-scale 1))
 
   ;; no broder
-  ;; (set-frame-parameter nil 'undecorated t)
-  ;; (add-to-list 'initial-frame-alist '(undecorated . t))
+  (when EMACS29+
+    (set-frame-parameter nil 'undecorated t)
+    (add-to-list 'default-frame-alist '(undecorated . t)))
 
   ;; transparency
-  ;; (set-frame-parameter nil 'alpha 85)
+  (set-frame-parameter nil 'alpha 85)
+  (add-to-list 'default-frame-alist '(alpha . 85))
 
   ;; maximize the window
-  (add-to-list 'initial-frame-alist '(fullscreen . maximized))
+  (when (not EMACS29+)
+    (set-frame-parameter nil 'fullscreen 'maximized)
+    (add-to-list 'default-frame-alist '(fullscreen . maximized)))
 
   ;; (when (and (> (length (display-monitor-attributes-list)) 1)
   ;;            (> (display-pixel-width) 1920))
@@ -79,7 +83,9 @@
         doom-modeline-persp-name t
         doom-modeline-enable-word-count t
         doom-modeline-indent-info t
-        doom-modeline-buffer-file-name-style 'truncate-with-project))
+        doom-modeline-buffer-file-name-style 'truncate-with-project
+        doom-modeline-gnus-idle 5
+        doom-modeline-support-imenu t))
 
 ;; centered-cursor
 (use-package! centered-cursor-mode
