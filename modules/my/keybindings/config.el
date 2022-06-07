@@ -8,7 +8,9 @@
       "M-p" #'backward-paragraph
 
       "C-s" #'phi-search
+      "s-F" #'phi-search
       "C-r" #'phi-search-backward
+      "s-d" #'phi-search-backward
       "M-%" #'phi-replace)
 
 (map! :leader
