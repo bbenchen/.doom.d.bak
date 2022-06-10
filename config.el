@@ -4,7 +4,7 @@
 
 ;; (setq warning-minimum-level :error)
 
-(setq user-full-name "Chen Xianbin"
+(setq user-full-name "Mike Chen"
       user-mail-address "517926804@qq.com"
       epa-file-encrypt-to user-mail-address
       auth-sources '("~/.authinfo.gpg"))
