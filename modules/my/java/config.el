@@ -48,7 +48,7 @@
            (featurep! +google-java-format))
       (progn
         (set-formatter! 'google-java-format
-          '("google-java-format" "-" "-a" "-" "--skip-sorting-imports")
+          '("google-java-format" "-" "-a" "-" "--skip-reflowing-long-strings" "-" "--skip-sorting-imports")
           :modes 'java-mode)
 
         (setq-hook! 'java-mode-hook
