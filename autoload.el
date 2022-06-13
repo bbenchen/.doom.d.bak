@@ -41,6 +41,11 @@
     (select-window (active-minibuffer-window))))
 
 ;;;###autoload
+(defun pinentry-emacs (desc prompt ok error)
+  (let ((str (read-passwd (concat (replace-regexp-in-string "%22" "\"" (replace-regexp-in-string "%0A" "\n" desc)) prompt ": "))))
+    str))
+
+;;;###autoload
 (defun hidden-dos-eol ()
   "Do not show ^M in files containing mixed UNIX and DOS line endings."
   (interactive)
