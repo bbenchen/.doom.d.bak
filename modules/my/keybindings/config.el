@@ -48,9 +48,6 @@
        "s-+" #'text-scale-increase
        "s-=" #'text-scale-increase
        "s--" #'text-scale-decrease
-       "M-+" #'text-scale-increase
-       "M-=" #'text-scale-increase
-       "M--" #'text-scale-decrease
        "<s-up>" #'shrink-window
        "<s-down>" #'enlarge-window
        "<s-left>" #'shrink-window-horizontally
