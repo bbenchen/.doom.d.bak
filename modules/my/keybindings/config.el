@@ -33,7 +33,8 @@
       (:when (and (featurep! :tools magit)
                   (featurep! :my magit))
        (:prefix-map ("v" . "versioning")
-        :desc "Blamer" "b" #'blamer-mode)))
+        :desc "Blamer show commit" "b" #'blamer-show-posframe-commit-info
+        :desc "Blamer" "B" #'blamer-mode)))
 
 (map! (:when (featurep! :tools make)
        (:map makefile-mode-map
