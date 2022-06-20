@@ -84,7 +84,7 @@
   (add-hook! 'kill-emacs-hook #'pinentry-stop))
 
 (use-package! eaf
-  :load-path (lambda () (list (expand-file-name "lisp/eaf" doom-private-dir)))
+  :load-path (lambda () (list (expand-file-name "site-lisp/eaf" doom-private-dir)))
   :when IS-LINUX
   :defer 2
   :custom
