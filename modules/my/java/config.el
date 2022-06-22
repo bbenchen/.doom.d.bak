@@ -44,6 +44,8 @@
         ;; Support java decompiler
         lsp-java-content-provider-preferred "fernflower")
 
+  (setq lsp-java-completion-favorite-static-members ["org.junit.Assert.*" "org.junit.Assume.*" "org.junit.jupiter.api.Assertions.*" "org.junit.jupiter.api.Assumptions.*" "org.junit.jupiter.api.DynamicContainer.*" "org.junit.jupiter.api.DynamicTest.*" "org.mockito.Mockito.*" "org.mockito.ArgumentMatchers.*" "org.mockito.Answers.*" "org.hamcrest.MatcherAssert.*" "org.hamcrest.Matchers.*"])
+
   (if (and (featurep! :editor format)
            (featurep! +google-java-format))
       (progn
