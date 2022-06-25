@@ -6,6 +6,10 @@
 
   (remove-hook! 'server-switch-hook #'magit-commit-diff))
 
+(after! magit-todos
+  (setq magit-todos-submodule-list t
+        magit-todos-exclude-globs (append magit-todos-exclude-globs '(".svn/" "node_modules/*"))))
+
 (after! git-commit
   (if (featurep! :checkers spell +flyspell)
       (remove-hook! 'git-commit-mode-hook #'flyspell-mode)))
