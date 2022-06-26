@@ -219,6 +219,5 @@
         (:prefix-map ("y" . "translate")
          :desc "Insert translated name" "i" #'insert-translated-name-insert))
   :config
-  (setq insert-translated-name-default-style 'origin))
-
-
+  (setq insert-translated-name-default-style 'origin
+        insert-translated-name-translate-engine "google"))
