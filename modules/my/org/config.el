@@ -1,6 +1,9 @@
 ;;; my/org/config.el -*- lexical-binding: t; -*-
 
 (after! org
+
+  (setq org-image-actual-width 600)
+
   (add-to-list 'org-modules 'org-tempo t)
 
   (add-to-list 'org-structure-template-alist '("sh" . "src sh"))
