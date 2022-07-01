@@ -158,7 +158,7 @@
        ;;(python +lsp +pyright)         ; beautiful is better than ugly
        ;;qt                             ; the 'cutest' gui framework ever
        ;;racket                         ; a DSL for DSLs
-       rest                             ; Emacs as a REST client
+       (rest +jq)                       ; Emacs as a REST client
        ;;ruby                           ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
        ;;rust                           ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        (scala +lsp +tree-sitter)        ; java, but good
