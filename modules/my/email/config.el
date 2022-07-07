@@ -68,50 +68,39 @@
   (setq mu4e-query-rewrite-function #'mu4e~break-cjk-query)
 
   (setq mu4e-bookmarks
-        `(,(make-mu4e-bookmark
-            :name  "Unread messages"
-            :query "flag:unread AND maildir:/INBOX/ AND NOT flag:trash"
-            :key ?u)
-          ,(make-mu4e-bookmark
-            :name "Today's messages"
-            :query "date:today..now AND maildir:/INBOX/ AND NOT flag:trash"
-            :key ?t)
-          ,(make-mu4e-bookmark
-            :name "Last week"
-            :query "date:1w..now AND maildir:/INBOX/ AND NOT flag:trash"
-            :key ?w)
-          ,(make-mu4e-bookmark
-            :name "Last month"
-            :query "date:1m..now AND maildir:/INBOX/ AND NOT flag:trash"
-            :key ?m)
-          ,(make-mu4e-bookmark
-            :name "Last season"
-            :query "date:3m..now AND maildir:/INBOX/ AND NOT flag:trash"
-            :key ?s)
-          ,(make-mu4e-bookmark
-            :name "Last half year"
-            :query "date:6m..now AND maildir:/INBOX/ AND NOT flag:trash"
-            :key ?h)
-          ,(make-mu4e-bookmark
-            :name "Last year"
-            :query "date:1y..now AND maildir:/INBOX/ AND NOT flag:trash"
-            :key ?y)
-          ,(make-mu4e-bookmark
-            :name "All in inbox"
-            :query "maildir:/INBOX/ AND NOT flag:trash"
-            :key ?a)
-          ,(make-mu4e-bookmark
-            :name "Important"
-            :query "prio:high AND maildir:/INBOX/ AND NOT flag:trash"
-            :key ?i)
-          ,(make-mu4e-bookmark
-            :name "Mailing lists"
-            :query "flag:list AND maildir:/INBOX/ AND NOT flag:trash"
-            :key ?l)
-          ,(make-mu4e-bookmark
-            :name "With attachments"
-            :query "flag:attach AND maildir:/INBOX/ AND NOT flag:trash"
-            :key ?p))))
+        `((:name  "Unread messages"
+           :query "flag:unread AND maildir:/INBOX/ AND NOT flag:trash"
+           :key ?u)
+          (:name "Today's messages"
+           :query "date:today..now AND maildir:/INBOX/ AND NOT flag:trash"
+           :key ?t)
+          (:name "Last week"
+           :query "date:1w..now AND maildir:/INBOX/ AND NOT flag:trash"
+           :key ?w)
+          (:name "Last month"
+           :query "date:1m..now AND maildir:/INBOX/ AND NOT flag:trash"
+           :key ?m)
+          (:name "Last season"
+           :query "date:3m..now AND maildir:/INBOX/ AND NOT flag:trash"
+           :key ?s)
+          (:name "Last half year"
+           :query "date:6m..now AND maildir:/INBOX/ AND NOT flag:trash"
+           :key ?h)
+          (:name "Last year"
+           :query "date:1y..now AND maildir:/INBOX/ AND NOT flag:trash"
+           :key ?y)
+          (:name "All in inbox"
+           :query "maildir:/INBOX/ AND NOT flag:trash"
+           :key ?a)
+          (:name "Important"
+           :query "prio:high AND maildir:/INBOX/ AND NOT flag:trash"
+           :key ?i)
+          (:name "Mailing lists"
+           :query "flag:list AND maildir:/INBOX/ AND NOT flag:trash"
+           :key ?l)
+          (:name "With attachments"
+           :query "flag:attach AND maildir:/INBOX/ AND NOT flag:trash"
+           :key ?p))))
 
 (after! mu4e-alert
   (if IS-MAC
