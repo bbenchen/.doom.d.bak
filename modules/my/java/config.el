@@ -21,12 +21,16 @@
                                 "-Dsun.zip.disableMemoryMapping=true"
                                 (concat "-javaagent:" lombok-jar-path))))
 
-  (setq lsp-java-configuration-runtimes (cond (IS-MAC '[(:name "JavaSE-11"
+  (setq lsp-java-configuration-runtimes (cond (IS-MAC '[(:name "JavaSE-17"
+                                                         :path "/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home")
+                                                        (:name "JavaSE-11"
                                                          :path "/Library/Java/JavaVirtualMachines/temurin-11.jdk/Contents/Home"
                                                          :default t)
                                                         (:name "JavaSE-1.8"
                                                          :path "/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home")])
-                                              (IS-LINUX '[(:name "JavaSE-11"
+                                              (IS-LINUX '[(:name "JavaSE-17"
+                                                           :path "/usr/lib/jvm/java-17-openjdk")
+                                                          (:name "JavaSE-11"
                                                            :path "/usr/lib/jvm/java-11-openjdk"
                                                            :default t)
                                                           (:name "JavaSE-1.8"
@@ -36,11 +40,18 @@
   (if-let ((java-home (getenv "JAVA_HOME")))
       (setq lsp-java-java-path (concat java-home "/bin/java")))
 
-  (setq lsp-java-format-enabled nil
+  (setq lsp-java-import-gradle-enabled nil
+        lsp-java-format-enabled nil
+        lsp-java-format-comments-enabled nil
         lsp-java-format-on-type-enabled nil
         lsp-java-completion-max-results 200
+        lsp-java-folding-range-enabled nil
+        lsp-java-signature-help-enabled nil
+        lsp-java-selection-enabled nil
         lsp-java-trace-server "messages"
         lsp-java-maven-download-sources t
+        lsp-java-sources-organize-imports-star-threshold 5
+        lsp-java-sources-organize-imports-static-star-threshold 3
         ;; Support java decompiler
         lsp-java-content-provider-preferred "fernflower")
 
@@ -50,7 +61,7 @@
            (featurep! +google-java-format))
       (progn
         (set-formatter! 'google-java-format
-          '("google-java-format" "-" "-a" "-" "--skip-reflowing-long-strings" "-" "--skip-sorting-imports")
+          '("google-java-format" "-" "-a" "-" "--skip-sorting-imports")
           :modes 'java-mode)
 
         (setq-hook! 'java-mode-hook
