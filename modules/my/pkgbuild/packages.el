@@ -1,4 +1,4 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; my/pkgbuild/packages.el
 
-(package! pkgbuild-mode :pin "8faee70e4640bd6ec1857651ec64e139e4dc2833")
+(package! pkgbuild-mode :pin "a6985ae497c5ca721b62d3d2742f1fe1fd9fa3a3")
