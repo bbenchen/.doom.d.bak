@@ -83,7 +83,7 @@
         doom-modeline-persp-name t
         doom-modeline-enable-word-count t
         doom-modeline-indent-info t
-        doom-modeline-buffer-file-name-style 'truncate-with-project
+        doom-modeline-buffer-file-name-style 'truncate-upto-project
         doom-modeline-gnus-idle 5
         doom-modeline-support-imenu t))
 
