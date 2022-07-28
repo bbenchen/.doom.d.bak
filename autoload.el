@@ -97,3 +97,9 @@ If FRAME is nil, it defaults to the selected frame."
   (if (bound-and-true-p url-proxy-services)
       (disable-proxy-http)
     (enable-proxy-http)))
+
+;;;###autoload
+(defun pinentry-emacs (desc prompt ok error)
+  "Read gnupg password"
+  (let ((str (read-passwd (concat (replace-regexp-in-string "%22" "\"" (replace-regexp-in-string "%0A" "\n" desc)) prompt ": "))))
+    str))

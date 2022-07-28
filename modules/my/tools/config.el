@@ -76,13 +76,6 @@
             (global-command-log-mode -1)
           (global-command-log-mode 1))))))
 
-(use-package! pinentry
-  :defer t
-  :init
-  (pinentry-start)
-  :config
-  (add-hook! 'kill-emacs-hook #'pinentry-stop))
-
 (use-package! eaf
   :load-path (lambda () (list (expand-file-name "site-lisp/eaf" doom-private-dir)))
   :when IS-LINUX
