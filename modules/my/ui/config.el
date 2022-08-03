@@ -7,68 +7,66 @@
 
 (use-cjk-char-width-table 'zh_CN)
 
-(when (display-graphic-p)
-  ;; fonts
-  (let ((font "Sarasa Mono SC Nerd"))
-    (cond (IS-LINUX (setq doom-font (font-spec :family font :size 11 :weight 'Regular)))
-          (IS-MAC (setq doom-font (font-spec :family font :size (if (> (display-pixel-width) 1920) 14 12) :weight 'Regular))))
-    (setq doom-variable-pitch-font doom-font
-          doom-serif-font doom-font
-          doom-unicode-font doom-font
-          doom-big-font doom-font)
-    (add-hook! 'after-setting-font-hook :append
-      (set-fontset-font t 'cjk-misc font nil 'prepend)
-      (set-fontset-font t 'han font nil 'prepend)))
+;; fonts
+(let ((font "Sarasa Mono SC Nerd"))
+  (cond (IS-LINUX (setq doom-font (font-spec :family font :size 11 :weight 'Regular)))
+        (IS-MAC (setq doom-font (font-spec :family font :size (if (> (display-pixel-width) 1920) 14 12) :weight 'Regular))))
+  (setq doom-variable-pitch-font doom-font
+        doom-serif-font doom-font
+        doom-unicode-font doom-font
+        doom-big-font doom-font)
+  (add-hook! 'after-setting-font-hook :append
+    (set-fontset-font t 'cjk-misc font nil 'prepend)
+    (set-fontset-font t 'han font nil 'prepend)))
 
-  (if (featurep! :ui zen)
-      (setq writeroom-width 120
-            +zen-text-scale 1))
+(if (featurep! :ui zen)
+    (setq writeroom-width 120
+          +zen-text-scale 1))
 
-  ;; no broder
-  (when EMACS29+
-    (set-frame-parameter nil 'undecorated t)
-    (add-to-list 'default-frame-alist '(undecorated . t)))
+;; no broder
+(when EMACS29+
+  (set-frame-parameter nil 'undecorated t)
+  (add-to-list 'default-frame-alist '(undecorated . t)))
 
-  ;; transparency
-  (set-frame-parameter nil 'alpha 85)
-  (add-to-list 'default-frame-alist '(alpha . 85))
+;; transparency
+(set-frame-parameter nil 'alpha 85)
+(add-to-list 'default-frame-alist '(alpha . 85))
 
-  ;; maximize the window
-  (when (not EMACS29+)
-    (set-frame-parameter nil 'fullscreen 'maximized)
-    (add-to-list 'default-frame-alist '(fullscreen . maximized)))
+;; maximize the window
+(when (not EMACS29+)
+  (set-frame-parameter nil 'fullscreen 'maximized)
+  (add-to-list 'default-frame-alist '(fullscreen . maximized)))
 
-  ;; (when (and (> (length (display-monitor-attributes-list)) 1)
-  ;;            (> (display-pixel-width) 1920))
-  ;;   (set-frame-parameter nil 'left -3840))
+;; (when (and (> (length (display-monitor-attributes-list)) 1)
+;;            (> (display-pixel-width) 1920))
+;;   (set-frame-parameter nil 'left -3840))
 
-  (cond (IS-MAC (pcase (frame-parameter nil 'ns-appearance)
-                  ('light (setq doom-theme 'doom-nord-light))
-                  (_ (setq doom-theme 'doom-nord)))
-                (if (boundp 'ns-system-appearance-change-functions)
-                    (add-hook! 'ns-system-appearance-change-functions
-                               #'(lambda (appearance)
-                                   (mapc #'disable-theme custom-enabled-themes)
-                                   (pcase appearance
-                                     ('light (load-theme 'doom-nord-light t))
-                                     ('dark (load-theme 'doom-nord t)))))))
-        (t (setq doom-theme 'doom-nord)))
+(cond (IS-MAC (pcase (frame-parameter nil 'ns-appearance)
+                ('light (setq doom-theme 'doom-nord-light))
+                (_ (setq doom-theme 'doom-nord-aurora)))
+              (if (boundp 'ns-system-appearance-change-functions)
+                  (add-hook! 'ns-system-appearance-change-functions
+                             #'(lambda (appearance)
+                                 (mapc #'disable-theme custom-enabled-themes)
+                                 (pcase appearance
+                                   ('light (load-theme 'doom-nord-light t))
+                                   ('dark (load-theme 'doom-nord-aurora t)))))))
+      (t (setq doom-theme 'doom-nord-aurora)))
 
-  ;; org
-  ;; (after! org
-  ;;   ;; https://manateelazycat.github.io/emacs/2020/04/02/org-font.html
-  ;;   (defun org-buffer-face-mode-variable ()
-  ;;     (interactive)
-  ;;     (when (or IS-LINUX IS-MAC)
-  ;;       (make-face 'width-font-face)
-  ;;       (if IS-LINUX
-  ;;           (set-face-attribute 'width-font-face nil :font "Sarasa Mono SC Nerd 10")
-  ;;         (set-face-attribute 'width-font-face nil :font "Sarasa Mono SC Nerd 12"))
-  ;;       (setq buffer-face-mode-face 'width-font-face)
-  ;;       (buffer-face-mode)))
+;; org
+;; (after! org
+;;   ;; https://manateelazycat.github.io/emacs/2020/04/02/org-font.html
+;;   (defun org-buffer-face-mode-variable ()
+;;     (interactive)
+;;     (when (or IS-LINUX IS-MAC)
+;;       (make-face 'width-font-face)
+;;       (if IS-LINUX
+;;           (set-face-attribute 'width-font-face nil :font "Sarasa Mono SC Nerd 10")
+;;         (set-face-attribute 'width-font-face nil :font "Sarasa Mono SC Nerd 12"))
+;;       (setq buffer-face-mode-face 'width-font-face)
+;;       (buffer-face-mode)))
 
-  ;;   (add-hook! 'org-mode-hook #'org-buffer-face-mode-variable))
-  )
+;;   (add-hook! 'org-mode-hook #'org-buffer-face-mode-variable))
 
 (if (boundp 'pixel-scroll-precision-mode)
     (pixel-scroll-precision-mode t))
