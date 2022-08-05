@@ -22,6 +22,10 @@
   ;; load mu4e-contrib
   (require 'mu4e-contrib)
 
+  (setq mu4e-headers-time-format "%T"
+        mu4e-headers-date-format "%D"
+        mu4e-headers-long-date-format "%D %T")
+
   (map! :map mu4e-headers-mode-map
         "l" #'+mu4e/capture-msg-to-agenda)
 
