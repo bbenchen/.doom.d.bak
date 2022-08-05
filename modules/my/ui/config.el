@@ -83,9 +83,18 @@
         doom-modeline-persp-name t
         doom-modeline-enable-word-count t
         doom-modeline-indent-info t
-        doom-modeline-buffer-file-name-style 'truncate-upto-project
+        doom-modeline-buffer-file-name-style 'auto
         doom-modeline-gnus-idle 5
-        doom-modeline-support-imenu t))
+        doom-modeline-support-imenu t)
+
+  (setq all-the-icons-scale-factor 1.1)
+
+  ;；set modeline time format
+  (setq display-time-format "%D %R")
+
+  (doom-modeline-def-modeline 'main
+    '(bar workspace-name window-number modals matches follow buffer-info remote-host buffer-position word-count parrot selection-info)
+    '(objed-state misc-info persp-name battery grip mu4e gnus debug repl lsp minor-modes input-method indent-info buffer-encoding major-mode process vcs checker time "    ")))
 
 ;; centered-cursor
 (use-package! centered-cursor-mode
