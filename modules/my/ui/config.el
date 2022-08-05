@@ -104,4 +104,5 @@
   (map! :leader
         :desc "Centered point" "C--" #'centered-cursor-mode)
   :config
+  (add-hook! 'prog-mode-hook #'centered-cursor-mode)
   (setq ccm-recenter-at-end-of-file t))
