@@ -8,6 +8,10 @@
   (if (boundp 'xwidget-webkit-enable-plugins)
       (setq xwidget-webkit-enable-plugins t)))
 
+(after! xref
+  (cond ((executable-find "ugrep") (setq xref-search-program 'ugrep))
+        ((executable-find "rg") (setq xref-search-program 'ripgrep))))
+
 ;; vterm
 (after! vterm
   (setq vterm-disable-underline t))
