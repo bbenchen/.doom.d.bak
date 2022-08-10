@@ -33,7 +33,8 @@
 (add-to-list 'default-frame-alist '(alpha . 85))
 
 ;; maximize the window
-(when (not EMACS29+)
+(when (and (not EMACS29+)
+           (not IS-MAC))
   (set-frame-parameter nil 'fullscreen 'maximized)
   (add-to-list 'default-frame-alist '(fullscreen . maximized)))
 
