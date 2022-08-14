@@ -4,9 +4,7 @@
   (setq ispell-dictionary "en_US")
   (setq ispell-alternate-dictionary (expand-file-name "english-words" doom-private-dir))
 
-  (defadvice! +ispell-lookup-words-a (orig &rest args)
-    :around #'ispell-lookup-words
-    (shut-up (apply orig args))))
+  (advice-add #'ispell-lookup-words :around #'doom-shut-up-a))
 
 (when (featurep! :checkers spell)
   (after! nxml-mode
