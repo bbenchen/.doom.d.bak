@@ -4,7 +4,7 @@
 (after! sql
   (setq sql-product 'mysql)
 
-  ;; (if (featurep! :checkers syntax)
+  ;; (if (modulep! :checkers syntax)
   ;;   (add-hook! '(sql-mode-hook sql-interactive-mode-hook) :append
   ;;     (defun sql-disable-flycheck()
   ;;       "Disable `flycheck' for the current buffer."

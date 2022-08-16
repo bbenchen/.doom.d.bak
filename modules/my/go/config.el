@@ -20,7 +20,7 @@
 
   ;; (add-hook 'before-save-hook #'gofmt-before-save)
 
-  (if (featurep! :checkers syntax)
+  (if (modulep! :checkers syntax)
       (add-hook! 'go-mode-hook
         (setq-local flycheck-disabled-checkers '(go-gofmt
                                                  go-golint
@@ -31,12 +31,12 @@
                                                  go-unconvert
                                                  go-staticcheck))))
 
-  (when (featurep! :tools lsp)
+  (when (modulep! :tools lsp)
     (defadvice! godef-describe-a (_point)
       :override #'godef-describe
       (lsp-describe-thing-at-point)))
 
-  (map! (:when (featurep! :tools lsp)
+  (map! (:when (modulep! :tools lsp)
          (:map go-mode-map
           :localleader
           (:prefix ("r" . "reflect")

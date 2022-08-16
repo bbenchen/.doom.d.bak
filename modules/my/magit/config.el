@@ -11,7 +11,7 @@
         magit-todos-exclude-globs (append magit-todos-exclude-globs '(".svn/" "node_modules/*"))))
 
 (after! git-commit
-  (if (featurep! :checkers spell +flyspell)
+  (if (modulep! :checkers spell +flyspell)
       (remove-hook! 'git-commit-mode-hook #'flyspell-mode)))
 
 ;; magit-todos

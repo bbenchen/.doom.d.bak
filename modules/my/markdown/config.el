@@ -11,7 +11,7 @@
                   (expand-file-name md-lint md-lint-dir)))))
 
 (after! grip-mode
-  (if (featurep 'xwidget-internal)
+  (if (modulep 'xwidget-internal)
       ;; Use embedded webkit to previe
       (setq grip-preview-use-webkit t))
   ;; Setup xwidget window popup rule

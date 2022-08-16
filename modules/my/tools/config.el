@@ -81,11 +81,11 @@
           (global-command-log-mode 1))))))
 
 (use-package! eaf
-  :load-path (lambda () (list (expand-file-name "site-lisp/eaf" doom-private-dir)))
+  :load-path (lambda () (list (expand-file-name "site-lisp/eaf" doom-user-dir)))
   :when IS-LINUX
   :defer 2
   :custom
-  (eaf-config-location (expand-file-name "eaf/" doom-etc-dir))
+  (eaf-config-location (expand-file-name "eaf/" doom-data-dir))
   (eaf-wm-focus-fix-wms '("i3" "bspwm" "dwm" "LG3D" "Xpra" "EXWM" "Xfwm4"))
   (eaf-proxy-type "http")
   (eaf-proxy-host "127.0.0.1")

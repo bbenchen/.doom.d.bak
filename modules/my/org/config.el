@@ -19,8 +19,8 @@
   (add-to-list 'org-structure-template-alist '("sql" . "src sql")))
 
 (after! ob-ditaa
-  (setq org-ditaa-jar-path (expand-file-name "ditaa.jar" doom-private-dir)
-        org-ditaa-eps-jar-path (expand-file-name "DitaaEps.jar" doom-private-dir)))
+  (setq org-ditaa-jar-path (expand-file-name "ditaa.jar" doom-user-dir)
+        org-ditaa-eps-jar-path (expand-file-name "DitaaEps.jar" doom-user-dir)))
 
 (after! ox-latex
   ;; @see https://yuchi.me/post/export-org-mode-in-chinese-to-pdf-with-custom-latex-class

@@ -19,12 +19,12 @@
     (set-fontset-font t 'cjk-misc font nil 'prepend)
     (set-fontset-font t 'han font nil 'prepend)))
 
-(if (featurep! :ui zen)
+(if (modulep! :ui zen)
     (setq writeroom-width 120
           +zen-text-scale 1))
 
 ;; no broder
-(when EMACS29+
+(when (> emacs-major-version 28)
   (set-frame-parameter nil 'undecorated t)
   (add-to-list 'default-frame-alist '(undecorated . t)))
 
@@ -33,7 +33,7 @@
 (add-to-list 'default-frame-alist '(alpha . 85))
 
 ;; maximize the window
-(when (and (not EMACS29+)
+(when (and (not (> emacs-major-version 28))
            (not IS-MAC))
   (set-frame-parameter nil 'fullscreen 'maximized)
   (add-to-list 'default-frame-alist '(fullscreen . maximized)))

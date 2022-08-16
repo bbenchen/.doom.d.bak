@@ -30,13 +30,13 @@
        "<left>" #'shrink-window-horizontally
        "<right>" #'enlarge-window-horizontally)
 
-      (:when (and (featurep! :tools magit)
-                  (featurep! :my magit))
+      (:when (and (modulep! :tools magit)
+                  (modulep! :my magit))
        (:prefix-map ("v" . "versioning")
         :desc "Blamer show commit" "b" #'blamer-show-posframe-commit-info
         :desc "Blamer" "B" #'blamer-mode)))
 
-(map! (:when (featurep! :tools make)
+(map! (:when (modulep! :tools make)
        (:map makefile-mode-map
         :localleader
         :desc "Run task" "r" #'+make/run)))

@@ -2,7 +2,7 @@
 
 (after! lsp-java
   (setq lsp-java-jdt-download-url "https://mirrors.tuna.tsinghua.edu.cn/eclipse/jdtls/snapshots/jdt-language-server-latest.tar.gz")
-  (let ((lombok-jar-path (expand-file-name "lombok.jar" doom-private-dir)))
+  (let ((lombok-jar-path (expand-file-name "lombok.jar" doom-user-dir)))
     (setq lsp-java-vmargs (list "-Dfile.encoding=utf8"
                                 "-server"
                                 "-noverify"
@@ -57,8 +57,8 @@
 
   (setq lsp-java-completion-favorite-static-members ["org.junit.Assert.*" "org.junit.Assume.*" "org.junit.jupiter.api.Assertions.*" "org.junit.jupiter.api.Assumptions.*" "org.junit.jupiter.api.DynamicContainer.*" "org.junit.jupiter.api.DynamicTest.*" "org.mockito.Mockito.*" "org.mockito.ArgumentMatchers.*" "org.mockito.Answers.*" "org.hamcrest.MatcherAssert.*" "org.hamcrest.Matchers.*"])
 
-  (if (and (featurep! :editor format)
-           (featurep! +google-java-format))
+  (if (and (modulep! :editor format)
+           (modulep! +google-java-format))
       (progn
         (set-formatter! 'google-java-format
           '("google-java-format" "-" "-a" "-" "--skip-sorting-imports")

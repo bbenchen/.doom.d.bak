@@ -5,8 +5,8 @@
   :defer t
   :init
   (setq default-input-method "rime"
-        rime-librime-root (if IS-MAC (expand-file-name "librime/dist/" doom-etc-dir))
-        rime-user-data-dir (expand-file-name "rime/" doom-etc-dir)
+        rime-librime-root (if IS-MAC (expand-file-name "librime/dist/" doom-data-dir))
+        rime-user-data-dir (expand-file-name "rime/" doom-data-dir)
         rime-show-candidate 'posframe
         rime-inline-ascii-trigger 'shift-l
         rime-disable-predicates '(rime-predicate-after-alphabet-char-p

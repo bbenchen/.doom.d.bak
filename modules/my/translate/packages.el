@@ -6,7 +6,7 @@
 
 (package! posframe :pin "0d23bc5f7cfac00277d83ae7ba52c48685bcbc68")
 
-(when (featurep! :completion company)
+(when (modulep! :completion company)
   (package! company-english-helper
     :recipe (:host github :repo "cxb811201/company-english-helper")
     :pin "5c8ead05988ab6e6351825af83a93dbf1cff0392"))
