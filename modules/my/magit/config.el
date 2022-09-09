@@ -22,8 +22,7 @@
 
 ;; magit-svn
 (use-package! magit-svn
-  :when (and (executable-find "svn")
-             (executable-find "git-svn"))
+  :when (modulep! +svn)
   :after magit
   :config
   (add-hook! 'magit-mode-hook #'magit-svn-mode))
