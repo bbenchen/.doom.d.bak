@@ -5,7 +5,8 @@
 
 ;; lsp
 (after! lsp-mode
-  (setq lsp-enable-snippet nil
+  (setq lsp-response-timeout 10
+        lsp-enable-snippet nil
         lsp-enable-folding nil
         lsp-enable-links nil
         lsp-enable-symbol-highlighting nil
