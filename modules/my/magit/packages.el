@@ -2,6 +2,6 @@
 ;;; my/magit/packages.el
 
 (if (modulep! +svn)
-  (package! magit-svn :pin "350493217afdb7637564e089f475909adecd9208"))
+  (package! magit-svn :pin "b8277081db90977247ae3900ea6afeb0ca644d36"))
 
-(package! blamer :pin "b86822f460a54c60fdfede62d4a86bd4991baa21")
+(package! blamer :pin "99b43779341af0d924bfe2a9103993a6b9e3d3b2")

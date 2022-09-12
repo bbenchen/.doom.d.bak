@@ -2,7 +2,7 @@
 ;;; my/tools/packages.el
 
 (if IS-MAC
-    (package! exec-path-from-shell :pin "6336db9be13d46e2d4bc3b50bc37a3fbf30fdc9e"))
+    (package! exec-path-from-shell :pin "dff9ce3577bf3f2938d9bde8ec8aa4fef3b061f3"))
 (package! command-log-mode :pin "af600e6b4129c8115f464af576505ea8e789db27")
 
 (if IS-LINUX
