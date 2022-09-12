@@ -1,8 +1,7 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; my/translate/packages.el
 
-(package! youdao-dictionary :pin "8a4815a43565b9bfd257246e4895b8bfafb9d573")
-(package! google-translate :pin "0f7f48a09bca064999ecea03102a7c96f52cbd1b")
+(package! google-translate :pin "f2b4534d4554c2103ed8084353c94c9cdc5cb24c")
 
 (package! posframe :pin "0d23bc5f7cfac00277d83ae7ba52c48685bcbc68")
 
