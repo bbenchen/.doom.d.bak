@@ -171,7 +171,7 @@
        yaml                             ; JSON, but readable
 
        :email
-       (mu4e +org)                      ; WIP
+       mu4e                             ; WIP
        ;;notmuch                        ; WIP
        ;;(wanderlust +gmail)            ; WIP
 
