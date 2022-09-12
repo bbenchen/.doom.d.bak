@@ -44,7 +44,8 @@
         lsp-java-format-enabled nil
         lsp-java-format-comments-enabled nil
         lsp-java-format-on-type-enabled nil
-        lsp-java-completion-max-results 200
+        lsp-java-max-concurrent-builds 5
+        lsp-java-completion-max-results 30
         lsp-java-folding-range-enabled nil
         lsp-java-signature-help-enabled nil
         lsp-java-selection-enabled nil
