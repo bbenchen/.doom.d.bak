@@ -10,7 +10,3 @@
 (after! all-the-icons-dired
   ;; display icons with colors
   (setq all-the-icons-dired-monochrome nil))
-
-;; ranger
-(after! ranger
-  (setq ranger-excluded-extensions '("mkv" "iso" "mp4" "bin" "exe" "msi" "jar")))
