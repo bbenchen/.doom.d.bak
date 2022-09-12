@@ -72,11 +72,10 @@
 (if (boundp 'pixel-scroll-precision-mode)
     (pixel-scroll-precision-mode t))
 
-;; frame
-(add-hook! 'after-make-frame-functions #'(lambda (frame)
-                                           (when (not (display-graphic-p frame))
-                                             (select-frame frame)
-                                             (doom/reload-theme))))
+(after! vertico-posframe
+  (custom-set-faces!
+    `(vertico-posframe :foreground ,(doom-color 'modeline-fg) :background ,(doom-color 'modeline-bg))
+    `(vertico-posframe-border :background ,(doom-color 'modeline-bg))))
 
 ;; modeline
 (after! doom-modeline
